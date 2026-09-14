@@ -47,7 +47,12 @@
       "slogan": "Intelligent Software Solutions",
       "description": "Independent software studio building privacy-first, offline-first applications for Android, Windows, macOS and Linux.",
       "founder": { "@type": "Person", "name": "Ahmed Yosri" },
-      "email": "ahmed.yosri.u3@gmail.com"
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://maiaarchitech.com/#contact",
+        "availableLanguage": ["English"]
+      }
     },
     {
       "@type": "WebSite",
@@ -84,6 +89,11 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I install Daybook and Finnish tutor?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Both apps are on Google Play in closed testing, so they do not appear in public Play search yet. Join the tester group for the app, then accept the invitation to test, and the Play listing opens for your account. Use the same Google account your phone's Play Store is signed in as." }
+        },
         {
           "@type": "Question",
           "name": "Are MAIA Architech apps free?",
@@ -567,6 +577,91 @@
   }
   .doclinks a:hover { border-color:var(--cyan); color:var(--cyan-deep); transform:translateY(-2px); }
 
+  /* ---------- contact form ---------- */
+  .contact-grid { display:grid; grid-template-columns:1fr 1.15fr; gap:38px; align-items:start; }
+  @media (max-width:820px) { .contact-grid { grid-template-columns:1fr; gap:28px; } }
+  .cf { display:grid; gap:14px; }
+  .cf-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media (max-width:520px) { .cf-row { grid-template-columns:1fr; } }
+  .cf label { display:block; font-size:11.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:#8fb0c9; margin-bottom:6px; }
+  .cf input, .cf textarea {
+    width:100%; font-family:inherit; font-size:15px; color:#eaf4fb;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18);
+    border-radius:11px; padding:11px 14px; transition:border-color .2s, background .2s;
+  }
+  .cf textarea { resize:vertical; min-height:118px; line-height:1.55; }
+  .cf input::placeholder, .cf textarea::placeholder { color:#7d9ab2; }
+  .cf input:focus, .cf textarea:focus { outline:none; border-color:var(--aqua); background:rgba(255,255,255,.1); }
+  .cf input[aria-invalid="true"], .cf textarea[aria-invalid="true"] { border-color:#f0a3a3; }
+  .cf .hp { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+  .btn-send {
+    justify-self:start; font-family:'Space Grotesk',sans-serif; font-size:14.5px; font-weight:600;
+    padding:12px 24px; border-radius:99px; cursor:pointer; border:0;
+    background:linear-gradient(100deg,var(--cyan),#37c6c0); color:#04202f;
+    transition:transform .2s, box-shadow .25s, opacity .2s;
+  }
+  .btn-send:hover { transform:translateY(-2px); box-shadow:0 14px 30px -14px rgba(55,198,192,.9); }
+  .btn-send[disabled] { opacity:.6; cursor:default; transform:none; box-shadow:none; }
+  .cf-status { margin:0; font-size:13.6px; min-height:20px; color:#a9c6db; }
+  .cf-status.ok { color:var(--aqua); font-weight:600; }
+  .cf-status.err { color:#ffb4b4; }
+  .contact-card .why { margin-top:18px; font-size:13.2px; color:#8fb0c9; line-height:1.65; }
+
+  /* ---------- become a tester ---------- */
+  .tester {
+    background:var(--surface); border:1px solid var(--rule); border-top:3px solid var(--accent);
+    border-radius:16px; padding:26px 28px; margin-top:34px; box-shadow:var(--shadow);
+  }
+  .tester.s-db { --accent:var(--db); }
+  .tester.s-ft { --accent:var(--ft); }
+  .tester h3 { font-size:1.2rem; font-weight:700; margin:0 0 8px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .tester h3 .live {
+    font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    padding:3px 9px; border-radius:99px; background:var(--accent); color:#fff;
+  }
+  :root[data-theme="dark"] .tester h3 .live { color:#06202c; }
+  .tester > p { color:var(--ink-soft); font-size:14.8px; margin:0; max-width:60ch; }
+  ol.steps { list-style:none; margin:22px 0 0; padding:0; display:grid; gap:18px; }
+  ol.steps li { display:flex; gap:15px; align-items:flex-start; }
+  ol.steps .sn {
+    flex:none; width:27px; height:27px; border-radius:50%; margin-top:1px;
+    background:var(--accent); color:#fff;
+    font-family:'Space Grotesk',sans-serif; font-size:13.5px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  :root[data-theme="dark"] ol.steps .sn { color:#06202c; }
+  ol.steps b { display:block; font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:600; margin-bottom:3px; }
+  ol.steps p { margin:0 0 10px; font-size:14.2px; color:var(--ink-soft); max-width:56ch; }
+  .step-go {
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:14px; font-weight:600; text-decoration:none;
+    padding:10px 18px; border-radius:99px;
+    background:var(--accent); color:#fff; border:1px solid var(--accent);
+    transition:transform .2s, box-shadow .25s, filter .2s;
+  }
+  :root[data-theme="dark"] .step-go { color:#06202c; }
+  .step-go:hover { transform:translateY(-2px); filter:brightness(1.07); box-shadow:0 12px 26px -12px var(--accent); }
+  .step-go .ar { transition:transform .2s; }
+  .step-go:hover .ar { transform:translateX(3px); }
+  .step-alt { display:block; margin-top:10px; font-size:12.8px; color:var(--ink-faint); max-width:56ch; line-height:1.55; }
+  .step-alt a { font-weight:600; }
+  .play-badge { display:inline-block; margin-top:2px; transition:transform .2s, filter .2s; }
+  .play-badge:hover { transform:translateY(-2px); filter:brightness(1.05); }
+  .play-badge img { width:186px; height:auto; }
+  .tester .fine {
+    margin:22px 0 0; padding-top:16px; border-top:1px solid var(--rule-soft);
+    font-size:12.8px; color:var(--ink-faint); max-width:66ch; line-height:1.6;
+  }
+  .card-test {
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:13.5px; font-weight:600; text-decoration:none;
+    padding:8px 15px; border-radius:99px;
+    border:1px dashed var(--accent); color:var(--accent); background:transparent;
+    transition:background .2s, transform .2s;
+  }
+  .card-test:hover { transform:translateY(-2px); background:var(--accent); color:#fff; border-style:solid; }
+  :root[data-theme="dark"] .card-test:hover { color:#06202c; }
+
   /* ---------- faq ---------- */
   .faq details {
     background:var(--surface); border:1px solid var(--rule); border-radius:13px;
@@ -720,6 +815,7 @@
           </p>
           <div class="links">
             <a class="go" href="#daybook">See Daybook <span>→</span></a>
+            <a class="card-test" href="#daybook-tester">Become a tester</a>
             <a href="daybook-privacy/">Privacy policy</a>
           </div>
         </article>
@@ -738,6 +834,7 @@
           </p>
           <div class="links">
             <a class="go" href="#finnish-tutor">See Finnish tutor <span>→</span></a>
+            <a class="card-test" href="#finnish-tutor-tester">Become a tester</a>
             <a href="finnish-tutor-privacy/">Privacy policy</a>
           </div>
         </article>
@@ -901,7 +998,8 @@
         <h3 class="sub">Platforms &amp; availability</h3>
         <dl class="spec">
           <dt>Android</dt>
-          <dd>Published on Google Play as <strong>Daybook</strong> (<code>com.MAIAArchitech.daybook</code>), by MAIA Architech.</dd>
+          <dd>On Google Play as <strong>Daybook</strong> (<code>com.MAIAArchitech.daybook</code>), by MAIA Architech.
+            In closed testing for now — <a href="#daybook-tester">join the test</a> to install it.</dd>
           <dt>Desktop</dt>
           <dd>Windows, macOS and Linux builds, with an optional pairing link to the phone app.</dd>
           <dt>Storage</dt>
@@ -909,6 +1007,59 @@
           <dt>Price</dt>
           <dd>Free to use. No subscription is required for the features described on this page.</dd>
         </dl>
+
+        <div class="tester s-db" id="daybook-tester">
+          <h3>Become a tester <span class="live">Closed beta</span></h3>
+          <p>
+            Daybook is in closed testing on Google Play, so it isn't in public search results yet.
+            Google only shows the app to accounts that have joined the tester group, which takes
+            two short steps — once, with the Google account you use on your phone.
+          </p>
+          <ol class="steps">
+            <li>
+              <span class="sn">1</span>
+              <div>
+                <b>Join the tester group</b>
+                <p>Open to anyone — no approval or waiting. Press <em>Join group</em> on the page that opens.</p>
+                <a class="step-go" href="https://groups.google.com/g/daybook-testers" target="_blank" rel="noopener">
+                  Join the tester group <span class="ar">→</span>
+                </a>
+                <span class="step-alt">
+                  Prefer not to leave a page open? Send a blank email to
+                  <a href="mailto:daybook-testers+subscribe@googlegroups.com">daybook-testers+subscribe@googlegroups.com</a>
+                  and you are joined by reply.
+                </span>
+              </div>
+            </li>
+            <li>
+              <span class="sn">2</span>
+              <div>
+                <b>Accept the invitation to test</b>
+                <p>Sign in with the same account and press <em>Become a tester</em>.</p>
+                <a class="step-go" href="https://play.google.com/apps/testing/com.MAIAArchitech.daybook" target="_blank" rel="noopener">
+                  Become a tester <span class="ar">→</span>
+                </a>
+              </div>
+            </li>
+            <li>
+              <span class="sn">3</span>
+              <div>
+                <b>Install it</b>
+                <p>The Play listing appears for your account once steps 1 and 2 are done.</p>
+                <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.MAIAArchitech.daybook" target="_blank" rel="noopener" aria-label="Get Daybook on Google Play">
+                  <img src="assets/google-play-badge.png" alt="Get it on Google Play" width="186" height="72" loading="lazy">
+                </a>
+              </div>
+            </li>
+          </ol>
+          <p class="fine">
+            If Play says the app isn't available, the account on your phone is usually not the one
+            that joined the group — check which account Google Play is signed in as. Daybook's test
+            is currently open in six countries; if it isn't offered where you are,
+            <a href="#contact">send a message</a> and it can be added.
+            Google Play is a trademark of Google LLC.
+          </p>
+        </div>
 
         <div class="doclinks">
           <a href="daybook-privacy/">Daybook privacy policy <span>→</span></a>
@@ -1026,7 +1177,8 @@
         <h3 class="sub">Platforms &amp; availability</h3>
         <dl class="spec">
           <dt>Android</dt>
-          <dd>In active development by MAIA Architech, with a Google Play release in preparation.</dd>
+          <dd>On Google Play as <strong>Finnish tutor</strong> (<code>com.ahmedyosri.finnish_tutor</code>), by MAIA Architech.
+            In closed testing for now — <a href="#finnish-tutor-tester">join the test</a> to install it.</dd>
           <dt>Windows</dt>
           <dd>Desktop build with one-scan QR pairing to carry your settings across from the phone.</dd>
           <dt>Offline</dt>
@@ -1034,6 +1186,58 @@
           <dt>Price</dt>
           <dd>Free to use, with no subscription. AI features run on your own free Google Gemini API key.</dd>
         </dl>
+
+        <div class="tester s-ft" id="finnish-tutor-tester">
+          <h3>Become a tester <span class="live">Closed beta</span></h3>
+          <p>
+            Finnish tutor is in closed testing on Google Play. Google only shows the app to accounts
+            that have joined the tester group, which takes two short steps — once, with the Google
+            account you use on your phone.
+          </p>
+          <ol class="steps">
+            <li>
+              <span class="sn">1</span>
+              <div>
+                <b>Join the tester group</b>
+                <p>Open to anyone — no approval or waiting. Press <em>Join group</em> on the page that opens.</p>
+                <a class="step-go" href="https://groups.google.com/g/finnish-tutor" target="_blank" rel="noopener">
+                  Join the tester group <span class="ar">→</span>
+                </a>
+                <span class="step-alt">
+                  Prefer not to leave a page open? Send a blank email to
+                  <a href="mailto:finnish-tutor+subscribe@googlegroups.com">finnish-tutor+subscribe@googlegroups.com</a>
+                  and you are joined by reply.
+                </span>
+              </div>
+            </li>
+            <li>
+              <span class="sn">2</span>
+              <div>
+                <b>Accept the invitation to test</b>
+                <p>Sign in with the same account and press <em>Become a tester</em>.</p>
+                <a class="step-go" href="https://play.google.com/apps/testing/com.ahmedyosri.finnish_tutor" target="_blank" rel="noopener">
+                  Become a tester <span class="ar">→</span>
+                </a>
+              </div>
+            </li>
+            <li>
+              <span class="sn">3</span>
+              <div>
+                <b>Install it</b>
+                <p>The Play listing appears for your account once steps 1 and 2 are done.</p>
+                <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.ahmedyosri.finnish_tutor" target="_blank" rel="noopener" aria-label="Get Finnish tutor on Google Play">
+                  <img src="assets/google-play-badge.png" alt="Get it on Google Play" width="186" height="72" loading="lazy">
+                </a>
+              </div>
+            </li>
+          </ol>
+          <p class="fine">
+            If Play says the app isn't available, the account on your phone is usually not the one
+            that joined the group — check which account Google Play is signed in as. The AI features
+            also need your own free Google Gemini API key, added in Settings.
+            Google Play is a trademark of Google LLC.
+          </p>
+        </div>
 
         <div class="doclinks">
           <a href="finnish-tutor-privacy/">Finnish tutor privacy policy <span>→</span></a>
@@ -1050,6 +1254,14 @@
         <h2>Frequently asked</h2>
       </div>
       <div class="faq reveal">
+        <details>
+          <summary>How do I install the apps?</summary>
+          <div class="ans">Both are on Google Play in closed testing, so they don't appear in public
+            Play search yet. Join the tester group for the app, accept the invitation to test, and the
+            Play listing then opens for your account — the steps and links are under
+            <a href="#daybook-tester">Daybook</a> and <a href="#finnish-tutor-tester">Finnish tutor</a>.
+            Use the same Google account throughout, the one your phone's Play Store is signed in as.</div>
+        </details>
         <details>
           <summary>Are the apps free?</summary>
           <div class="ans">Yes. Daybook and Finnish tutor are both free to use, with no subscription for
@@ -1096,14 +1308,39 @@
   <section id="contact">
     <div class="wrap">
       <div class="contact-card reveal">
-        <h2>Developer &amp; contact</h2>
-        <p>Questions about either app, about your data, or a deletion request — they all reach the
-          same person, and they get answered.</p>
-        <a class="mail" href="mailto:ahmed.yosri.u3@gmail.com">✉ ahmed.yosri.u3@gmail.com</a>
-        <div class="contact-meta">
-          <div><span>Studio</span>MAIA Architech</div>
-          <div><span>Developer</span>Ahmed Yosri</div>
-          <div><span>Play Console</span>Trading as MAIA Architech</div>
+        <div class="contact-grid">
+          <div>
+            <h2>Get in touch</h2>
+            <p>Questions about either app, about your data, a deletion request, or a country you'd
+              like the test opened in — they all reach the same person, and they get answered.</p>
+            <div class="contact-meta">
+              <div><span>Studio</span>MAIA Architech</div>
+              <div><span>Developer</span>Ahmed Yosri</div>
+              <div><span>Play Console</span>Trading as MAIA Architech</div>
+            </div>
+            <p class="why">Messages go through this form rather than a published address, which keeps
+              the inbox out of reach of address harvesters. Leave your email and you'll get a reply to it.</p>
+          </div>
+
+          <form class="cf" id="contactForm" data-endpoint="" novalidate>
+            <div class="cf-row">
+              <div>
+                <label for="cf-name">Your name</label>
+                <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Name" required>
+              </div>
+              <div>
+                <label for="cf-email">Your email</label>
+                <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+            <div>
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" rows="5" placeholder="What would you like to say?" required></textarea>
+            </div>
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn-send" type="submit" id="cfSend">Send message</button>
+            <p class="cf-status" id="cfStatus" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </div>
@@ -1115,7 +1352,7 @@
         <div>
           <a href="daybook-privacy/">Daybook privacy &amp; terms</a>
           <a href="finnish-tutor-privacy/">Finnish tutor privacy &amp; terms</a>
-          <a href="mailto:ahmed.yosri.u3@gmail.com">Contact</a>
+          <a href="#contact">Contact</a>
         </div>
         <div>MAIA Architech — Intelligent Software Solutions</div>
       </div>
@@ -1301,6 +1538,67 @@
       }, { threshold: .3 }).observe(g);
     } else { play(); }
   });
+
+  /* ---- contact form ---- */
+  var form = document.getElementById('contactForm');
+  if (form) {
+    var statusEl = document.getElementById('cfStatus');
+    var sendBtn = document.getElementById('cfSend');
+    // never written in the page source, so address harvesters find nothing to scrape
+    function address() { try { return atob('YWhtZWQueW9zcmkudTNAZ21haWwuY29t'); } catch (e) { return ''; } }
+    function say(msg, kind) { statusEl.textContent = msg; statusEl.className = 'cf-status' + (kind ? ' ' + kind : ''); }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (form.botcheck && form.botcheck.checked) return;
+
+      var name = form.name.value.trim();
+      var email = form.email.value.trim();
+      var message = form.message.value.trim();
+      var firstBad = null;
+      [['name', name], ['email', email], ['message', message]].forEach(function (pair) {
+        var field = form[pair[0]];
+        var bad = !pair[1] || (pair[0] === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(pair[1]));
+        field.setAttribute('aria-invalid', bad ? 'true' : 'false');
+        if (bad && !firstBad) firstBad = field;
+      });
+      if (firstBad) { firstBad.focus(); say('Please fill in your name, a valid email, and a message.', 'err'); return; }
+
+      var endpoint = form.getAttribute('data-endpoint');
+      if (!endpoint) {
+        // no form service configured yet — hand off to the visitor's mail app instead of failing
+        var to = address();
+        if (!to) { say('Sorry, the form is unavailable right now. Please try again later.', 'err'); return; }
+        window.location.href = 'mailto:' + to
+          + '?subject=' + encodeURIComponent('maiaarchitech.com — message from ' + name)
+          + '&body=' + encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+        say('Opening your email app so you can send it. Nothing was sent from this page.');
+        return;
+      }
+
+      sendBtn.disabled = true;
+      say('Sending…');
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: form.getAttribute('data-key') || undefined,
+          subject: 'maiaarchitech.com — message from ' + name,
+          from_name: name, name: name, email: email, message: message
+        })
+      }).then(function (r) { return r.json().catch(function () { return { success: r.ok }; }); })
+        .then(function (data) {
+          if (data && (data.success || data.ok)) {
+            form.reset();
+            say('Thank you — your message has been sent. You will get a reply to ' + email + '.', 'ok');
+          } else {
+            say('That did not go through. Please try again in a moment.', 'err');
+          }
+        })
+        .catch(function () { say('That did not go through — check your connection and try again.', 'err'); })
+        .then(function () { sendBtn.disabled = false; });
+    });
+  }
 
   /* ---- nav state, progress bar, back to top ---- */
   var links = document.querySelectorAll('[data-nav]');
