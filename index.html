@@ -1,11 +1,396 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta name="google-site-verification" content="QWpWFaZ_nJbitj9HsLFut09guXvvLOGB9SIwULRfKpA" />
-    <title>Daybook</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="QWpWFaZ_nJbitj9HsLFut09guXvvLOGB9SIwULRfKpA" />
+<title>Daybook — a personal diary, task and activity log that stays on your device</title>
+<meta name="description" content="Daybook is a personal diary, task and activity-log app for Android, Windows, macOS and Linux. Your entries are stored on your own device; Google Drive backup and Calendar sync are optional and off until you turn them on.">
+<link rel="canonical" href="https://ahmedyosriu3-dev.github.io/">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap');
+
+  :root {
+    --paper: #f6f4ee;
+    --paper-raised: #ffffff;
+    --ink: #21261f;
+    --ink-soft: #4b5245;
+    --ink-faint: #7a8171;
+    --rule: #dcd6c4;
+    --rule-soft: #e8e3d3;
+    --accent: #3c5e42;
+    --accent-strong: #24402b;
+    --accent-wash: #e7ede4;
+    --tag-bg: #eef1e6;
+    --shadow: 0 1px 2px rgba(33,38,31,0.06), 0 8px 24px rgba(33,38,31,0.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #14170f;
+      --paper-raised: #1b1f16;
+      --ink: #e9e6d8;
+      --ink-soft: #b9b7a6;
+      --ink-faint: #83816f;
+      --rule: #33372a;
+      --rule-soft: #262a1e;
+      --accent: #8fbf95;
+      --accent-strong: #a9d4ac;
+      --accent-wash: #1e2618;
+      --tag-bg: #1f2416;
+      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 8px 30px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14170f;
+    --paper-raised: #1b1f16;
+    --ink: #e9e6d8;
+    --ink-soft: #b9b7a6;
+    --ink-faint: #83816f;
+    --rule: #33372a;
+    --rule-soft: #262a1e;
+    --accent: #8fbf95;
+    --accent-strong: #a9d4ac;
+    --accent-wash: #1e2618;
+    --tag-bg: #1f2416;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 8px 30px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; }
+
+  .shell {
+    max-width: 760px;
+    margin: 0 auto;
+    padding-block: 56px 104px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .eyebrow {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    background: var(--accent);
+    display: inline-block;
+    flex: none;
+  }
+
+  h1 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin: 0 0 18px;
+  }
+  .lede {
+    font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+    max-width: 62ch;
+  }
+
+  h2 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+  p { margin: 0 0 14px; }
+  a { color: var(--accent-strong); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+
+  section { margin-top: 52px; }
+  .section-head {
+    border-top: 1px solid var(--rule);
+    padding-top: 22px;
+    margin-bottom: 22px;
+  }
+  .section-head .num {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule-soft);
+    border-radius: 10px;
+    padding: 18px 18px 16px;
+    box-shadow: var(--shadow);
+  }
+  .card p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
+
+  .perm {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-wash);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .perm h3 { margin-bottom: 6px; }
+  .perm code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    background: var(--tag-bg);
+    border: 1px solid var(--rule-soft);
+    border-radius: 5px;
+    padding: 1px 6px;
+    word-break: break-all;
+  }
+  .perm p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
+  .perm p + p { margin-top: 8px; }
+
+  .tag {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    background: var(--tag-bg);
+    border: 1px solid var(--rule-soft);
+    border-radius: 999px;
+    padding: 2px 10px;
+    margin-left: 8px;
+    vertical-align: 2px;
+  }
+
+  ul.plain { margin: 0 0 14px; padding-left: 20px; }
+  ul.plain li { margin-bottom: 7px; color: var(--ink-soft); }
+
+  dl.meta {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 8px 22px;
+    margin: 0;
+    font-size: 14.5px;
+  }
+  dl.meta dt {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 3px;
+  }
+  dl.meta dd { margin: 0; color: var(--ink-soft); }
+  dl.meta code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    word-break: break-all;
+  }
+
+  footer {
+    margin-top: 56px;
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    font-size: 14px;
+    color: var(--ink-faint);
+  }
+  footer a { margin-right: 16px; display: inline-block; }
+
+  @media (max-width: 520px) {
+    dl.meta { grid-template-columns: 1fr; gap: 2px 0; }
+    dl.meta dd { margin-bottom: 12px; }
+  }
+</style>
 </head>
 <body>
-    <h1>Daybook</h1>
-    <p>Welcome to Daybook.</p>
+<main class="shell">
+
+  <p class="eyebrow">Daybook</p>
+  <h1>A personal diary, task and activity log that stays on your device.</h1>
+  <p class="lede">
+    Daybook records your day — tasks, notes, activities, places, birthdays and holidays — in a
+    database on your own phone or computer. It has no account system and no server of its own.
+    Connecting a Google account is optional, and every feature that leaves the device is off
+    until you switch it on.
+  </p>
+  <p class="lede">
+    Built by an independent developer for people who want a thorough daily log without handing
+    that log to somebody else's cloud.
+  </p>
+
+  <section>
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2>What you can do with it</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <h3>Tasks &amp; subtasks</h3>
+        <p>Separate work and personal lists, with due dates, recurrence and a full completion history.</p>
+      </div>
+      <div class="card">
+        <h3>Notes</h3>
+        <p>Written notes with sketches and photos attached, kept alongside the day they belong to.</p>
+      </div>
+      <div class="card">
+        <h3>Activity log</h3>
+        <p>A running record of what you did and where, which you can fill in by hand or have written for you from saved places.</p>
+      </div>
+      <div class="card">
+        <h3>Places</h3>
+        <p>Save somewhere you go often and Daybook can log arrivals and departures for you.</p>
+      </div>
+      <div class="card">
+        <h3>Dates that matter</h3>
+        <p>Birthdays, custom recurring events, and public holidays you choose to import.</p>
+      </div>
+      <div class="card">
+        <h3>AI assistant</h3>
+        <p>An optional assistant tab powered by Google Gemini, using an API key you supply yourself.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="num">02</span>
+      <h2>Why Daybook asks for a Google account</h2>
+    </div>
+    <p>
+      Signing in is entirely optional — Daybook works fully without it. It exists so the app can
+      back up to <em>your</em> Drive and, on desktop, write your dated tasks into <em>your</em>
+      calendar. Daybook has no login of its own, so there is nowhere else for that data to go.
+      Here is every permission the app requests and what it is used for.
+    </p>
+
+    <div class="perm">
+      <h3>Google Drive backup <span class="tag">drive.file</span></h3>
+      <p><code>https://www.googleapis.com/auth/drive.file</code></p>
+      <p>
+        Used to upload a copy of Daybook's own database, plus images attached to your notes, so you
+        can restore on a new device or keep two devices in step. This scope grants access
+        <strong>only to files Daybook itself created</strong> — the app cannot see, list or open
+        anything else already in your Drive. The backup sits in your own Drive under your own
+        account; the developer has no access to it.
+      </p>
+    </div>
+
+    <div class="perm">
+      <h3>Google Calendar sync <span class="tag">calendar</span></h3>
+      <p><code>https://www.googleapis.com/auth/calendar</code></p>
+      <p>
+        Used so that tasks you give a date appear as events in your own Google Calendar, visible
+        from any device signed into that account. Only the tasks and events you choose to sync are
+        written — never your notes, your activity log, or anything else in the app.
+      </p>
+      <p>
+        This route is offered in Daybook's desktop build. On Android there is a second, separate
+        option that writes to your device's own calendar app using the ordinary OS calendar
+        permission and no Google account at all; that is the route the Google Play version uses today.
+      </p>
+    </div>
+
+    <div class="perm">
+      <h3>Your email address and basic profile <span class="tag">openid · email · profile</span></h3>
+      <p>
+        Read once after sign-in purely so the app can show you which account is currently connected.
+        Daybook does not read your contacts, your mail, or any other part of the account.
+      </p>
+    </div>
+
+    <p>
+      Sign-in tokens are stored on your device alongside the database and are used only for the
+      calls described above. You can withdraw Daybook's access at any time at
+      <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="num">03</span>
+      <h2>What Daybook does not do</h2>
+    </div>
+    <ul class="plain">
+      <li>No ads, no analytics, no trackers, no data brokers — none are built into the app.</li>
+      <li>No account to create, and no Daybook server for your entries to sit on.</li>
+      <li>Your notes, tasks and logs are never transmitted to the developer.</li>
+      <li>Nothing leaves your device unless you turn on the specific feature that sends it.</li>
+    </ul>
+    <p>
+      The <a href="https://ahmedyosriu3-dev.github.io/daybook-privacy/">privacy policy</a> goes
+      through this feature by feature — including location, microphone, camera and the AI assistant —
+      and says plainly where each one sends data, or that it sends none.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="num">04</span>
+      <h2>Platforms &amp; availability</h2>
+    </div>
+    <dl class="meta">
+      <dt>Android</dt>
+      <dd>Published on Google Play as <strong>Daybook</strong> (<code>com.MAIAArchitech.daybook</code>), by MAIA Architech.</dd>
+      <dt>Desktop</dt>
+      <dd>Windows, macOS and Linux builds, with an optional pairing link to the phone app.</dd>
+      <dt>Storage</dt>
+      <dd>A single local SQLite database inside the app's own storage, unreadable by other apps on the device.</dd>
+      <dt>Price</dt>
+      <dd>Free to use. No subscription is required for the features described on this page.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="num">05</span>
+      <h2>Developer &amp; contact</h2>
+    </div>
+    <dl class="meta">
+      <dt>Developer</dt>
+      <dd>Ahmed Yosri — trading as MAIA Architech on Google Play.</dd>
+      <dt>Support</dt>
+      <dd><a href="mailto:ahmed.yosri.u3@gmail.com">ahmed.yosri.u3@gmail.com</a></dd>
+      <dt>Response</dt>
+      <dd>Questions about the app, your data, or a deletion request are answered at the address above.</dd>
+    </dl>
+  </section>
+
+  <footer>
+    <a href="https://ahmedyosriu3-dev.github.io/daybook-privacy/">Privacy policy</a>
+    <a href="https://ahmedyosriu3-dev.github.io/daybook-privacy/">Terms of service</a>
+    <a href="mailto:ahmed.yosri.u3@gmail.com">Contact</a>
+    <p style="margin-top:14px">© 2026 Ahmed Yosri. Daybook is not affiliated with or endorsed by Google LLC.</p>
+  </footer>
+
+</main>
 </body>
 </html>
