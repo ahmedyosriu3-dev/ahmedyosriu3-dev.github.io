@@ -4,393 +4,1327 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="QWpWFaZ_nJbitj9HsLFut09guXvvLOGB9SIwULRfKpA" />
-<title>Daybook — a personal diary, task and activity log that stays on your device</title>
-<meta name="description" content="Daybook is a personal diary, task and activity-log app for Android, Windows, macOS and Linux. Your entries are stored on your own device; Google Drive backup and Calendar sync are optional and off until you turn them on.">
-<link rel="canonical" href="https://ahmedyosriu3-dev.github.io/">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap');
 
+<title>MAIA Architech — Daybook diary app &amp; Finnish tutor language app</title>
+<meta name="description" content="MAIA Architech builds privacy-first apps that run on your own device: Daybook, a personal diary, task and activity-log app for Android, Windows, macOS and Linux, and Finnish tutor, an AI-assisted app for learning Finnish. No ads, no analytics, no trackers.">
+<meta name="keywords" content="Daybook app, personal diary app, offline diary app, private task manager, activity log app, Finnish tutor app, learn Finnish app, Finnish language learning app, Finnish grammar checker, MAIA Architech, privacy-first apps, offline first apps, no ads no trackers, Ahmed Yosri">
+<meta name="author" content="MAIA Architech — Ahmed Yosri">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a2540">
+<link rel="canonical" href="https://maiaarchitech.com/">
+<link rel="icon" type="image/png" href="assets/maia-logo.png">
+<link rel="apple-touch-icon" href="assets/maia-logo.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MAIA Architech">
+<meta property="og:title" content="MAIA Architech — Daybook diary app &amp; Finnish tutor language app">
+<meta property="og:description" content="Privacy-first apps that live on your device: Daybook (diary, tasks &amp; activity log) and Finnish tutor (AI-assisted Finnish learning). No ads, no analytics, no trackers.">
+<meta property="og:url" content="https://maiaarchitech.com/">
+<meta property="og:image" content="https://maiaarchitech.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MAIA Architech — Daybook &amp; Finnish tutor">
+<meta name="twitter:description" content="Privacy-first apps that live on your device: a personal diary and task log, and an AI-assisted Finnish tutor.">
+<meta name="twitter:image" content="https://maiaarchitech.com/assets/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://maiaarchitech.com/#org",
+      "name": "MAIA Architech",
+      "alternateName": "MAIA Architech — Intelligent Software Solutions",
+      "url": "https://maiaarchitech.com/",
+      "logo": "https://maiaarchitech.com/assets/maia-logo.png",
+      "image": "https://maiaarchitech.com/assets/og-image.png",
+      "slogan": "Intelligent Software Solutions",
+      "description": "Independent software studio building privacy-first, offline-first applications for Android, Windows, macOS and Linux.",
+      "founder": { "@type": "Person", "name": "Ahmed Yosri" },
+      "email": "ahmed.yosri.u3@gmail.com"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://maiaarchitech.com/#website",
+      "url": "https://maiaarchitech.com/",
+      "name": "MAIA Architech",
+      "publisher": { "@id": "https://maiaarchitech.com/#org" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Daybook",
+      "url": "https://maiaarchitech.com/#daybook",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Android, Windows, macOS, Linux",
+      "description": "A personal diary, task and activity-log app that keeps everything in a database on your own device. Optional Google Drive backup and Calendar sync, no account required.",
+      "screenshot": "https://maiaarchitech.com/assets/db-1-tasks.webp",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@id": "https://maiaarchitech.com/#org" },
+      "privacyPolicy": "https://maiaarchitech.com/daybook-privacy/"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Finnish tutor",
+      "url": "https://maiaarchitech.com/#finnish-tutor",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Android, Windows",
+      "description": "An app for learning Finnish: sentence correction with grammar explanations, tap-any-word photo page reading, on-device speech transcription and a spaced-repetition word list built from a 175,000-word offline dictionary.",
+      "screenshot": "https://maiaarchitech.com/assets/ft-1-check.webp",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@id": "https://maiaarchitech.com/#org" },
+      "privacyPolicy": "https://maiaarchitech.com/finnish-tutor-privacy/"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are MAIA Architech apps free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Daybook and Finnish tutor are both free to use. Finnish tutor's AI features run on your own free Google Gemini API key, so there is no subscription." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is my data stored?",
+          "acceptedAnswer": { "@type": "Answer", "text": "In a database inside the app's own storage on your phone or computer. There is no MAIA Architech server and no account system, so there is nowhere else for your entries to go." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Daybook work without a Google account?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, fully. Signing in is optional and only enables backup to your own Google Drive and syncing dated tasks into your own Google Calendar." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do the apps show ads or track me?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. There are no ads, no analytics, no trackers and no crash reporting built into either app." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Finnish tutor work offline?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The offline half does: a bundled dictionary of about 175,000 Finnish headwords, tap-a-word lookup, word forms, your saved list, review cards, the PDF reader, on-device text recognition and on-device speech-to-text. Only the features that need a large language model require a connection and your own Gemini API key." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which platforms are supported?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Daybook runs on Android, Windows, macOS and Linux. Finnish tutor runs on Android and Windows, with one-scan QR pairing between them." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
   :root {
-    --paper: #f6f4ee;
-    --paper-raised: #ffffff;
-    --ink: #21261f;
-    --ink-soft: #4b5245;
-    --ink-faint: #7a8171;
-    --rule: #dcd6c4;
-    --rule-soft: #e8e3d3;
-    --accent: #3c5e42;
-    --accent-strong: #24402b;
-    --accent-wash: #e7ede4;
-    --tag-bg: #eef1e6;
-    --shadow: 0 1px 2px rgba(33,38,31,0.06), 0 8px 24px rgba(33,38,31,0.05);
+    --navy-900:#061625;
+    --navy-800:#0a2540;
+    --navy-700:#10375a;
+    --cyan:#1f9ec9;
+    --cyan-deep:#0f7fa8;
+    --aqua:#7be0d6;
+
+    --paper:#f7f9fb;
+    --surface:#ffffff;
+    --surface-2:#f0f4f8;
+    --ink:#0f2233;
+    --ink-soft:#43596d;
+    --ink-faint:#7b8fa1;
+    --rule:#e3e9f0;
+    --rule-soft:#eef2f7;
+    --shadow:0 1px 2px rgba(10,37,64,.05), 0 10px 30px -12px rgba(10,37,64,.16);
+    --shadow-lg:0 24px 60px -24px rgba(10,37,64,.35);
+
+    --db:#2f7d63;
+    --db-ink:#245f4c;
+    --db-soft:#e9f4f0;
+    --ft:#0a5a96;
+    --ft-ink:#08497a;
+    --ft-soft:#e7f1f9;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper: #14170f;
-      --paper-raised: #1b1f16;
-      --ink: #e9e6d8;
-      --ink-soft: #b9b7a6;
-      --ink-faint: #83816f;
-      --rule: #33372a;
-      --rule-soft: #262a1e;
-      --accent: #8fbf95;
-      --accent-strong: #a9d4ac;
-      --accent-wash: #1e2618;
-      --tag-bg: #1f2416;
-      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 8px 30px rgba(0,0,0,0.35);
+      --paper:#081320;
+      --surface:#0e1f2f;
+      --surface-2:#0b1a28;
+      --ink:#e7eff6;
+      --ink-soft:#a7bdcf;
+      --ink-faint:#6f879c;
+      --rule:#1c3347;
+      --rule-soft:#152838;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -12px rgba(0,0,0,.6);
+      --shadow-lg:0 24px 60px -24px rgba(0,0,0,.8);
+      --db:#6dc6a5;
+      --db-ink:#8fd8bd;
+      --db-soft:#0f2a22;
+      --ft:#6db6e8;
+      --ft-ink:#93cbf3;
+      --ft-soft:#0d2436;
     }
   }
   :root[data-theme="dark"] {
-    --paper: #14170f;
-    --paper-raised: #1b1f16;
-    --ink: #e9e6d8;
-    --ink-soft: #b9b7a6;
-    --ink-faint: #83816f;
-    --rule: #33372a;
-    --rule-soft: #262a1e;
-    --accent: #8fbf95;
-    --accent-strong: #a9d4ac;
-    --accent-wash: #1e2618;
-    --tag-bg: #1f2416;
-    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 8px 30px rgba(0,0,0,0.35);
+    --paper:#081320;
+    --surface:#0e1f2f;
+    --surface-2:#0b1a28;
+    --ink:#e7eff6;
+    --ink-soft:#a7bdcf;
+    --ink-faint:#6f879c;
+    --rule:#1c3347;
+    --rule-soft:#152838;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -12px rgba(0,0,0,.6);
+    --shadow-lg:0 24px 60px -24px rgba(0,0,0,.8);
+    --db:#6dc6a5;
+    --db-ink:#8fd8bd;
+    --db-soft:#0f2a22;
+    --ft:#6db6e8;
+    --ft-ink:#93cbf3;
+    --ft-soft:#0d2436;
   }
 
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
   body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 16px;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
-  img { max-width: 100%; }
+  img { max-width:100%; display:block; }
+  [hidden] { display:none !important; }
+  ::selection { background:var(--aqua); color:var(--navy-900); }
 
-  .shell {
-    max-width: 760px;
-    margin: 0 auto;
-    padding-block: 56px 104px;
-    padding-left: 24px;
-    padding-right: 24px;
-  }
+  .wrap { max-width:1040px; margin:0 auto; padding-inline:22px; }
+  .narrow { max-width:780px; }
 
-  .eyebrow {
-    font-size: 12.5px;
-    font-weight: 600;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 18px;
-  }
-  .eyebrow::before {
-    content: "";
-    width: 22px;
-    height: 2px;
-    background: var(--accent);
-    display: inline-block;
-    flex: none;
+  h1,h2,h3,.display {
+    font-family:'Space Grotesk','Public Sans',sans-serif;
+    letter-spacing:-0.02em;
+    line-height:1.15;
   }
 
-  h1 {
-    font-family: 'Newsreader', Georgia, serif;
-    font-weight: 500;
-    font-size: clamp(2.1rem, 5vw, 3rem);
-    line-height: 1.15;
-    letter-spacing: -0.015em;
-    margin: 0 0 18px;
-  }
-  .lede {
-    font-size: clamp(1.05rem, 2.2vw, 1.2rem);
-    color: var(--ink-soft);
-    margin: 0 0 14px;
-    max-width: 62ch;
+  a { color:var(--cyan-deep); text-underline-offset:3px; }
+  a:hover { color:var(--cyan); }
+  :focus-visible { outline:2px solid var(--cyan); outline-offset:3px; border-radius:6px; }
+
+  /* ---------- scroll progress ---------- */
+  #bar {
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg,var(--navy-700),var(--cyan),var(--aqua));
+    z-index:100; transition:width .1s linear;
   }
 
-  h2 {
-    font-family: 'Newsreader', Georgia, serif;
-    font-weight: 500;
-    font-size: 1.6rem;
-    letter-spacing: -0.01em;
-    margin: 0 0 6px;
+  /* ---------- nav ---------- */
+  header.site {
+    position:sticky; top:0; z-index:90;
+    background:color-mix(in srgb, var(--paper) 86%, transparent);
+    backdrop-filter:blur(12px) saturate(1.3);
+    -webkit-backdrop-filter:blur(12px) saturate(1.3);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
   }
-  h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 0 0 4px;
+  header.site.stuck { border-bottom-color:var(--rule); }
+  header.site .wrap { display:flex; align-items:center; justify-content:space-between; gap:14px; padding-block:11px; }
+  .brand { display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink); }
+  .brand .tile {
+    width:34px; height:34px; border-radius:9px; overflow:hidden; flex:none;
+    background:#fff; box-shadow:0 2px 8px -2px rgba(10,37,64,.3);
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1);
   }
-  p { margin: 0 0 14px; }
-  a { color: var(--accent-strong); text-underline-offset: 3px; }
-  a:hover { color: var(--accent); }
+  .brand:hover .tile { transform:rotate(-6deg) scale(1.06); }
+  .brand .tile img { width:100%; height:100%; object-fit:cover; }
+  .brand b { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.02rem; letter-spacing:-0.02em; }
+  .brand i { display:block; font-style:normal; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; margin-top:-3px; }
+  nav.top { display:flex; align-items:center; gap:2px; }
+  nav.top a {
+    position:relative; font-size:13.5px; font-weight:600; color:var(--ink-soft);
+    text-decoration:none; padding:8px 13px; border-radius:99px;
+    transition:color .2s, background .2s;
+  }
+  nav.top a:hover { color:var(--ink); background:var(--surface-2); }
+  nav.top a.active { color:var(--cyan-deep); }
+  nav.top a.active::after {
+    content:""; position:absolute; left:13px; right:13px; bottom:3px;
+    height:2px; border-radius:2px; background:var(--cyan);
+  }
+  .icon-btn {
+    width:34px; height:34px; margin-left:6px; flex:none;
+    border-radius:50%; border:1px solid var(--rule); background:var(--surface);
+    color:var(--ink-soft); font-size:14px; cursor:pointer;
+    display:inline-flex; align-items:center; justify-content:center;
+    transition:transform .3s, color .2s, border-color .2s;
+  }
+  .icon-btn:hover { color:var(--cyan-deep); border-color:var(--cyan); transform:rotate(25deg); }
+  @media (max-width:760px) { nav.top a { display:none; } }
 
-  section { margin-top: 52px; }
-  .section-head {
-    border-top: 1px solid var(--rule);
-    padding-top: 22px;
-    margin-bottom: 22px;
+  /* ---------- hero ---------- */
+  .hero {
+    position:relative; isolation:isolate; overflow:hidden;
+    background:
+      radial-gradient(900px 500px at 80% -10%, rgba(31,158,201,.35), transparent 60%),
+      radial-gradient(700px 500px at 10% 110%, rgba(123,224,214,.18), transparent 60%),
+      linear-gradient(160deg,#08203a 0%, var(--navy-800) 45%, #061b30 100%);
+    color:#eaf4fb;
   }
-  .section-head .num {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--ink-faint);
-    display: block;
-    margin-bottom: 8px;
+  .hero::after {
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      linear-gradient(transparent 95%, rgba(140,200,235,.10) 95%),
+      linear-gradient(90deg, transparent 95%, rgba(140,200,235,.10) 95%);
+    background-size:44px 44px;
+    mask-image:radial-gradient(120% 90% at 50% 20%, #000 35%, transparent 78%);
+    -webkit-mask-image:radial-gradient(120% 90% at 50% 20%, #000 35%, transparent 78%);
+  }
+  #lattice { position:absolute; inset:0; width:100%; height:100%; z-index:2; }
+  .hero .wrap { position:relative; z-index:3; padding-block:76px 88px; }
+  @media (max-width:640px) { .hero .wrap { padding-block:52px 62px; } }
+
+  .hero-logo {
+    width:82px; height:82px; border-radius:20px; overflow:hidden; background:#fff;
+    box-shadow:0 18px 40px -16px rgba(0,0,0,.7); margin-bottom:26px;
+    animation:float 6s ease-in-out infinite;
+  }
+  .hero-logo img { width:100%; height:100%; object-fit:cover; }
+  @keyframes float { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-7px) } }
+
+  .kicker {
+    display:inline-flex; align-items:center; gap:9px;
+    font-size:11.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--aqua); margin-bottom:18px;
+  }
+  .kicker::before { content:""; width:26px; height:1.5px; background:var(--aqua); }
+
+  .hero h1 {
+    font-size:clamp(2.15rem,5.4vw,3.6rem); font-weight:700; margin:0 0 18px; max-width:18ch;
+  }
+  .hero h1 .grad {
+    background:linear-gradient(95deg,var(--aqua),#bfefff 60%,var(--cyan));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .rotator { display:inline-grid; vertical-align:bottom; }
+  .rotator span {
+    grid-area:1/1; opacity:0; white-space:nowrap;
+    background:linear-gradient(95deg,var(--aqua),#cdf2ff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:cycle 12s infinite;
+  }
+  .rotator span:nth-child(1){ animation-delay:0s }
+  .rotator span:nth-child(2){ animation-delay:3s }
+  .rotator span:nth-child(3){ animation-delay:6s }
+  .rotator span:nth-child(4){ animation-delay:9s }
+  @keyframes cycle {
+    0%   { opacity:0; transform:translateY(12px) }
+    3%   { opacity:1; transform:translateY(0) }
+    22%  { opacity:1; transform:translateY(0) }
+    26%  { opacity:0; transform:translateY(-12px) }
+    100% { opacity:0; transform:translateY(-12px) }
   }
 
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
-  }
-  .card {
-    background: var(--paper-raised);
-    border: 1px solid var(--rule-soft);
-    border-radius: 10px;
-    padding: 18px 18px 16px;
-    box-shadow: var(--shadow);
-  }
-  .card p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
+  .hero p.lede { font-size:clamp(1.02rem,1.9vw,1.18rem); color:#b9d3e6; max-width:60ch; margin:0 0 16px; }
+  .hero p.lede a { color:var(--aqua); }
+  .hero p.lede a:hover { color:#fff; }
 
-  .perm {
-    border-left: 3px solid var(--accent);
-    background: var(--accent-wash);
-    border-radius: 0 10px 10px 0;
-    padding: 16px 18px;
-    margin-bottom: 14px;
+  .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+  .btn {
+    display:inline-flex; align-items:center; gap:9px;
+    font-family:'Space Grotesk',sans-serif; font-size:14.5px; font-weight:600;
+    padding:12px 22px; border-radius:99px; text-decoration:none;
+    border:1px solid rgba(255,255,255,.22); color:#eaf4fb;
+    transition:transform .2s, box-shadow .25s, background .25s, border-color .25s, color .25s;
   }
-  .perm h3 { margin-bottom: 6px; }
-  .perm code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 13px;
-    background: var(--tag-bg);
-    border: 1px solid var(--rule-soft);
-    border-radius: 5px;
-    padding: 1px 6px;
-    word-break: break-all;
+  .btn .ar { transition:transform .2s; }
+  .btn:hover .ar { transform:translateX(4px); }
+  .btn.solid {
+    background:linear-gradient(100deg,var(--cyan),#37c6c0);
+    border-color:transparent; color:#04202f;
   }
-  .perm p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
-  .perm p + p { margin-top: 8px; }
+  .btn.solid:hover { transform:translateY(-2px); box-shadow:0 16px 34px -14px rgba(55,198,192,.85); color:#04202f; }
+  .btn.ghost:hover { background:rgba(255,255,255,.09); transform:translateY(-2px); color:#fff; }
 
-  .tag {
-    display: inline-block;
-    font-size: 11.5px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent-strong);
-    background: var(--tag-bg);
-    border: 1px solid var(--rule-soft);
-    border-radius: 999px;
-    padding: 2px 10px;
-    margin-left: 8px;
-    vertical-align: 2px;
+  .trust { display:flex; flex-wrap:wrap; gap:9px; margin-top:34px; }
+  .trust span {
+    font-size:12px; font-weight:600; letter-spacing:.03em;
+    padding:6px 13px; border-radius:99px;
+    background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); color:#c7e0f0;
   }
 
-  ul.plain { margin: 0 0 14px; padding-left: 20px; }
-  ul.plain li { margin-bottom: 7px; color: var(--ink-soft); }
-
-  dl.meta {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    gap: 8px 22px;
-    margin: 0;
-    font-size: 14.5px;
+  /* ---------- stats ---------- */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:-34px; position:relative; z-index:5; }
+  .stats .box {
+    background:var(--surface); border:1px solid var(--rule); border-right:0;
+    padding:20px 16px; text-align:center;
   }
-  dl.meta dt {
-    font-size: 11.5px;
-    font-weight: 700;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    padding-top: 3px;
-  }
-  dl.meta dd { margin: 0; color: var(--ink-soft); }
-  dl.meta code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 13px;
-    word-break: break-all;
+  .stats .box:first-child { border-radius:14px 0 0 14px; }
+  .stats .box:last-child { border-right:1px solid var(--rule); border-radius:0 14px 14px 0; }
+  .stats .n { font-family:'Space Grotesk',sans-serif; font-size:1.75rem; font-weight:700; color:var(--ink); line-height:1; }
+  .stats .l { font-size:11.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin-top:7px; }
+  @media (max-width:700px) {
+    .stats { grid-template-columns:repeat(2,1fr); margin-top:-24px; }
+    .stats .box { border-right:1px solid var(--rule); border-radius:0 !important; }
+    .stats .box:nth-child(n+3) { border-top:0; }
+    .stats .box:nth-child(1) { border-radius:14px 0 0 0 !important; }
+    .stats .box:nth-child(2) { border-radius:0 14px 0 0 !important; }
+    .stats .box:nth-child(3) { border-radius:0 0 0 14px !important; }
+    .stats .box:nth-child(4) { border-radius:0 0 14px 0 !important; }
   }
 
-  footer {
-    margin-top: 56px;
-    border-top: 1px solid var(--rule);
-    padding-top: 20px;
-    font-size: 14px;
-    color: var(--ink-faint);
+  /* ---------- sections ---------- */
+  section { padding-block:72px; scroll-margin-top:70px; }
+  section.alt { background:var(--surface-2); border-block:1px solid var(--rule-soft); }
+  .sec-head { margin-bottom:34px; }
+  .sec-head .num {
+    font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:.18em; color:var(--cyan-deep); display:block; margin-bottom:10px;
   }
-  footer a { margin-right: 16px; display: inline-block; }
+  .sec-head h2 { font-size:clamp(1.6rem,3.2vw,2.15rem); font-weight:700; margin:0 0 10px; }
+  .sec-head p { color:var(--ink-soft); max-width:62ch; margin:0; }
 
-  @media (max-width: 520px) {
-    dl.meta { grid-template-columns: 1fr; gap: 2px 0; }
-    dl.meta dd { margin-bottom: 12px; }
+  .js .reveal { opacity:0; transform:translateY(26px); transition:opacity .75s cubic-bezier(.2,.7,.3,1), transform .75s cubic-bezier(.2,.7,.3,1); }
+  .js .reveal.in { opacity:1; transform:none; }
+
+  /* ---------- app cards ---------- */
+  .apps { display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:20px; }
+  .app {
+    position:relative; background:var(--surface); border:1px solid var(--rule);
+    border-radius:18px; padding:26px; box-shadow:var(--shadow);
+    display:flex; flex-direction:column;
+    transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .3s, border-color .3s;
+  }
+  .app::before {
+    content:""; position:absolute; inset:-1px; border-radius:19px; padding:1px;
+    background:linear-gradient(135deg,var(--accent),transparent 55%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude;
+    opacity:0; transition:opacity .35s;
+  }
+  .app:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
+  .app:hover::before { opacity:1; }
+  .app.a-db { --accent:var(--db); }
+  .app.a-ft { --accent:var(--ft); }
+  .app .top { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+  .app .top img {
+    width:58px; height:58px; border-radius:14px; flex:none;
+    box-shadow:0 6px 16px -6px rgba(10,37,64,.45);
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  }
+  .app:hover .top img { transform:scale(1.07) rotate(-4deg); }
+  .app h3 { font-size:1.3rem; font-weight:700; margin:0; }
+  .app .plat { font-size:11.5px; font-weight:600; color:var(--ink-faint); letter-spacing:.03em; }
+  .app > p { color:var(--ink-soft); font-size:14.8px; flex-grow:1; margin:0 0 18px; }
+  .pill {
+    display:inline-block; font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+    padding:3px 9px; border-radius:99px; background:var(--accent-soft,var(--surface-2)); color:var(--accent);
+    margin-left:8px; vertical-align:2px;
+  }
+  .app.a-db .pill { background:var(--db-soft); color:var(--db-ink); }
+  .app.a-ft .pill { background:var(--ft-soft); color:var(--ft-ink); }
+  .app .links { display:flex; flex-wrap:wrap; gap:8px; }
+  .app .links a {
+    font-size:13.5px; font-weight:600; text-decoration:none;
+    padding:8px 15px; border-radius:99px; border:1px solid var(--rule);
+    color:var(--ink); display:inline-flex; align-items:center; gap:6px;
+    transition:background .2s, border-color .2s, color .2s, transform .2s;
+  }
+  .app .links a.go { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .app.a-db .links a.go, .app.a-ft .links a.go { color:#fff; }
+  :root[data-theme="dark"] .app .links a.go, :root:not([data-theme="light"]) .app .links a.go { color:#06202c; }
+  .app .links a:hover { transform:translateY(-2px); border-color:var(--accent); color:var(--accent); }
+  .app .links a.go:hover { color:#fff; filter:brightness(1.08); }
+  :root[data-theme="dark"] .app .links a.go:hover { color:#06202c; }
+
+  /* ---------- data flow widget ---------- */
+  .flow-card { background:var(--surface); border:1px solid var(--rule); border-radius:18px; padding:26px; box-shadow:var(--shadow); }
+  .flow { display:grid; grid-template-columns:1fr minmax(90px,1.2fr) 1fr; align-items:center; gap:10px; }
+  .node {
+    border-radius:14px; padding:16px 12px; text-align:center;
+    border:1px solid var(--rule); background:var(--surface-2);
+    transition:border-color .35s, background .35s, box-shadow .35s;
+  }
+  .node .ic { font-size:24px; line-height:1; }
+  .node b { display:block; font-family:'Space Grotesk',sans-serif; font-size:14px; margin-top:7px; }
+  .node small { display:block; font-size:11.5px; color:var(--ink-faint); }
+  .node.lit { border-color:var(--cyan); background:color-mix(in srgb,var(--cyan) 9%,var(--surface)); box-shadow:0 0 0 4px color-mix(in srgb,var(--cyan) 12%,transparent); }
+  .track { position:relative; height:3px; background:repeating-linear-gradient(90deg,var(--rule) 0 7px,transparent 7px 14px); border-radius:2px; }
+  .packet {
+    position:absolute; top:50%; left:0; width:12px; height:12px; margin-top:-6px; margin-left:-6px;
+    border-radius:50%; background:var(--cyan); box-shadow:0 0 0 5px color-mix(in srgb,var(--cyan) 22%,transparent);
+    opacity:0; transition:left .9s cubic-bezier(.4,0,.2,1), opacity .3s, background .3s;
+  }
+  .packet.show { opacity:1; }
+  .packet.stay { background:var(--db); box-shadow:0 0 0 5px color-mix(in srgb,var(--db) 25%,transparent); animation:pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{ transform:scale(1) } 50%{ transform:scale(1.35) } }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+  .chip {
+    font-family:inherit; font-size:13px; font-weight:600; cursor:pointer;
+    padding:7px 14px; border-radius:99px; border:1px solid var(--rule);
+    background:var(--surface); color:var(--ink-soft);
+    transition:border-color .2s, color .2s, background .2s, transform .15s;
+  }
+  .chip:hover { transform:translateY(-2px); color:var(--ink); border-color:var(--ink-faint); }
+  .chip.on { background:var(--navy-800); border-color:var(--navy-800); color:#eaf4fb; }
+  :root[data-theme="dark"] .chip.on { background:var(--cyan); border-color:var(--cyan); color:#04202f; }
+  .flow-note {
+    margin-top:20px; padding:16px 18px; border-radius:12px;
+    background:var(--surface-2); border:1px solid var(--rule-soft);
+    font-size:14.5px; color:var(--ink-soft); min-height:74px;
+  }
+  .flow-note b { color:var(--ink); }
+  @media (max-width:640px) {
+    .flow { grid-template-columns:1fr; }
+    .track { height:56px; width:3px; margin:0 auto; background:repeating-linear-gradient(180deg,var(--rule) 0 7px,transparent 7px 14px); }
+    .packet { left:50% !important; top:0; transition:top .9s cubic-bezier(.4,0,.2,1), opacity .3s; }
+    .packet.out { top:100%; }
+  }
+
+  /* ---------- product showcase ---------- */
+  .show { display:grid; grid-template-columns:1fr 300px; gap:48px; align-items:start; }
+  @media (max-width:880px) { .show { grid-template-columns:1fr; gap:34px; } }
+  .phone {
+    position:relative; width:262px; margin:0 auto;
+    border-radius:34px; padding:9px;
+    background:linear-gradient(160deg,#243b50,#0d1c2a);
+    box-shadow:var(--shadow-lg), 0 0 0 1px rgba(255,255,255,.06) inset;
+  }
+  .phone::before {
+    content:""; position:absolute; top:17px; left:50%; transform:translateX(-50%);
+    width:64px; height:5px; border-radius:99px; background:rgba(255,255,255,.22); z-index:3;
+  }
+  .screen { position:relative; border-radius:26px; overflow:hidden; background:#0b1118; aspect-ratio:520/1154; }
+  .screen img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .55s ease; }
+  .screen img.on { opacity:1; }
+  .shotnav { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; margin-top:16px; }
+  .shotnav button {
+    font-family:inherit; font-size:12px; font-weight:600; cursor:pointer;
+    padding:6px 12px; border-radius:99px; border:1px solid var(--rule);
+    background:var(--surface); color:var(--ink-faint);
+    transition:all .2s;
+  }
+  .shotnav button:hover { color:var(--ink); }
+  .shotnav button.on { background:var(--accent); border-color:var(--accent); color:#fff; }
+  :root[data-theme="dark"] .shotnav button.on { color:#06202c; }
+  .show.s-db { --accent:var(--db); }
+  .show.s-ft { --accent:var(--ft); }
+
+  .feat { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:14px; margin-top:6px; }
+  .f {
+    background:var(--surface); border:1px solid var(--rule); border-radius:13px;
+    padding:16px 17px; transition:transform .22s, box-shadow .22s, border-color .22s;
+  }
+  .f:hover { transform:translateY(-3px); box-shadow:var(--shadow); border-color:var(--accent); }
+  .f h4 { font-family:'Space Grotesk',sans-serif; font-size:14.5px; font-weight:600; margin:0 0 5px; }
+  .f p { margin:0; font-size:13.8px; color:var(--ink-soft); line-height:1.55; }
+
+  .lead-in { font-size:1.12rem; color:var(--ink-soft); max-width:60ch; }
+  h3.sub { font-size:1.18rem; font-weight:600; margin:38px 0 12px; }
+
+  .scope {
+    border-left:3px solid var(--accent,var(--cyan)); border-radius:0 12px 12px 0;
+    background:var(--accent-bg,var(--surface-2)); padding:17px 19px; margin-bottom:13px;
+  }
+  .scope.db { --accent:var(--db); --accent-bg:var(--db-soft); }
+  .scope.ft { --accent:var(--ft); --accent-bg:var(--ft-soft); }
+  .scope h4 { font-family:'Space Grotesk',sans-serif; font-size:14.8px; font-weight:600; margin:0 0 6px; }
+  .scope p { margin:0; font-size:14.3px; color:var(--ink-soft); }
+  .scope p + p { margin-top:8px; }
+  .scope code {
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:12.5px;
+    background:var(--surface); border:1px solid var(--rule); border-radius:5px; padding:1px 6px; word-break:break-all;
+  }
+  .badge {
+    display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+    padding:2px 8px; border-radius:99px; margin-left:7px; vertical-align:2px;
+    background:var(--surface); border:1px solid var(--rule); color:var(--ink-faint);
+  }
+
+  ul.ticks { list-style:none; padding:0; margin:0; }
+  ul.ticks li { position:relative; padding-left:28px; margin-bottom:9px; color:var(--ink-soft); }
+  ul.ticks li::before {
+    content:"✕"; position:absolute; left:0; top:0;
+    width:19px; height:19px; border-radius:50%; font-size:10px; font-weight:700;
+    display:flex; align-items:center; justify-content:center; margin-top:4px;
+    background:var(--db-soft); color:var(--db-ink);
+  }
+
+  dl.spec { display:grid; grid-template-columns:max-content 1fr; gap:10px 26px; margin:0; font-size:14.4px; }
+  dl.spec dt { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); padding-top:4px; }
+  dl.spec dd { margin:0; color:var(--ink-soft); }
+  dl.spec code { font-family:ui-monospace,Consolas,monospace; font-size:12.5px; word-break:break-all; }
+  @media (max-width:560px) { dl.spec { grid-template-columns:1fr; gap:2px; } dl.spec dd { margin-bottom:13px; } }
+
+  .doclinks { display:flex; flex-wrap:wrap; gap:9px; margin-top:26px; }
+  .doclinks a {
+    font-size:13.5px; font-weight:600; text-decoration:none; color:var(--ink);
+    padding:9px 16px; border-radius:99px; border:1px solid var(--rule); background:var(--surface);
+    display:inline-flex; align-items:center; gap:7px; transition:all .2s;
+  }
+  .doclinks a:hover { border-color:var(--cyan); color:var(--cyan-deep); transform:translateY(-2px); }
+
+  /* ---------- faq ---------- */
+  .faq details {
+    background:var(--surface); border:1px solid var(--rule); border-radius:13px;
+    margin-bottom:11px; overflow:hidden; transition:border-color .25s, box-shadow .25s;
+  }
+  .faq details[open] { border-color:var(--cyan); box-shadow:var(--shadow); }
+  .faq summary {
+    cursor:pointer; list-style:none; padding:16px 52px 16px 20px; position:relative;
+    font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.2px;
+  }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq summary::after {
+    content:"+"; position:absolute; right:20px; top:50%; transform:translateY(-50%);
+    font-size:20px; font-weight:400; color:var(--cyan-deep); transition:transform .3s;
+  }
+  .faq details[open] summary::after { transform:translateY(-50%) rotate(45deg); }
+  .faq .ans { padding:0 20px 18px; color:var(--ink-soft); font-size:14.6px; }
+
+  /* ---------- contact / footer ---------- */
+  .contact-card {
+    background:linear-gradient(150deg,var(--navy-800),#0b2a47 60%,#08203a);
+    border-radius:20px; padding:36px; color:#dbe9f4; box-shadow:var(--shadow-lg);
+  }
+  .contact-card h2 { color:#fff; font-size:1.7rem; margin:0 0 10px; }
+  .contact-card p { color:#a9c6db; max-width:52ch; }
+  .contact-card a.mail {
+    display:inline-flex; align-items:center; gap:9px; margin-top:12px;
+    font-family:'Space Grotesk',sans-serif; font-size:1.02rem; font-weight:600;
+    color:var(--aqua); text-decoration:none; word-break:break-all;
+  }
+  .contact-card a.mail:hover { color:#fff; }
+  .contact-meta { display:flex; flex-wrap:wrap; gap:26px; margin-top:26px; padding-top:22px; border-top:1px solid rgba(255,255,255,.14); }
+  .contact-meta div { font-size:13.5px; }
+  .contact-meta span { display:block; font-size:10.5px; font-weight:700; letter-spacing:.11em; text-transform:uppercase; color:#7fa3bf; margin-bottom:3px; }
+
+  footer.site { padding-block:34px 44px; border-top:1px solid var(--rule); font-size:13.5px; color:var(--ink-faint); }
+  footer.site .row { display:flex; flex-wrap:wrap; gap:12px 24px; align-items:center; justify-content:space-between; }
+  footer.site a { color:var(--ink-soft); text-decoration:none; margin-right:18px; }
+  footer.site a:hover { color:var(--cyan-deep); }
+  footer.site .fine { margin-top:16px; font-size:12.5px; }
+
+  .top-btn {
+    position:fixed; right:18px; bottom:18px; width:42px; height:42px; border-radius:50%;
+    background:var(--navy-800); color:#fff; display:flex; align-items:center; justify-content:center;
+    text-decoration:none; box-shadow:0 12px 28px -10px rgba(0,0,0,.6);
+    opacity:0; pointer-events:none; transform:translateY(10px);
+    transition:opacity .3s, transform .3s; z-index:80;
+  }
+  .top-btn.show { opacity:1; pointer-events:auto; transform:none; }
+  .top-btn:hover { background:var(--cyan-deep); color:#fff; }
+
+  @media (prefers-reduced-motion:reduce) {
+    *, *::before, *::after { animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+    html { scroll-behavior:auto; }
+    .js .reveal { opacity:1 !important; transform:none !important; }
+    .rotator span:first-child { opacity:1; }
   }
 </style>
 </head>
 <body>
-<main class="shell">
+<script>document.documentElement.className += ' js';</script>
 
-  <p class="eyebrow">Daybook</p>
-  <h1>A personal diary, task and activity log that stays on your device.</h1>
-  <p class="lede">
-    Daybook records your day — tasks, notes, activities, places, birthdays and holidays — in a
-    database on your own phone or computer. It has no account system and no server of its own.
-    Connecting a Google account is optional, and every feature that leaves the device is off
-    until you switch it on.
-  </p>
-  <p class="lede">
-    Built by an independent developer for people who want a thorough daily log without handing
-    that log to somebody else's cloud.
-  </p>
+<div id="bar"></div>
 
-  <section>
-    <div class="section-head">
-      <span class="num">01</span>
-      <h2>What you can do with it</h2>
-    </div>
-    <div class="cards">
-      <div class="card">
-        <h3>Tasks &amp; subtasks</h3>
-        <p>Separate work and personal lists, with due dates, recurrence and a full completion history.</p>
-      </div>
-      <div class="card">
-        <h3>Notes</h3>
-        <p>Written notes with sketches and photos attached, kept alongside the day they belong to.</p>
-      </div>
-      <div class="card">
-        <h3>Activity log</h3>
-        <p>A running record of what you did and where, which you can fill in by hand or have written for you from saved places.</p>
-      </div>
-      <div class="card">
-        <h3>Places</h3>
-        <p>Save somewhere you go often and Daybook can log arrivals and departures for you.</p>
-      </div>
-      <div class="card">
-        <h3>Dates that matter</h3>
-        <p>Birthdays, custom recurring events, and public holidays you choose to import.</p>
-      </div>
-      <div class="card">
-        <h3>AI assistant</h3>
-        <p>An optional assistant tab powered by Google Gemini, using an API key you supply yourself.</p>
-      </div>
-    </div>
-  </section>
+<header class="site" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="MAIA Architech home">
+      <span class="tile"><img src="assets/maia-logo.png" alt="MAIA Architech logo" width="34" height="34"></span>
+      <span>
+        <b>MAIA Architech</b>
+        <i>Intelligent Software Solutions</i>
+      </span>
+    </a>
+    <nav class="top" aria-label="Main">
+      <a href="#apps" data-nav>Apps</a>
+      <a href="#daybook" data-nav>Daybook</a>
+      <a href="#finnish-tutor" data-nav>Finnish tutor</a>
+      <a href="#faq" data-nav>FAQ</a>
+      <a href="#contact" data-nav>Contact</a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch colour theme">◐</button>
+    </nav>
+  </div>
+</header>
 
-  <section>
-    <div class="section-head">
-      <span class="num">02</span>
-      <h2>Why Daybook asks for a Google account</h2>
-    </div>
-    <p>
-      Signing in is entirely optional — Daybook works fully without it. It exists so the app can
-      back up to <em>your</em> Drive and, on desktop, write your dated tasks into <em>your</em>
-      calendar. Daybook has no login of its own, so there is nowhere else for that data to go.
-      Here is every permission the app requests and what it is used for.
-    </p>
+<main id="top">
 
-    <div class="perm">
-      <h3>Google Drive backup <span class="tag">drive.file</span></h3>
-      <p><code>https://www.googleapis.com/auth/drive.file</code></p>
-      <p>
-        Used to upload a copy of Daybook's own database, plus images attached to your notes, so you
-        can restore on a new device or keep two devices in step. This scope grants access
-        <strong>only to files Daybook itself created</strong> — the app cannot see, list or open
-        anything else already in your Drive. The backup sits in your own Drive under your own
-        account; the developer has no access to it.
+  <div class="hero">
+    <canvas id="lattice" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="hero-logo"><img src="assets/maia-logo.png" alt="MAIA Architech logo" width="82" height="82"></div>
+      <p class="kicker">Independent software studio</p>
+      <h1>
+        We build software that keeps your data
+        <span class="rotator">
+          <span class="grad">on your own device.</span>
+          <span class="grad">out of the cloud.</span>
+          <span class="grad">away from trackers.</span>
+          <span class="grad">private by default.</span>
+        </span>
+      </h1>
+      <p class="lede">
+        MAIA Architech is the studio of Ahmed Yosri. Every app here follows one rule: your
+        information lives in a database on your own phone or computer, anything that leaves it is
+        optional and off until you switch it on, and nothing is paid for with ads or analytics.
       </p>
-    </div>
-
-    <div class="perm">
-      <h3>Google Calendar sync <span class="tag">calendar</span></h3>
-      <p><code>https://www.googleapis.com/auth/calendar</code></p>
-      <p>
-        Used so that tasks you give a date appear as events in your own Google Calendar, visible
-        from any device signed into that account. Only the tasks and events you choose to sync are
-        written — never your notes, your activity log, or anything else in the app.
+      <p class="lede">
+        Two apps today — <a href="#daybook">Daybook</a>, a personal diary, task and activity log,
+        and <a href="#finnish-tutor">Finnish tutor</a>, a study companion for learning Finnish.
       </p>
-      <p>
-        This route is offered in Daybook's desktop build. On Android there is a second, separate
-        option that writes to your device's own calendar app using the ordinary OS calendar
-        permission and no Google account at all; that is the route the Google Play version uses today.
-      </p>
+      <div class="cta">
+        <a class="btn solid" href="#apps">Explore the apps <span class="ar">→</span></a>
+        <a class="btn ghost" href="#data">How your data is handled</a>
+      </div>
+      <div class="trust">
+        <span>No ads</span><span>No analytics</span><span>No trackers</span>
+        <span>No account required</span><span>Works offline</span>
+      </div>
     </div>
+  </div>
 
-    <div class="perm">
-      <h3>Your email address and basic profile <span class="tag">openid · email · profile</span></h3>
-      <p>
-        Read once after sign-in purely so the app can show you which account is currently connected.
-        Daybook does not read your contacts, your mail, or any other part of the account.
-      </p>
+  <div class="wrap">
+    <div class="stats" id="stats">
+      <div class="box"><div class="n" data-to="2">0</div><div class="l">Apps</div></div>
+      <div class="box"><div class="n" data-to="175" data-suffix="k">0</div><div class="l">Dictionary words</div></div>
+      <div class="box"><div class="n" data-to="4">0</div><div class="l">Platforms</div></div>
+      <div class="box"><div class="n" data-to="0">0</div><div class="l">Trackers</div></div>
     </div>
+  </div>
 
-    <p>
-      Sign-in tokens are stored on your device alongside the database and are used only for the
-      calls described above. You can withdraw Daybook's access at any time at
-      <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.
-    </p>
+  <section id="apps">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">01 — PRODUCTS</span>
+        <h2>Two apps, one principle</h2>
+        <p>Different problems, built the same way: everything useful works offline, and every
+          connection out of the app is something you switched on yourself.</p>
+      </div>
+      <div class="apps reveal">
+        <article class="app a-db">
+          <div class="top">
+            <img src="assets/daybook-icon.png" alt="Daybook app icon" width="58" height="58" loading="lazy">
+            <div>
+              <h3>Daybook</h3>
+              <div class="plat">Android · Windows · macOS · Linux</div>
+            </div>
+          </div>
+          <p>
+            A personal diary, task and activity log. Tasks with recurrence, notes with sketches and
+            photos, a running activity record, saved places, birthdays and holidays — all in a local
+            database, with no account to create.
+          </p>
+          <div class="links">
+            <a class="go" href="#daybook">See Daybook <span>→</span></a>
+            <a href="daybook-privacy/">Privacy policy</a>
+          </div>
+        </article>
+        <article class="app a-ft">
+          <div class="top">
+            <img src="assets/finnish-tutor-icon.png" alt="Finnish tutor app icon" width="58" height="58" loading="lazy">
+            <div>
+              <h3>Finnish tutor</h3>
+              <div class="plat">Android · Windows</div>
+            </div>
+          </div>
+          <p>
+            A study companion for Finnish that explains rather than just answers: sentences checked
+            and corrected with a reason for every change, any photographed page made tappable, speech
+            transcribed on-device, and every word you meet kept for review.
+          </p>
+          <div class="links">
+            <a class="go" href="#finnish-tutor">See Finnish tutor <span>→</span></a>
+            <a href="finnish-tutor-privacy/">Privacy policy</a>
+          </div>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <div class="section-head">
-      <span class="num">03</span>
-      <h2>What Daybook does not do</h2>
+  <section id="data" class="alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">02 — HOW IT WORKS</span>
+        <h2>Where your data actually goes</h2>
+        <p>Pick anything the apps handle and see whether it stays on your device or leaves it —
+          and if it leaves, exactly where it goes and who it belongs to.</p>
+      </div>
+
+      <div class="flow-card reveal">
+        <div class="flow">
+          <div class="node" id="nDevice">
+            <div class="ic">📱</div>
+            <b>Your device</b>
+            <small>Local database</small>
+          </div>
+          <div class="track"><span class="packet" id="packet"></span></div>
+          <div class="node" id="nOut">
+            <div class="ic">☁️</div>
+            <b>Your own accounts</b>
+            <small>Only when switched on</small>
+          </div>
+        </div>
+
+        <div class="chips" id="chips">
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> Notes, sketches and attached photos are written into Daybook's own local database. There is no MAIA Architech server for them to sit on.">Notes &amp; diary entries</button>
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> Tasks, subtasks, due dates, recurrence and completion history live in the local database.">Tasks</button>
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> The activity log and the places you save are kept locally; arrival and departure detection runs on the device.">Activity log &amp; places</button>
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> About 175,000 Finnish headwords are bundled inside Finnish tutor. Looking a word up sends nothing anywhere.">Finnish dictionary</button>
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> Speech-to-text runs locally — Whisper via sherpa-onnx on Android, faster-whisper on Windows. Your audio never leaves the device in this mode.">Voice recordings</button>
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> Text recognition on a photographed page runs on-device, which is what makes every word tappable.">Photographed pages</button>
+          <button class="chip" data-dest="out" data-note="<b>Goes to your own Google Drive.</b> Daybook uploads a copy of its database and your note images using the narrow <code>drive.file</code> scope — access to files the app itself created, and nothing else already in your Drive. The developer cannot see it.">Drive backup</button>
+          <button class="chip" data-dest="out" data-note="<b>Goes to your own Google Calendar.</b> Only tasks you give a date and choose to sync are written as events — never your notes or activity log. On Android there is an alternative route that writes to the device's own calendar with no Google account at all.">Calendar sync</button>
+          <button class="chip" data-dest="out" data-note="<b>Goes to Google's Gemini API, as you.</b> Both apps' AI features use an API key that you create and paste in yourself, so the request is between you and Google. Nothing is sent in the background — only when you press the button.">AI features</button>
+          <button class="chip" data-dest="out" data-note="<b>Goes to OpenStreetMap Nominatim.</b> Only the text you type when you search for a place to save. Your saved places and location history are not sent.">Place search</button>
+        </div>
+
+        <div class="flow-note" id="flowNote">
+          <b>Pick anything above.</b> By default nothing here leaves your device: Drive backup,
+          calendar sync and the AI features are each switched off until you turn them on.
+        </div>
+      </div>
     </div>
-    <ul class="plain">
-      <li>No ads, no analytics, no trackers, no data brokers — none are built into the app.</li>
-      <li>No account to create, and no Daybook server for your entries to sit on.</li>
-      <li>Your notes, tasks and logs are never transmitted to the developer.</li>
-      <li>Nothing leaves your device unless you turn on the specific feature that sends it.</li>
-    </ul>
-    <p>
-      The <a href="https://ahmedyosriu3-dev.github.io/daybook-privacy/">privacy policy</a> goes
-      through this feature by feature — including location, microphone, camera and the AI assistant —
-      and says plainly where each one sends data, or that it sends none.
-    </p>
   </section>
 
-  <section>
-    <div class="section-head">
-      <span class="num">04</span>
-      <h2>Platforms &amp; availability</h2>
+  <section id="daybook">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">03 — DAYBOOK</span>
+        <h2>Daybook <span class="badge">Android · Desktop · Free</span></h2>
+        <p>A personal diary, task and activity log that stays on your device.</p>
+      </div>
+
+      <div class="show s-db reveal">
+        <div>
+          <p class="lead-in">
+            Daybook records your day — tasks, notes, activities, places, birthdays and holidays — in a
+            database on your own phone or computer. It has no account system and no server of its own.
+            Connecting a Google account is optional, and every feature that leaves the device is off
+            until you switch it on.
+          </p>
+
+          <div class="feat">
+            <div class="f"><h4>Tasks &amp; subtasks</h4><p>Separate work and personal lists, with due dates, recurrence and a full completion history.</p></div>
+            <div class="f"><h4>Notes</h4><p>Written notes with sketches and photos attached, kept alongside the day they belong to.</p></div>
+            <div class="f"><h4>Activity log</h4><p>A running record of what you did and where — filled in by hand, or written for you from saved places.</p></div>
+            <div class="f"><h4>Places</h4><p>Save somewhere you go often and Daybook can log arrivals and departures for you.</p></div>
+            <div class="f"><h4>Dates that matter</h4><p>Birthdays, custom recurring events, and public holidays you choose to import.</p></div>
+            <div class="f"><h4>AI assistant</h4><p>An optional assistant tab powered by Google Gemini, using an API key you supply yourself.</p></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="phone" data-gallery data-interval="5000">
+            <div class="screen">
+              <img class="on" src="assets/db-1-tasks.webp" alt="Daybook screenshot: personal task list with due dates, tags and completed items" width="520" height="1154" loading="lazy">
+              <img src="assets/db-2-notes.webp" alt="Daybook screenshot: notes view with written notes and attachments" width="520" height="1154" loading="lazy">
+              <img src="assets/db-3-calendar.webp" alt="Daybook screenshot: calendar view showing dated tasks and events" width="520" height="1154" loading="lazy">
+              <img src="assets/db-4-activity.webp" alt="Daybook screenshot: activity log recording what happened during the day" width="520" height="1154" loading="lazy">
+            </div>
+          </div>
+          <div class="shotnav" data-nav-for>
+            <button class="on" type="button">Tasks</button>
+            <button type="button">Notes</button>
+            <button type="button">Calendar</button>
+            <button type="button">Activity</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="narrow reveal">
+        <h3 class="sub">Why Daybook asks for a Google account</h3>
+        <p>
+          Signing in is entirely optional — Daybook works fully without it. It exists so the app can
+          back up to <em>your</em> Drive and, on desktop, write your dated tasks into <em>your</em>
+          calendar. Daybook has no login of its own, so there is nowhere else for that data to go.
+          Here is every permission the app requests and what it is used for.
+        </p>
+
+        <div class="scope db">
+          <h4>Google Drive backup <span class="badge">drive.file</span></h4>
+          <p><code>https://www.googleapis.com/auth/drive.file</code></p>
+          <p>
+            Used to upload a copy of Daybook's own database, plus images attached to your notes, so you
+            can restore on a new device or keep two devices in step. This scope grants access
+            <strong>only to files Daybook itself created</strong> — the app cannot see, list or open
+            anything else already in your Drive. The backup sits in your own Drive under your own
+            account; the developer has no access to it.
+          </p>
+        </div>
+
+        <div class="scope db">
+          <h4>Google Calendar sync <span class="badge">calendar</span></h4>
+          <p><code>https://www.googleapis.com/auth/calendar</code></p>
+          <p>
+            Used so that tasks you give a date appear as events in your own Google Calendar, visible
+            from any device signed into that account. Only the tasks and events you choose to sync are
+            written — never your notes, your activity log, or anything else in the app.
+          </p>
+          <p>
+            This route is offered in Daybook's desktop build. On Android there is a second, separate
+            option that writes to your device's own calendar app using the ordinary OS calendar
+            permission and no Google account at all; that is the route the Google Play version uses today.
+          </p>
+        </div>
+
+        <div class="scope db">
+          <h4>Your email address and basic profile <span class="badge">openid · email · profile</span></h4>
+          <p>
+            Read once after sign-in purely so the app can show you which account is currently connected.
+            Daybook does not read your contacts, your mail, or any other part of the account.
+          </p>
+        </div>
+
+        <p>
+          Sign-in tokens are stored on your device alongside the database and are used only for the
+          calls described above. You can withdraw Daybook's access at any time at
+          <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.
+        </p>
+
+        <h3 class="sub">What Daybook does not do</h3>
+        <ul class="ticks">
+          <li>No ads, no analytics, no trackers, no data brokers — none are built into the app.</li>
+          <li>No account to create, and no Daybook server for your entries to sit on.</li>
+          <li>Your notes, tasks and logs are never transmitted to the developer.</li>
+          <li>Nothing leaves your device unless you turn on the specific feature that sends it.</li>
+        </ul>
+        <p>
+          The <a href="daybook-privacy/">privacy policy</a> goes through this feature by feature —
+          including location, microphone, camera and the AI assistant — and says plainly where each
+          one sends data, or that it sends none.
+        </p>
+
+        <h3 class="sub">Platforms &amp; availability</h3>
+        <dl class="spec">
+          <dt>Android</dt>
+          <dd>Published on Google Play as <strong>Daybook</strong> (<code>com.MAIAArchitech.daybook</code>), by MAIA Architech.</dd>
+          <dt>Desktop</dt>
+          <dd>Windows, macOS and Linux builds, with an optional pairing link to the phone app.</dd>
+          <dt>Storage</dt>
+          <dd>A single local SQLite database inside the app's own storage, unreadable by other apps on the device.</dd>
+          <dt>Price</dt>
+          <dd>Free to use. No subscription is required for the features described on this page.</dd>
+        </dl>
+
+        <div class="doclinks">
+          <a href="daybook-privacy/">Daybook privacy policy <span>→</span></a>
+          <a href="daybook-privacy/">Terms of service <span>→</span></a>
+        </div>
+      </div>
     </div>
-    <dl class="meta">
-      <dt>Android</dt>
-      <dd>Published on Google Play as <strong>Daybook</strong> (<code>com.MAIAArchitech.daybook</code>), by MAIA Architech.</dd>
-      <dt>Desktop</dt>
-      <dd>Windows, macOS and Linux builds, with an optional pairing link to the phone app.</dd>
-      <dt>Storage</dt>
-      <dd>A single local SQLite database inside the app's own storage, unreadable by other apps on the device.</dd>
-      <dt>Price</dt>
-      <dd>Free to use. No subscription is required for the features described on this page.</dd>
-    </dl>
   </section>
 
-  <section>
-    <div class="section-head">
-      <span class="num">05</span>
-      <h2>Developer &amp; contact</h2>
+  <section id="finnish-tutor" class="alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">04 — FINNISH TUTOR</span>
+        <h2>Finnish tutor <span class="badge">Android · Windows · Free</span></h2>
+        <p>Correct your Finnish, read any page, and keep every word you meet.</p>
+      </div>
+
+      <div class="show s-ft reveal">
+        <div>
+          <p class="lead-in">
+            A study companion for anyone learning Finnish, built to do as much as possible on your own
+            device and to explain rather than just answer. Type a sentence and it comes back with every
+            change marked, a plain-English reason for each one, and every word broken down into its
+            forms.
+          </p>
+
+          <div class="feat">
+            <div class="f"><h4>Write it, see what changed</h4><p>Every correction marked, with the reason — “motion into requires the illative case” — and full case tables underneath.</p></div>
+            <div class="f"><h4>Photograph a page</h4><p>Text recognition runs on the device and every word on the photo becomes a tap target with its dictionary entry.</p></div>
+            <div class="f"><h4>Say it, read it back</h4><p>Record yourself speaking Finnish and have it transcribed — fully on-device on Android.</p></div>
+            <div class="f"><h4>Work through a book</h4><p>Import a PDF course book, turn pages, write on them with a pen, and practise the tasks a page prints.</p></div>
+            <div class="f"><h4>Every word kept</h4><p>Words save from anywhere into one list with their forms filled in, reviewed as spaced-repetition cards, exportable as CSV.</p></div>
+            <div class="f"><h4>Built from your mistakes</h4><p>Each correction becomes a topic, so the grammar you keep getting wrong turns into your own curriculum.</p></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="phone" data-gallery data-interval="5200">
+            <div class="screen">
+              <img class="on" src="assets/ft-1-check.webp" alt="Finnish tutor screenshot: a Finnish sentence checked, with the correction kauppa to kauppaan explained as the illative case" width="520" height="1115" loading="lazy">
+              <img src="assets/ft-2-photo.webp" alt="Finnish tutor screenshot: a photographed page where every word is tappable for its dictionary entry" width="520" height="1115" loading="lazy">
+              <img src="assets/ft-3-review.webp" alt="Finnish tutor screenshot: spaced repetition review cards for saved Finnish words" width="520" height="1115" loading="lazy">
+              <img src="assets/ft-4-progress.webp" alt="Finnish tutor screenshot: progress review showing level, strengths and topics to work on" width="520" height="1115" loading="lazy">
+            </div>
+          </div>
+          <div class="shotnav" data-nav-for>
+            <button class="on" type="button">Check</button>
+            <button type="button">Photo</button>
+            <button type="button">Review</button>
+            <button type="button">Progress</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="narrow reveal">
+        <h3 class="sub">Bring your own AI key</h3>
+        <p>
+          The AI features are not a service the developer runs on your behalf. You create your own
+          free Google Gemini API key and paste it into Settings; the app then calls Google's API
+          directly from your device, as you. The key is stored in the app's own settings storage on
+          your device and is never transmitted to the developer — there is nowhere for it to be
+          transmitted to. Your use of the Gemini API is governed by your own agreement with Google.
+        </p>
+
+        <div class="scope ft">
+          <h4>Works without a key <span class="badge">offline</span></h4>
+          <p>
+            If you never add a key, the offline half of the app keeps working: about 174,932 bundled
+            Finnish headwords, tap-a-word lookup, word forms, your saved list, the review cards, the
+            PDF reader, on-device text recognition and on-device speech-to-text.
+          </p>
+        </div>
+
+        <div class="scope ft">
+          <h4>Camera <span class="badge">page &amp; exercise photos</span></h4>
+          <p>
+            Opened only when you start it: photographing a page or an exercise, or scanning the
+            pairing QR code from the desktop app. Recognition runs locally first, so where the device
+            can read the text itself, the extracted text is sent rather than the picture. Photographs
+            are not uploaded anywhere else and are not added to any gallery.
+          </p>
+        </div>
+
+        <div class="scope ft">
+          <h4>Microphone <span class="badge">on-device by default</span></h4>
+          <p>
+            Used only while you are recording, after you press record. On-device transcription is the
+            default path — Whisper through sherpa-onnx on Android, faster-whisper on Windows — and in
+            that mode your audio never leaves the device. Sending audio to Gemini is only a fallback
+            when local transcription is switched off or unavailable.
+          </p>
+        </div>
+
+        <div class="scope ft">
+          <h4>Google sign-in <span class="badge">optional · drive.file</span></h4>
+          <p>
+            Entirely optional, and there for one purpose: syncing your word list through your own
+            Google Drive using the narrow <code>drive.file</code> scope, which can touch nothing but
+            the files the app itself created. Nothing in the app is gated behind signing in.
+          </p>
+        </div>
+
+        <h3 class="sub">What Finnish tutor does not do</h3>
+        <ul class="ticks">
+          <li>No ads, no analytics, no trackers, no crash reporting.</li>
+          <li>No accounts, no back end, and no server operated by the developer.</li>
+          <li>The developer never receives your sentences, recordings, photographs or word list.</li>
+          <li>Nothing is sent in the background — a request happens when you press a button, and at no other time.</li>
+        </ul>
+        <p>
+          The <a href="finnish-tutor-privacy/">privacy policy</a> goes feature by feature and says
+          exactly what is and is not sent to Google's Gemini API.
+        </p>
+
+        <h3 class="sub">Platforms &amp; availability</h3>
+        <dl class="spec">
+          <dt>Android</dt>
+          <dd>In active development by MAIA Architech, with a Google Play release in preparation.</dd>
+          <dt>Windows</dt>
+          <dd>Desktop build with one-scan QR pairing to carry your settings across from the phone.</dd>
+          <dt>Offline</dt>
+          <dd>174,932 bundled Finnish headwords, on-device text recognition and on-device speech-to-text.</dd>
+          <dt>Price</dt>
+          <dd>Free to use, with no subscription. AI features run on your own free Google Gemini API key.</dd>
+        </dl>
+
+        <div class="doclinks">
+          <a href="finnish-tutor-privacy/">Finnish tutor privacy policy <span>→</span></a>
+          <a href="finnish-tutor-privacy/">Terms of service <span>→</span></a>
+        </div>
+      </div>
     </div>
-    <dl class="meta">
-      <dt>Developer</dt>
-      <dd>Ahmed Yosri — trading as MAIA Architech on Google Play.</dd>
-      <dt>Support</dt>
-      <dd><a href="mailto:ahmed.yosri.u3@gmail.com">ahmed.yosri.u3@gmail.com</a></dd>
-      <dt>Response</dt>
-      <dd>Questions about the app, your data, or a deletion request are answered at the address above.</dd>
-    </dl>
   </section>
 
-  <footer>
-    <a href="https://ahmedyosriu3-dev.github.io/daybook-privacy/">Privacy policy</a>
-    <a href="https://ahmedyosriu3-dev.github.io/daybook-privacy/">Terms of service</a>
-    <a href="mailto:ahmed.yosri.u3@gmail.com">Contact</a>
-    <p style="margin-top:14px">© 2026 Ahmed Yosri. Daybook is not affiliated with or endorsed by Google LLC.</p>
+  <section id="faq">
+    <div class="wrap narrow">
+      <div class="sec-head reveal">
+        <span class="num">05 — QUESTIONS</span>
+        <h2>Frequently asked</h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>Are the apps free?</summary>
+          <div class="ans">Yes. Daybook and Finnish tutor are both free to use, with no subscription for
+            the features described on this page. Finnish tutor's AI features run on your own free Google
+            Gemini API key, so there is nothing to buy from MAIA Architech.</div>
+        </details>
+        <details>
+          <summary>Where is my data stored?</summary>
+          <div class="ans">In a database inside the app's own storage on your phone or computer —
+            for Daybook, a single local SQLite database that other apps on the device cannot read.
+            There is no MAIA Architech server and no account system, so there is nowhere else for
+            your entries to go.</div>
+        </details>
+        <details>
+          <summary>Does Daybook work without a Google account?</summary>
+          <div class="ans">Yes, fully. Signing in is optional and only enables two things: backup to
+            your own Google Drive, and writing dated tasks into your own Google Calendar. You can
+            withdraw access at any time at
+            <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</div>
+        </details>
+        <details>
+          <summary>Do the apps show ads or track me?</summary>
+          <div class="ans">No. There are no ads, no analytics, no trackers and no crash reporting built
+            into either app, and your notes, tasks, recordings and word lists are never transmitted to
+            the developer.</div>
+        </details>
+        <details>
+          <summary>Does Finnish tutor work offline?</summary>
+          <div class="ans">The offline half does: about 175,000 bundled Finnish headwords, tap-a-word
+            lookup, word forms, your saved list, review cards, the PDF reader, on-device text
+            recognition and on-device speech-to-text. Only the features that need a large language
+            model — grammar reasoning, translation nuance, exercise reading and progress reviews —
+            require a connection and your own Gemini API key.</div>
+        </details>
+        <details>
+          <summary>Which platforms are supported?</summary>
+          <div class="ans">Daybook runs on Android, Windows, macOS and Linux. Finnish tutor runs on
+            Android and Windows, with one-scan QR pairing between them.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <h2>Developer &amp; contact</h2>
+        <p>Questions about either app, about your data, or a deletion request — they all reach the
+          same person, and they get answered.</p>
+        <a class="mail" href="mailto:ahmed.yosri.u3@gmail.com">✉ ahmed.yosri.u3@gmail.com</a>
+        <div class="contact-meta">
+          <div><span>Studio</span>MAIA Architech</div>
+          <div><span>Developer</span>Ahmed Yosri</div>
+          <div><span>Play Console</span>Trading as MAIA Architech</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="row">
+        <div>
+          <a href="daybook-privacy/">Daybook privacy &amp; terms</a>
+          <a href="finnish-tutor-privacy/">Finnish tutor privacy &amp; terms</a>
+          <a href="mailto:ahmed.yosri.u3@gmail.com">Contact</a>
+        </div>
+        <div>MAIA Architech — Intelligent Software Solutions</div>
+      </div>
+      <div class="fine">© 2026 Ahmed Yosri / MAIA Architech. Not affiliated with or endorsed by Google LLC.
+        Android and Google Play are trademarks of Google LLC.</div>
+    </div>
   </footer>
-
 </main>
+
+<a href="#top" class="top-btn" id="topBtn" aria-label="Back to top">↑</a>
+
+<script>
+(function () {
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+
+  /* ---- theme ---- */
+  var root = document.documentElement, btn = document.getElementById('themeBtn');
+  try { var s = localStorage.getItem('maia-theme'); if (s === 'light' || s === 'dark') root.setAttribute('data-theme', s); } catch (e) {}
+  function isDark() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+  function paint() { btn.textContent = isDark() ? '☀' : '◐'; }
+  paint();
+  btn.addEventListener('click', function () {
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('maia-theme', next); } catch (e) {}
+    paint();
+  });
+
+  /* ---- hero lattice ---- */
+  var cv = document.getElementById('lattice');
+  if (cv && cv.getContext) {
+    var ctx = cv.getContext('2d'), pts = [], w = 0, h = 0, dpr = 1, raf = 0, live = true;
+    var mouse = { x: -999, y: -999 };
+    function size() {
+      var r = cv.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = r.width; h = r.height;
+      cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = Math.max(16, Math.min(44, Math.round(w * h / 17000)));
+      pts = [];
+      for (var i = 0; i < n; i++) {
+        pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - .5) * .22, vy: (Math.random() - .5) * .22 });
+      }
+    }
+    function frame() {
+      ctx.clearRect(0, 0, w, h);
+      var D = Math.min(190, Math.max(120, w / 7));
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+      }
+      for (i = 0; i < pts.length; i++) {
+        for (var j = i + 1; j < pts.length; j++) {
+          var a = pts[i], b = pts[j], dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx * dx + dy * dy);
+          if (d < D) {
+            ctx.strokeStyle = 'rgba(123,206,236,' + (0.24 * (1 - d / D)).toFixed(3) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+      }
+      for (i = 0; i < pts.length; i++) {
+        var q = pts[i];
+        var md = Math.sqrt((q.x - mouse.x) * (q.x - mouse.x) + (q.y - mouse.y) * (q.y - mouse.y));
+        if (md < 200) {
+          ctx.strokeStyle = 'rgba(123,224,214,' + (0.4 * (1 - md / 200)).toFixed(3) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(q.x, q.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+        }
+        ctx.fillStyle = md < 200 ? 'rgba(160,240,232,.9)' : 'rgba(140,210,240,.55)';
+        ctx.beginPath(); ctx.arc(q.x, q.y, md < 200 ? 2.4 : 1.8, 0, 6.283); ctx.fill();
+      }
+      if (live && !reduce) raf = requestAnimationFrame(frame);
+    }
+    size(); frame();
+    if (reduce) live = false;
+    var rt;
+    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { size(); if (reduce) frame(); }, 180); });
+    if (fine) {
+      cv.parentNode.addEventListener('mousemove', function (e) {
+        var r = cv.getBoundingClientRect();
+        mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+      });
+      cv.parentNode.addEventListener('mouseleave', function () { mouse.x = -999; mouse.y = -999; });
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          if (en.isIntersecting && !live && !reduce) { live = true; raf = requestAnimationFrame(frame); }
+          else if (!en.isIntersecting && live) { live = false; cancelAnimationFrame(raf); }
+        });
+      }, { threshold: 0 }).observe(cv);
+    }
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { live = false; cancelAnimationFrame(raf); }
+      else if (!reduce) { live = true; raf = requestAnimationFrame(frame); }
+    });
+  }
+
+  /* ---- reveal ---- */
+  var rev = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: .1, rootMargin: '0px 0px -50px 0px' });
+    rev.forEach(function (el) { io.observe(el); });
+    // safety net: never leave content hidden if observers misfire
+    setTimeout(function () { rev.forEach(function (el) { el.classList.add('in'); }); }, 2500);
+  } else { rev.forEach(function (el) { el.classList.add('in'); }); }
+
+  /* ---- counters ---- */
+  var nums = document.querySelectorAll('.stats .n');
+  function run(el) {
+    var to = parseInt(el.getAttribute('data-to'), 10) || 0, sfx = el.getAttribute('data-suffix') || '', t0 = null;
+    if (reduce) { el.textContent = to + sfx; return; }
+    function step(t) {
+      if (!t0) t0 = t;
+      var p = Math.min((t - t0) / 1100, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * e) + sfx;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window && nums.length) {
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { run(en.target); cio.unobserve(en.target); } });
+    }, { threshold: .5 });
+    nums.forEach(function (el) { cio.observe(el); });
+  } else {
+    nums.forEach(function (el) { el.textContent = (el.getAttribute('data-to') || '0') + (el.getAttribute('data-suffix') || ''); });
+  }
+
+  /* ---- data-flow widget ---- */
+  var chips = document.getElementById('chips');
+  if (chips) {
+    var packet = document.getElementById('packet'), note = document.getElementById('flowNote');
+    var nDev = document.getElementById('nDevice'), nOut = document.getElementById('nOut');
+    chips.addEventListener('click', function (e) {
+      var b = e.target.closest('.chip');
+      if (!b) return;
+      chips.querySelectorAll('.chip').forEach(function (c) { c.classList.toggle('on', c === b); });
+      var out = b.getAttribute('data-dest') === 'out';
+      packet.classList.add('show');
+      packet.classList.toggle('stay', !out);
+      packet.classList.toggle('out', out);
+      packet.style.left = out ? '100%' : '0%';
+      nDev.classList.add('lit');
+      nOut.classList.toggle('lit', out);
+      note.innerHTML = b.getAttribute('data-note');
+    });
+  }
+
+  /* ---- screenshot galleries ---- */
+  document.querySelectorAll('[data-gallery]').forEach(function (g) {
+    var shots = g.querySelectorAll('.screen img');
+    var navWrap = g.parentNode.querySelector('[data-nav-for]');
+    var btns = navWrap ? navWrap.querySelectorAll('button') : [];
+    var i = 0, timer = null, ms = parseInt(g.getAttribute('data-interval'), 10) || 5000;
+    function show(k) {
+      i = (k + shots.length) % shots.length;
+      shots.forEach(function (s, n) { s.classList.toggle('on', n === i); });
+      btns.forEach(function (b, n) { b.classList.toggle('on', n === i); });
+    }
+    function play() { if (reduce) return; stop(); timer = setInterval(function () { show(i + 1); }, ms); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    btns.forEach(function (b, n) {
+      b.addEventListener('click', function () { show(n); play(); });
+    });
+    g.addEventListener('mouseenter', stop);
+    g.addEventListener('mouseleave', play);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (en) { en.isIntersecting ? play() : stop(); });
+      }, { threshold: .3 }).observe(g);
+    } else { play(); }
+  });
+
+  /* ---- nav state, progress bar, back to top ---- */
+  var links = document.querySelectorAll('[data-nav]');
+  var secs = ['apps', 'daybook', 'finnish-tutor', 'faq', 'contact']
+    .map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  var bar = document.getElementById('bar'), topBtn = document.getElementById('topBtn'), hdr = document.getElementById('hdr');
+  var tick = false;
+  function onScroll() {
+    var y = window.scrollY || window.pageYOffset;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+    topBtn.classList.toggle('show', y > 620);
+    hdr.classList.toggle('stuck', y > 8);
+    var cur = null, probe = y + 140;
+    secs.forEach(function (s) { if (s.offsetTop <= probe) cur = s.id; });
+    links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+    tick = false;
+  }
+  document.addEventListener('scroll', function () {
+    if (!tick) { tick = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+})();
+</script>
+
 </body>
 </html>
