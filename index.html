@@ -217,7 +217,7 @@
 
   /* ---------- scroll progress ---------- */
   #bar {
-    position:fixed; top:0; left:0; height:3px; width:0%;
+    position:fixed; top:0; left:0; height:3px; width:0%; pointer-events:none;
     background:linear-gradient(90deg,var(--navy-700),var(--cyan),var(--aqua));
     z-index:100; transition:width .1s linear;
   }
@@ -399,7 +399,7 @@
     transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .3s, border-color .3s;
   }
   .app::before {
-    content:""; position:absolute; inset:-1px; border-radius:19px; padding:1px;
+    content:""; position:absolute; inset:-1px; border-radius:19px; padding:1px; pointer-events:none;
     background:linear-gradient(135deg,var(--accent),transparent 55%);
     -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite:xor; mask-composite:exclude;
