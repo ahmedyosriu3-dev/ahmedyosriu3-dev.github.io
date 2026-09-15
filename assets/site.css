@@ -784,6 +784,49 @@ footer.site .fine { margin-top:16px; font-size:12.5px; }
 .top-btn.show { opacity:1; pointer-events:auto; transform:none; }
 .top-btn:hover { background:var(--cyan-deep); color:#fff; }
 
+/* ---------- free Gemini key walkthrough ---------- */
+.keyvid { display:grid; grid-template-columns:minmax(0,282px) 1fr; gap:36px; align-items:start; }
+.keyvid-media { position:relative; }
+.keyvid video {
+  width:100%; height:auto; display:block; aspect-ratio:9/16; border-radius:20px;
+  background:#0b0a09; border:1px solid var(--rule); box-shadow:var(--shadow-lg);
+}
+.keyvid-cap { margin:11px 0 0; font-size:12.5px; color:var(--ink-faint); text-align:center; }
+.keysteps { margin:0; padding:0; list-style:none; counter-reset:ks; }
+.keysteps li { position:relative; padding:0 0 16px 43px; counter-increment:ks; }
+.keysteps li::before {
+  content:counter(ks); position:absolute; left:0; top:1px;
+  width:28px; height:28px; border-radius:9px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Space Grotesk',sans-serif; font-size:12.5px; font-weight:700;
+  background:var(--accent,var(--cyan)); color:#fff;
+}
+.keysteps li::after {
+  content:""; position:absolute; left:13.5px; top:33px; bottom:5px;
+  width:1px; background:var(--rule);
+}
+.keysteps li:last-child { padding-bottom:0; }
+.keysteps li:last-child::after { display:none; }
+.keysteps h4 { font-family:'Space Grotesk',sans-serif; font-size:14.5px; font-weight:600; margin:3px 0 4px; }
+.keysteps p { margin:0; font-size:13.8px; color:var(--ink-soft); line-height:1.55; }
+.keysteps code {
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:12.4px;
+  background:var(--surface-2); border:1px solid var(--rule);
+  border-radius:5px; padding:1px 6px; word-break:break-all;
+}
+.keybadges { display:flex; flex-wrap:wrap; gap:9px; margin-top:20px; }
+.keybadge {
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:12.6px; font-weight:600; color:var(--accent,var(--cyan));
+  background:var(--accent-bg,var(--surface-2)); border-radius:999px; padding:7px 14px;
+}
+.keybadge svg { width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:2.4;
+  stroke-linecap:round; stroke-linejoin:round; }
+@media (max-width:880px) {
+  .keyvid { grid-template-columns:1fr; gap:26px; }
+  .keyvid-media { max-width:282px; margin:0 auto; }
+}
+
 @media (prefers-reduced-motion:reduce) {
   *, *::before, *::after { animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
   html { scroll-behavior:auto; }
