@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Daybook — diary, tasks and activity log | MAIA Architech</title>
+<meta name="description" content="Daybook keeps your diary, tasks, places and activity log in one app for Android and Windows. Everything stays in a database on your own device. Free, no ads.">
+<meta name="keywords" content="Daybook app, diary app, task manager, activity log app, how to use Daybook, MAIA Architech">
+<meta name="author" content="MAIA Architech — Ahmed Yosri">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a2540">
+<link rel="canonical" href="https://maiaarchitech.com/daybook.html">
+<link rel="icon" type="image/png" href="assets/maia-logo.png">
+<link rel="apple-touch-icon" href="assets/maia-logo.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MAIA Architech">
+<meta property="og:title" content="Daybook — diary, tasks and activity log">
+<meta property="og:description" content="Diary, tasks, places and activity log in one app for Android and Windows. Everything stays on your own device.">
+<meta property="og:url" content="https://maiaarchitech.com/daybook.html">
+<meta property="og:image" content="https://maiaarchitech.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Daybook — diary, tasks and activity log">
+<meta name="twitter:description" content="Diary, tasks, places and activity log in one app. Everything stays on your own device.">
+<meta name="twitter:image" content="https://maiaarchitech.com/assets/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Daybook",
+      "url": "https://maiaarchitech.com/daybook.html",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Android, Windows",
+      "description": "A diary, task and activity-log app that keeps everything in a database on your own device, with an optional assistant and optional Google Drive backup.",
+      "screenshot": "https://maiaarchitech.com/assets/db-1-tasks.webp",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@id": "https://maiaarchitech.com/#org" },
+      "privacyPolicy": "https://maiaarchitech.com/daybook-privacy/"
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to use Daybook",
+      "step": [
+        { "@type": "HowToStep", "name": "Add a task", "text": "Give it a due date, a repeat, or split it into subtasks." },
+        { "@type": "HowToStep", "name": "Write a note", "text": "Sketch on it or attach a photo. It stays with the day it belongs to." },
+        { "@type": "HowToStep", "name": "Check the calendar", "text": "Dated tasks, birthdays and imported holidays in one view." },
+        { "@type": "HowToStep", "name": "Look back", "text": "Save a place once and Daybook logs arrivals there for you." }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-page="daybook">
+<script>document.documentElement.className += ' js';</script>
+
+<div id="bar"></div>
+
+<header class="site" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="MAIA Architech home">
+      <span class="tile"><img src="assets/maia-logo.png" alt="MAIA Architech logo" width="34" height="34"></span>
+      <span>
+        <b>MAIA Architech</b>
+        <i>Intelligent Software Solutions</i>
+      </span>
+    </a>
+    <nav class="top" aria-label="Main">
+      <a href="index.html#about" data-nav data-page="home">Approach</a>
+      <a href="index.html#apps" data-nav data-page="home">Apps</a>
+      <a href="daybook.html" data-nav data-page="daybook">Daybook</a>
+      <a href="finnish-tutor.html" data-nav data-page="finnish-tutor">Finnish tutor</a>
+      <a href="index.html#faq" data-nav data-page="home">Questions</a>
+      <a href="index.html#contact" data-nav data-page="home">Contact</a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch colour theme">◐</button>
+    </nav>
+  </div>
+</header>
+
+<nav class="subnav" aria-label="Breadcrumb">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a> <span>/</span> Daybook</div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <div class="hero h-db">
+    <canvas id="lattice" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="hero-inner has-phone">
+        <div>
+          <div class="hero-icon"><img src="assets/daybook-icon.png" alt="Daybook app icon" width="64" height="64"></div>
+          <p class="kicker on-db">Daybook</p>
+          <h1 class="tight">Everything about your day, <span class="grad">in one place.</span></h1>
+          <p class="lede">
+            Tasks that repeat, notes you can sketch on, the places you go and a log of what you
+            actually did. An assistant is there when you want one.
+          </p>
+          <div class="cta">
+            <a class="btn on-db solid" href="#tester">Become a tester <span class="ar">→</span></a>
+            <a class="btn ghost" href="#howto">How it works</a>
+          </div>
+          <p class="plat-line">Free · Android and Windows · Closed beta on Google Play</p>
+        </div>
+        <div class="hero-phone-wrap">
+          <div class="hero-phone-glow" style="--accent:var(--db)"></div>
+          <div class="phone" data-gallery data-interval="4600">
+            <div class="screen">
+              <img class="on" src="assets/db-1-tasks.webp" alt="Daybook screenshot: personal task list with due dates, tags and completed items" width="520" height="1154" loading="lazy">
+              <img src="assets/db-2-notes.webp" alt="Daybook screenshot: notes view with written notes and attachments" width="520" height="1154" loading="lazy">
+              <img src="assets/db-3-calendar.webp" alt="Daybook screenshot: calendar view showing dated tasks and events" width="520" height="1154" loading="lazy">
+              <img src="assets/db-4-activity.webp" alt="Daybook screenshot: activity log recording what happened during the day" width="520" height="1154" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="overview">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">01 — WHAT IT DOES</span>
+        <h2>Six things, one database</h2>
+      </div>
+
+      <div class="feat reveal">
+        <div class="f"><h4>Tasks</h4><p>Work and personal lists, due dates, repeats, subtasks, and a record of what you finished.</p></div>
+        <div class="f"><h4>Notes</h4><p>Write, sketch, attach a photo. It stays with the day it belongs to.</p></div>
+        <div class="f"><h4>Activity log</h4><p>What you did and where. Fill it in yourself, or let saved places do it for you.</p></div>
+        <div class="f"><h4>Places</h4><p>Save somewhere you go often and arrivals get logged without you touching anything.</p></div>
+        <div class="f"><h4>Dates</h4><p>Birthdays, recurring events, and the public holidays you choose to import.</p></div>
+        <div class="f"><h4>Assistant</h4><p>Ask it to summarise your week or turn a note into a task. Runs on your own free Gemini key.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="howto" class="alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">02 — USING IT</span>
+        <h2>Four steps cover most of it</h2>
+        <p>Scroll and the phone follows along, or tap a step to jump to it.</p>
+      </div>
+
+      <div class="wt reveal">
+        <div class="wt-rail" data-gallery-target="wtGalleryDb">
+          <div class="wt-fill"></div>
+
+          <div class="wt-step" data-caption="Tasks">
+            <span class="wt-dot">1</span>
+            <div class="wt-card">
+              <h4>
+                <span class="wt-ic a-tap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg></span>
+                Add a task
+              </h4>
+              <p>Give it a due date, a repeat, or split it into subtasks. It saves as you type.</p>
+            </div>
+          </div>
+
+          <div class="wt-step" data-caption="Notes">
+            <span class="wt-dot">2</span>
+            <div class="wt-card">
+              <h4>
+                <span class="wt-ic a-write"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg></span>
+                Write a note
+              </h4>
+              <p>Sketch on it or attach a photo. It stays with the day it belongs to.</p>
+            </div>
+          </div>
+
+          <div class="wt-step" data-caption="Calendar">
+            <span class="wt-dot">3</span>
+            <div class="wt-card">
+              <h4>
+                <span class="wt-ic a-rise"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span>
+                Check the calendar
+              </h4>
+              <p>Dated tasks, birthdays and any holidays you imported, in one view.</p>
+            </div>
+          </div>
+
+          <div class="wt-step" data-caption="Activity">
+            <span class="wt-dot">4</span>
+            <div class="wt-card">
+              <h4>
+                <span class="wt-ic a-pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
+                Look back
+              </h4>
+              <p>Save a place once and Daybook logs arrivals there for you.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="wt-phone-wrap">
+          <div class="hero-phone-glow" style="--accent:var(--db); position:absolute; inset:-30px; z-index:-1;"></div>
+          <div class="phone" id="wtGalleryDb" data-gallery data-manual>
+            <div class="screen">
+              <img class="on" src="assets/db-1-tasks.webp" alt="Daybook screenshot: personal task list with due dates, tags and completed items" width="520" height="1154" loading="lazy">
+              <img src="assets/db-2-notes.webp" alt="Daybook screenshot: notes view with written notes and attachments" width="520" height="1154" loading="lazy">
+              <img src="assets/db-3-calendar.webp" alt="Daybook screenshot: calendar view showing dated tasks and events" width="520" height="1154" loading="lazy">
+              <img src="assets/db-4-activity.webp" alt="Daybook screenshot: activity log recording what happened during the day" width="520" height="1154" loading="lazy">
+            </div>
+          </div>
+          <p class="wt-caption">Tasks</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="data">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">03 — YOUR DATA</span>
+        <h2>What stays, and what doesn't</h2>
+        <p>Pick anything Daybook handles.</p>
+      </div>
+
+      <div class="flow-card reveal" data-flow>
+        <div class="flow">
+          <div class="node n-device">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></span>
+            <b>Your device</b>
+            <small>Local database</small>
+          </div>
+          <div class="track"><span class="track-arrow">→</span></div>
+          <div class="node n-out">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+            <b>Your own accounts</b>
+            <small>Only when switched on</small>
+          </div>
+        </div>
+
+        <div class="chips">
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> Notes, sketches and attached photos go into Daybook's own database. There's no server of mine for them to sit on.">Notes</button>
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> Tasks, subtasks, due dates, repeats and completion history live in the local database.">Tasks</button>
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> The activity log and your saved places are kept locally. Arrival detection runs on the device.">Activity &amp; places</button>
+          <button class="chip" data-dest="out" data-note="<b>Goes to your own Google Drive.</b> A copy of the database and your note images, using the narrow <code>drive.file</code> scope. That scope only reaches files Daybook created, so I can't see it and neither can the app see the rest of your Drive.">Drive backup</button>
+          <button class="chip" data-dest="out" data-note="<b>Goes to your own Google Calendar.</b> Only the dated tasks you choose to sync. Notes and the activity log are never written.">Calendar sync</button>
+          <button class="chip" data-dest="out" data-note="<b>Goes to Google's Gemini API, as you.</b> The assistant uses a key you create and paste in yourself, so the request is between you and Google. It happens when you press the button, never in the background.">Assistant</button>
+          <button class="chip" data-dest="out" data-note="<b>Goes to OpenStreetMap Nominatim.</b> Only what you type when searching for a place to save. Your saved places and location history aren't sent.">Place search</button>
+        </div>
+
+        <div class="flow-note">
+          <b>Pick anything above.</b> Backup, calendar sync and the assistant are each off until you
+          turn them on.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="details" class="alt">
+    <div class="wrap narrow">
+      <div class="sec-head reveal">
+        <span class="num">04 — PERMISSIONS</span>
+        <h2>Why Daybook asks for a Google account</h2>
+        <p>Signing in is optional and the app works fully without it. It's there so Daybook can back
+          up to <em>your</em> Drive and write dated tasks into <em>your</em> calendar. Here is every
+          permission it asks for.</p>
+      </div>
+
+      <div class="reveal">
+        <div class="scope db">
+          <h4>Drive backup <span class="badge">drive.file</span></h4>
+          <p><code>https://www.googleapis.com/auth/drive.file</code></p>
+          <p>
+            Uploads a copy of Daybook's database and the images attached to your notes, so you can
+            restore on a new device or keep two in step. This scope reaches
+            <strong>only files Daybook created</strong>. It can't list or open anything else in your
+            Drive, and the backup sits in your account, not mine.
+          </p>
+        </div>
+
+        <div class="scope db">
+          <h4>Calendar sync <span class="badge">calendar</span></h4>
+          <p><code>https://www.googleapis.com/auth/calendar</code></p>
+          <p>
+            Dated tasks you choose to sync appear as events in your own calendar. Notes and the
+            activity log are never written. This is the desktop route. On Android, Daybook writes to
+            the device's own calendar with the ordinary OS permission and no Google account at all,
+            which is what the Play version uses today.
+          </p>
+        </div>
+
+        <div class="scope db">
+          <h4>Email and basic profile <span class="badge">openid · email · profile</span></h4>
+          <p>
+            Read once after sign-in, so the app can show you which account is connected. Daybook
+            doesn't read your contacts or your mail.
+          </p>
+        </div>
+
+        <p>
+          Tokens are stored on your device alongside the database and used only for the calls above.
+          You can withdraw access at any time at
+          <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.
+        </p>
+
+        <h3 class="sub">What it doesn't do</h3>
+        <ul class="ticks">
+          <li>No ads, no analytics, no trackers.</li>
+          <li>No account to create, and no server of mine holding your entries.</li>
+          <li>Nothing leaves the device unless you switch on the feature that sends it.</li>
+        </ul>
+        <p>
+          The <a href="daybook-privacy/">privacy policy</a> goes feature by feature, including
+          location, microphone and camera, and says where each one sends data or that it sends none.
+        </p>
+
+        <h3 class="sub">Platforms</h3>
+        <dl class="spec">
+          <dt>Android</dt>
+          <dd>On Google Play as <strong>Daybook</strong> (<code>com.MAIAArchitech.daybook</code>).
+            In closed testing — <a href="#tester">join the test</a> to install it.</dd>
+          <dt>Windows</dt>
+          <dd>Desktop build, with an optional pairing link to the phone app.</dd>
+          <dt>Storage</dt>
+          <dd>One SQLite database inside the app's own storage, which other apps on the device can't read.</dd>
+          <dt>Price</dt>
+          <dd>Free.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="get">
+    <div class="wrap narrow">
+      <div class="sec-head reveal">
+        <span class="num">05 — GET IT</span>
+        <h2>Join the test</h2>
+      </div>
+
+      <div class="tester s-db reveal" id="tester">
+        <h3>Become a tester <span class="live">Closed beta</span></h3>
+        <p>
+          Daybook is in closed testing, so Play only shows it to accounts that joined the tester
+          group. Two steps, once, with the Google account your phone uses.
+        </p>
+        <ol class="steps">
+          <li>
+            <span class="sn">1</span>
+            <div>
+              <b>Join the tester group</b>
+              <p>Open to anyone, no approval or waiting. Press <em>Join group</em> on the page that opens.</p>
+              <a class="step-go" href="https://groups.google.com/g/daybook-testers" target="_blank" rel="noopener">
+                Join the tester group <span class="ar">→</span>
+              </a>
+              <span class="step-alt">
+                Rather not leave a page open? Send a blank email to
+                <a href="mailto:daybook-testers+subscribe@googlegroups.com">daybook-testers+subscribe@googlegroups.com</a>
+                and you're joined by reply.
+              </span>
+            </div>
+          </li>
+          <li>
+            <span class="sn">2</span>
+            <div>
+              <b>Accept the invitation</b>
+              <p>Sign in with the same account and press <em>Become a tester</em>.</p>
+              <a class="step-go" href="https://play.google.com/apps/testing/com.MAIAArchitech.daybook" target="_blank" rel="noopener">
+                Become a tester <span class="ar">→</span>
+              </a>
+            </div>
+          </li>
+          <li>
+            <span class="sn">3</span>
+            <div>
+              <b>Install it</b>
+              <p>The listing opens for your account once the first two are done.</p>
+              <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.MAIAArchitech.daybook" target="_blank" rel="noopener" aria-label="Get Daybook on Google Play">
+                <img src="assets/google-play-badge.png" alt="Get it on Google Play" width="186" height="72" loading="lazy">
+              </a>
+            </div>
+          </li>
+        </ol>
+        <p class="fine">
+          If Play says the app isn't available, the account on your phone usually isn't the one that
+          joined the group. The test is open in six countries so far; if yours isn't one of them,
+          <a href="index.html#contact">write to me</a> and I'll add it.
+          Google Play is a trademark of Google LLC.
+        </p>
+      </div>
+
+      <div class="doclinks reveal">
+        <a href="daybook-privacy/">Privacy policy <span>→</span></a>
+        <a href="daybook-privacy/">Terms of service <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="alt">
+    <div class="wrap narrow">
+      <div class="sec-head reveal">
+        <span class="num">06 — QUESTIONS</span>
+        <h2>Questions</h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>Does it work without a Google account?</summary>
+          <div class="ans">Yes, fully. Signing in only adds Drive backup and calendar sync, and you can
+            withdraw it at any time at
+            <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</div>
+        </details>
+        <details>
+          <summary>Does it work offline?</summary>
+          <div class="ans">Everything except Drive backup, calendar sync and the assistant. The rest
+            reads and writes the same local database.</div>
+        </details>
+        <details>
+          <summary>What does it cost?</summary>
+          <div class="ans">Nothing. The assistant runs on your own free Gemini key, so there's no
+            subscription either.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="row">
+        <div>
+          <a href="index.html">Home</a>
+          <a href="finnish-tutor.html">Finnish tutor</a>
+          <a href="daybook-privacy/">Privacy</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <div>MAIA Architech — Intelligent Software Solutions</div>
+      </div>
+      <div class="fine">© 2026 Ahmed Yosri / MAIA Architech. Not affiliated with or endorsed by Google LLC.
+        Android and Google Play are trademarks of Google LLC.</div>
+    </div>
+  </footer>
+</main>
+
+<a href="#top" class="top-btn" id="topBtn" aria-label="Back to top">↑</a>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
