@@ -252,6 +252,18 @@ nav.top a.active::after {
 .btn.on-db.solid { background:linear-gradient(100deg,#4fb98f,#7be0d6); }
 .btn.on-ft.solid { background:linear-gradient(100deg,#2f9fd6,#7be0d6); }
 
+/* hero store badges. Every badge is sized so the *pill* is 44px tall: the
+   Google Play art ships with its required clear space baked in, so it is set
+   from its own 163px box and the margin pulls that transparent border out of
+   the flex layout. The 14px gap still clears Google's quarter-height rule. */
+.badgerow { display:grid; grid-template-columns:repeat(2,max-content); align-items:center; justify-content:start; gap:14px; margin-top:24px; }
+.sbadge { display:inline-flex; border-radius:5px; transition:transform .2s, filter .2s; }
+.sbadge img { display:block; height:44px; width:auto; }
+.sbadge.play img { height:62px; margin:-9px; }
+.sbadge:hover { transform:translateY(-2px); filter:brightness(1.14); }
+.sbadge:focus-visible { outline:2px solid var(--aqua); outline-offset:3px; }
+@media (max-width:560px) { .badgerow { grid-template-columns:max-content; } }
+
 .plat-line { margin:26px 0 0; font-size:13.5px; color:#9fbdd4; letter-spacing:.01em; }
 
 .trust { display:flex; flex-wrap:wrap; gap:9px; margin-top:34px; }

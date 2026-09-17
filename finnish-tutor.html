@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Finnish tutor — corrections with the rule behind them | MAIA Architech</title>
-<meta name="description" content="Finnish tutor corrects your Finnish and explains the rule behind every change, makes photographed pages tappable, transcribes speech on the device, and turns saved words into review cards. Android and Windows, free.">
+<meta name="description" content="Finnish tutor corrects your Finnish and explains the rule behind every change, makes photographed pages tappable, transcribes speech on the device, and turns saved words into review cards. Free on Android, paid build for Windows.">
 <meta name="keywords" content="Finnish tutor app, learn Finnish, Finnish grammar checker, Finnish dictionary app, how to use Finnish tutor, MAIA Architech">
 <meta name="author" content="MAIA Architech — Ahmed Yosri">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -44,7 +44,7 @@
       "operatingSystem": "Android, Windows",
       "description": "Corrects Finnish sentences and explains the rule behind each change, makes photographed pages tappable, transcribes speech on the device, and turns saved words into spaced-repetition cards from a 175,000-word offline dictionary.",
       "screenshot": "https://maiaarchitech.com/assets/ft-1-check.webp",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "offers": { "@type": "Offer", "name": "Android", "price": "0", "priceCurrency": "USD" },
       "publisher": { "@id": "https://maiaarchitech.com/#org" },
       "privacyPolicy": "https://maiaarchitech.com/finnish-tutor-privacy/"
     },
@@ -112,7 +112,20 @@
             <a class="btn on-ft solid" href="#tester">Become a tester <span class="ar">→</span></a>
             <a class="btn ghost" href="#howto">How it works</a>
           </div>
-          <p class="plat-line">Free · Android and Windows · Closed beta on Google Play</p>
+          <div class="badgerow" aria-label="Where to get Finnish tutor">
+            <a class="sbadge play" href="#get" aria-label="Get Finnish tutor on Google Play">
+              <img src="assets/google-play-badge.png" alt="Get it on Google Play" width="420" height="163" loading="lazy">
+            </a>
+            <a class="sbadge" href="index.html#contact" aria-label="Ask about the Windows build of Finnish tutor">
+              <img src="assets/windows-badge.png" alt="Download for Windows" width="161" height="44" loading="lazy">
+            </a>
+            <a class="sbadge" href="index.html#contact" aria-label="Ask about Finnish tutor on the Microsoft Store">
+              <img src="assets/microsoft-store-badge.svg" alt="Get it from Microsoft" width="161" height="44" loading="lazy">
+            </a>
+          </div>
+          <p class="plat-line">Free on Android. Google Play is a closed beta &mdash;
+            <a href="#get">join the test</a> first. The Windows build is paid, and the Microsoft
+            Store listing isn’t up yet &mdash; <a href="index.html#contact">write to me</a> for either.</p>
         </div>
         <div class="hero-phone-wrap">
           <div class="hero-phone-glow" style="--accent:var(--ft)"></div>
@@ -129,10 +142,140 @@
     </div>
   </div>
 
+  <section id="get">
+    <div class="wrap narrow">
+      <div class="sec-head reveal">
+        <span class="num">01 — GET IT</span>
+        <h2>Join the test</h2>
+      </div>
+
+      <div class="tester s-ft reveal" id="tester">
+        <h3>Become a tester <span class="live">Closed beta</span></h3>
+        <p>
+          Finnish tutor is in closed testing, so Play only shows it to accounts that joined the tester
+          group. Two steps, once, with the Google account your phone uses.
+        </p>
+        <ol class="steps">
+          <li>
+            <span class="sn">1</span>
+            <div>
+              <b>Join the tester group</b>
+              <p>Open to anyone, no approval or waiting. Press <em>Join group</em> on the page that opens.</p>
+              <a class="step-go" href="https://groups.google.com/g/finnish-tutor" target="_blank" rel="noopener">
+                Join the tester group <span class="ar">→</span>
+              </a>
+              <span class="step-alt">
+                Rather not leave a page open? Send a blank email to
+                <a href="mailto:finnish-tutor+subscribe@googlegroups.com">finnish-tutor+subscribe@googlegroups.com</a>
+                and you're joined by reply.
+              </span>
+            </div>
+          </li>
+          <li>
+            <span class="sn">2</span>
+            <div>
+              <b>Accept the invitation</b>
+              <p>Sign in with the same account and press <em>Become a tester</em>.</p>
+              <a class="step-go" href="https://play.google.com/apps/testing/com.ahmedyosri.finnish_tutor" target="_blank" rel="noopener">
+                Become a tester <span class="ar">→</span>
+              </a>
+            </div>
+          </li>
+          <li>
+            <span class="sn">3</span>
+            <div>
+              <b>Install it</b>
+              <p>The listing opens for your account once the first two are done.</p>
+              <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.ahmedyosri.finnish_tutor" target="_blank" rel="noopener" aria-label="Get Finnish tutor on Google Play">
+                <img src="assets/google-play-badge.png" alt="Get it on Google Play" width="186" height="72" loading="lazy">
+              </a>
+            </div>
+          </li>
+        </ol>
+        <p class="fine">
+          If Play says the app isn't available, the account on your phone usually isn't the one that
+          joined the group. The AI features also need your own free Gemini key — <a href="#apikey">here is how to make one</a>.
+          Google Play is a trademark of Google LLC.
+        </p>
+      </div>
+
+      <div class="doclinks reveal">
+        <a href="finnish-tutor-privacy/">Privacy policy <span>→</span></a>
+        <a href="finnish-tutor-privacy/">Terms of service <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="apikey" class="alt" style="--accent:var(--ft); --accent-bg:var(--ft-soft);">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">02 &mdash; NEXT, THE KEY</span>
+        <h2>Set up your free Gemini key</h2>
+        <p>Finnish tutor&rsquo;s AI half runs on a Google Gemini key that you create yourself, so the
+          requests go straight from your device to Google rather than through us. It is free, takes
+          about two minutes, and never asks for a card. Watch it once, or follow the steps.</p>
+      </div>
+
+      <div class="keyvid reveal">
+        <div class="keyvid-media">
+          <video controls preload="none" playsinline
+                 poster="assets/gemini-api-key-poster.webp"
+                 width="1080" height="1920"
+                 aria-describedby="keystepsList">
+            <source src="assets/gemini-api-key.mp4" type="video/mp4">
+            <p>Your browser cannot play this video.
+              <a href="assets/gemini-api-key.mp4">Download it instead</a>.</p>
+          </video>
+          <p class="keyvid-cap">1 min 18 s &middot; narrated &middot; recorded in Daybook, the other
+            app &mdash; the AI Studio part is identical</p>
+        </div>
+
+        <ol class="keysteps" id="keystepsList">
+          <li>
+            <h4>Open the key page</h4>
+            <p>In Finnish tutor, go to <em>Settings &rarr; Gemini AI</em>. The API key box at the top
+              reads <em>No key</em> until you fill it.</p>
+          </li>
+          <li>
+            <h4>Go to AI Studio</h4>
+            <p>Open <code>aistudio.google.com/apikey</code> in your browser. Any Google account
+              works.</p>
+          </li>
+          <li>
+            <h4>Accept the terms</h4>
+            <p>Tick the acknowledgement box and press <em>Continue</em>. No billing account is
+              created and no card is requested.</p>
+          </li>
+          <li>
+            <h4>Create the key</h4>
+            <p>Press <em>Create API key</em>, keep the project it suggests, then press
+              <em>Create key</em>.</p>
+          </li>
+          <li>
+            <h4>Copy it straight away</h4>
+            <p>Tap the copy icon next to the key. It is shown once &mdash; if you lose it, just
+              make another.</p>
+          </li>
+          <li>
+            <h4>Paste it back and save</h4>
+            <p>Return to Finnish tutor, paste the key into the box and press <em>Save</em>. The pill
+              flips to <em>Key set</em> and the model list fills, which is how you know it works.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="keybadges reveal">
+        <span class="keybadge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Free tier, no card</span>
+        <span class="keybadge"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> The key stays on your device</span>
+        <span class="keybadge"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> About two minutes</span>
+      </div>
+    </div>
+  </section>
+
   <section id="overview">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="num">01 — WHAT IT DOES</span>
+        <span class="num">03 — WHAT IT DOES</span>
         <h2>Built for the way people actually study</h2>
       </div>
 
@@ -150,7 +293,7 @@
   <section id="howto" class="alt">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="num">02 — USING IT</span>
+        <span class="num">04 — USING IT</span>
         <h2>Four steps cover most of it</h2>
         <p>Scroll and the phone follows along, or tap a step to jump to it.</p>
       </div>
@@ -223,7 +366,7 @@
   <section id="data">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="num">03 — YOUR DATA</span>
+        <span class="num">05 — YOUR DATA</span>
         <h2>What stays, and what doesn't</h2>
         <p>Pick anything Finnish tutor handles.</p>
       </div>
@@ -263,7 +406,7 @@
   <section id="details" class="alt">
     <div class="wrap narrow">
       <div class="sec-head reveal">
-        <span class="num">04 — PERMISSIONS</span>
+        <span class="num">06 — PERMISSIONS</span>
         <h2>Bring your own AI key</h2>
         <p>The AI features aren't a service I run for you. You make your own free Gemini key and paste
           it into Settings, and the app calls Google directly from your device, as you. The key sits in
@@ -332,80 +475,18 @@
           <dt>Offline</dt>
           <dd>174,932 bundled headwords, on-device text recognition and on-device speech-to-text.</dd>
           <dt>Price</dt>
-          <dd>Free. The AI features run on your own free Gemini key.</dd>
+          <dd>Free on Android. The Windows build is paid &mdash;
+            <a href="index.html#contact">ask me</a> for it. Either way the AI features run on
+            <a href="#apikey">your own free Gemini key</a>, so there is no subscription.</dd>
         </dl>
       </div>
     </div>
   </section>
 
-  <section id="get">
+  <section id="faq">
     <div class="wrap narrow">
       <div class="sec-head reveal">
-        <span class="num">05 — GET IT</span>
-        <h2>Join the test</h2>
-      </div>
-
-      <div class="tester s-ft reveal" id="tester">
-        <h3>Become a tester <span class="live">Closed beta</span></h3>
-        <p>
-          Finnish tutor is in closed testing, so Play only shows it to accounts that joined the tester
-          group. Two steps, once, with the Google account your phone uses.
-        </p>
-        <ol class="steps">
-          <li>
-            <span class="sn">1</span>
-            <div>
-              <b>Join the tester group</b>
-              <p>Open to anyone, no approval or waiting. Press <em>Join group</em> on the page that opens.</p>
-              <a class="step-go" href="https://groups.google.com/g/finnish-tutor" target="_blank" rel="noopener">
-                Join the tester group <span class="ar">→</span>
-              </a>
-              <span class="step-alt">
-                Rather not leave a page open? Send a blank email to
-                <a href="mailto:finnish-tutor+subscribe@googlegroups.com">finnish-tutor+subscribe@googlegroups.com</a>
-                and you're joined by reply.
-              </span>
-            </div>
-          </li>
-          <li>
-            <span class="sn">2</span>
-            <div>
-              <b>Accept the invitation</b>
-              <p>Sign in with the same account and press <em>Become a tester</em>.</p>
-              <a class="step-go" href="https://play.google.com/apps/testing/com.ahmedyosri.finnish_tutor" target="_blank" rel="noopener">
-                Become a tester <span class="ar">→</span>
-              </a>
-            </div>
-          </li>
-          <li>
-            <span class="sn">3</span>
-            <div>
-              <b>Install it</b>
-              <p>The listing opens for your account once the first two are done.</p>
-              <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.ahmedyosri.finnish_tutor" target="_blank" rel="noopener" aria-label="Get Finnish tutor on Google Play">
-                <img src="assets/google-play-badge.png" alt="Get it on Google Play" width="186" height="72" loading="lazy">
-              </a>
-            </div>
-          </li>
-        </ol>
-        <p class="fine">
-          If Play says the app isn't available, the account on your phone usually isn't the one that
-          joined the group. The AI features also need your own free Gemini key, added in Settings.
-          Google Play is a trademark of Google LLC.
-        </p>
-      </div>
-
-      <div class="doclinks reveal">
-        <a href="finnish-tutor-privacy/">Privacy policy <span>→</span></a>
-        <a href="finnish-tutor-privacy/">Terms of service <span>→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="alt">
-    <div class="wrap narrow">
-      <div class="sec-head reveal">
-        <span class="num">06 — QUESTIONS</span>
+        <span class="num">07 — QUESTIONS</span>
         <h2>Questions</h2>
       </div>
       <div class="faq reveal">
