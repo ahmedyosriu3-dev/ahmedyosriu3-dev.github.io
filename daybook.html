@@ -77,7 +77,7 @@
       </span>
     </a>
     <nav class="top" aria-label="Main">
-      <a href="index.html#about" data-nav data-page="home">Approach</a>
+      <a href="#about" data-nav>Approach</a>
       <a href="index.html#apps" data-nav data-page="home">Apps</a>
       <a href="daybook.html" data-nav data-page="daybook">Daybook</a>
       <a href="finnish-tutor.html" data-nav data-page="finnish-tutor">Finnish tutor</a>
@@ -112,18 +112,22 @@
             <a class="btn on-db solid" href="daybook-app/" target="_blank" rel="noopener">Open in your browser <span class="ar">→</span></a>
             <a class="btn ghost" href="#howto">How it works</a>
           </div>
-          <div class="badgerow" aria-label="Where to get Daybook">
-            <a class="sbadge" href="daybook-app/" target="_blank" rel="noopener" aria-label="Open Daybook in your browser">
-              <img src="assets/web-badge.png" alt="Open it in your browser" width="161" height="44" loading="lazy">
+          <div class="getrow" aria-label="Where to get Daybook">
+            <a class="gettile" href="#get">
+              <img src="assets/logo-google-play.png" alt="Google Play logo" width="88" height="88" loading="lazy">
+              <span><b>Google Play</b><i>Closed beta — join the test</i></span>
             </a>
-            <a class="sbadge play" href="#get" aria-label="Get Daybook on Google Play">
-              <img src="assets/google-play-badge.png" alt="Get it on Google Play" width="420" height="163" loading="lazy">
+            <a class="gettile is-ask" href="index.html#contact">
+              <img src="assets/logo-microsoft-store.svg" alt="Microsoft Store logo" width="88" height="88" loading="lazy">
+              <span><b>Microsoft Store</b><i>Not listed yet — ask me</i></span>
             </a>
-            <a class="sbadge" href="index.html#contact" aria-label="Ask about the Windows build of Daybook">
-              <img src="assets/windows-badge.png" alt="Download for Windows" width="161" height="44" loading="lazy">
+            <a class="gettile is-ask" href="index.html#contact">
+              <img src="assets/logo-windows.svg" alt="Windows logo" width="88" height="88" loading="lazy">
+              <span><b>Windows</b><i>Paid build — ask me</i></span>
             </a>
-            <a class="sbadge" href="index.html#contact" aria-label="Ask about Daybook on the Microsoft Store">
-              <img src="assets/microsoft-store-badge.svg" alt="Get it from Microsoft" width="161" height="44" loading="lazy">
+            <a class="gettile" href="daybook-app/" target="_blank" rel="noopener">
+              <img src="assets/logo-web.svg" alt="Web browser" width="88" height="88" loading="lazy">
+              <span><b>Web version</b><i>Free, runs in your browser</i></span>
             </a>
           </div>
           <p class="plat-line">Free in the browser and on Android. Google Play is a closed beta &mdash;
@@ -298,10 +302,46 @@
     </div>
   </section>
 
-  <section id="howto" class="alt">
+  <section id="about" class="alt">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="num">04 — USING IT</span>
+        <span class="num">04 — APPROACH</span>
+        <h2>The short version</h2>
+      </div>
+
+      <div class="pillars reveal">
+        <div class="pillar">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg></span>
+          <h3>AI with a job to do</h3>
+          <p>It writes up your week, or turns a note into a task. It doesn&rsquo;t sit there waiting to chat.</p>
+        </div>
+        <div class="pillar">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></span>
+          <h3>One app, not four</h3>
+          <p>Tasks, notes, calendar and the log of what you actually did, in the same place.</p>
+        </div>
+        <div class="pillar">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
+          <h3>Built for how you already work</h3>
+          <p>Sketch on a note instead of describing it. Save a place once and arrivals log themselves.</p>
+        </div>
+        <div class="pillar">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h3>Quiet with your data</h3>
+          <p>Everything lives in one database on your own device. Nothing you write is kept on our servers &mdash; there aren&rsquo;t any.</p>
+        </div>
+      </div>
+
+      <p class="note reveal">
+        Found a bug, or want something added? <a href="index.html#contact">Write to me</a>. It reaches the person who builds it.
+      </p>
+    </div>
+  </section>
+
+  <section id="howto">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">05 — USING IT</span>
         <h2>Four steps cover most of it</h2>
         <p>Scroll and the phone follows along, or tap a step to jump to it.</p>
       </div>
@@ -371,10 +411,10 @@
     </div>
   </section>
 
-  <section id="data">
+  <section id="data" class="alt">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="num">05 — YOUR DATA</span>
+        <span class="num">06 — YOUR DATA</span>
         <h2>What stays, and what doesn't</h2>
         <p>Pick anything Daybook handles.</p>
       </div>
@@ -412,10 +452,10 @@
     </div>
   </section>
 
-  <section id="details" class="alt">
+  <section id="details">
     <div class="wrap narrow">
       <div class="sec-head reveal">
-        <span class="num">06 — PERMISSIONS</span>
+        <span class="num">07 — PERMISSIONS</span>
         <h2>Why Daybook asks for a Google account</h2>
         <p>Signing in is optional and the app works fully without it. It's there so Daybook can back
           up to <em>your</em> Drive and write dated tasks into <em>your</em> calendar. Here is every
@@ -489,10 +529,10 @@
     </div>
   </section>
 
-  <section id="faq">
+  <section id="faq" class="alt">
     <div class="wrap narrow">
       <div class="sec-head reveal">
-        <span class="num">07 — QUESTIONS</span>
+        <span class="num">08 — QUESTIONS</span>
         <h2>Questions</h2>
       </div>
       <div class="faq reveal">

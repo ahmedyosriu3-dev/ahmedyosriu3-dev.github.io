@@ -252,17 +252,29 @@ nav.top a.active::after {
 .btn.on-db.solid { background:linear-gradient(100deg,#4fb98f,#7be0d6); }
 .btn.on-ft.solid { background:linear-gradient(100deg,#2f9fd6,#7be0d6); }
 
-/* hero store badges. Every badge is sized so the *pill* is 44px tall: the
-   Google Play art ships with its required clear space baked in, so it is set
-   from its own 163px box and the margin pulls that transparent border out of
-   the flex layout. The 14px gap still clears Google's quarter-height rule. */
-.badgerow { display:grid; grid-template-columns:repeat(2,max-content); align-items:center; justify-content:start; gap:14px; margin-top:24px; }
-.sbadge { display:inline-flex; border-radius:5px; transition:transform .2s, filter .2s; }
-.sbadge img { display:block; height:44px; width:auto; }
-.sbadge.play img { height:62px; margin:-9px; }
-.sbadge:hover { transform:translateY(-2px); filter:brightness(1.14); }
-.sbadge:focus-visible { outline:2px solid var(--aqua); outline-offset:3px; }
-@media (max-width:560px) { .badgerow { grid-template-columns:max-content; } }
+/* hero install tiles. One shape for all four so the row reads as a set; the
+   logos inside are the originals (the Play mark lifted from Google's badge
+   art, the Store bag from Microsoft's, both untouched). Two columns, so the
+   two real stores sit side by side on the first row. */
+.getrow {
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px; margin-top:24px; max-width:540px;
+}
+.gettile {
+  display:flex; align-items:center; gap:12px;
+  padding:11px 15px; border-radius:13px; text-decoration:none;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16);
+  color:#eaf4fb;
+  transition:transform .2s, background .25s, border-color .25s;
+}
+.gettile:hover { transform:translateY(-2px); background:rgba(255,255,255,.13); border-color:var(--aqua); color:#fff; }
+.gettile:focus-visible { outline:2px solid var(--aqua); outline-offset:3px; }
+.gettile.is-ask { border-style:dashed; background:rgba(255,255,255,.04); }
+.gettile img { flex:none; width:24px; height:24px; display:block; }
+.gettile b { display:block; font-family:'Space Grotesk',sans-serif; font-size:13.8px; font-weight:600; line-height:1.25; }
+.gettile i { display:block; font-style:normal; font-size:11.4px; color:#9fbdd4; margin-top:2px; line-height:1.35; }
+.gettile:hover i { color:#c7e0f0; }
+@media (max-width:560px) { .getrow { grid-template-columns:1fr; max-width:none; } }
 
 .plat-line { margin:26px 0 0; font-size:13.5px; color:#9fbdd4; letter-spacing:.01em; }
 
@@ -306,6 +318,8 @@ nav.top a.active::after {
   fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round;
 }
 .brand-ic { width:15px; height:15px; fill:currentColor; stroke:none; flex:none; }
+/* the globe is drawn, not a brand mark, so it needs strokes rather than a fill */
+.brand-ic.is-line { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
 
 /* ---------- available-on strip ---------- */
 .avail {
