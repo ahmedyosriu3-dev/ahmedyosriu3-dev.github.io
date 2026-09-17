@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Daybook — diary, tasks and activity log | MAIA Architech</title>
-<meta name="description" content="Daybook keeps your diary, tasks, places and activity log in one app for the browser, Android and Windows. Everything stays in a database on your own device. Free on web and Android, no ads.">
+<meta name="description" content="Daybook keeps your diary, tasks, places and activity log in one app for the browser, Android and Windows. Everything stays in a database on your own device. Free on web and Android, paid on the Microsoft Store, no ads.">
 <meta name="keywords" content="Daybook app, diary app, task manager, activity log app, how to use Daybook, MAIA Architech">
 <meta name="author" content="MAIA Architech — Ahmed Yosri">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -44,7 +44,10 @@
       "operatingSystem": "Android, Windows",
       "description": "A diary, task and activity-log app that keeps everything in a database on your own device, with an optional assistant and optional Google Drive backup.",
       "screenshot": "https://maiaarchitech.com/assets/db-1-tasks.webp",
-      "offers": { "@type": "Offer", "name": "Web and Android", "price": "0", "priceCurrency": "USD" },
+      "offers": [
+        { "@type": "Offer", "name": "Web and Android", "price": "0", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Windows", "price": "2.69", "priceCurrency": "USD", "url": "https://apps.microsoft.com/detail/9pfhnplvdvc7" }
+      ],
       "publisher": { "@id": "https://maiaarchitech.com/#org" },
       "privacyPolicy": "https://maiaarchitech.com/daybook-privacy/"
     },
@@ -117,13 +120,13 @@
               <img src="assets/logo-google-play.png" alt="Google Play logo" width="88" height="88" loading="lazy">
               <span><b>Google Play</b><i>Closed beta — join the test</i></span>
             </a>
-            <a class="gettile is-ask" href="index.html#contact">
+            <a class="gettile" href="https://apps.microsoft.com/detail/9pfhnplvdvc7" target="_blank" rel="noopener">
               <img src="assets/logo-microsoft-store.svg" alt="Microsoft Store logo" width="88" height="88" loading="lazy">
-              <span><b>Microsoft Store</b><i>Not listed yet — ask me</i></span>
+              <span><b>Microsoft Store</b><i>Out now — $2.69</i></span>
             </a>
-            <a class="gettile is-ask" href="index.html#contact">
+            <a class="gettile" href="https://apps.microsoft.com/detail/9pfhnplvdvc7" target="_blank" rel="noopener">
               <img src="assets/logo-windows.svg" alt="Windows logo" width="88" height="88" loading="lazy">
-              <span><b>Windows</b><i>Paid build — ask me</i></span>
+              <span><b>Windows</b><i>Desktop app, pairs with the phone</i></span>
             </a>
             <a class="gettile" href="daybook-app/" target="_blank" rel="noopener">
               <img src="assets/logo-web.svg" alt="Web browser" width="88" height="88" loading="lazy">
@@ -131,8 +134,8 @@
             </a>
           </div>
           <p class="plat-line">Free in the browser and on Android. Google Play is a closed beta &mdash;
-            <a href="#get">join the test</a> first. The Windows build is paid, and the Microsoft
-            Store listing isn’t up yet &mdash; <a href="index.html#contact">write to me</a> for either.</p>
+            <a href="#get">join the test</a> first. The Windows desktop build is paid and out now on the
+            <a href="https://apps.microsoft.com/detail/9pfhnplvdvc7" target="_blank" rel="noopener">Microsoft Store</a>.</p>
         </div>
         <div class="hero-phone-wrap">
           <div class="hero-phone-glow" style="--accent:var(--db)"></div>
@@ -204,7 +207,7 @@
         <p class="fine">
           If Play says the app isn't available, the account on your phone usually isn't the one that
           joined the group. The test is open in six countries so far; if yours isn't one of them,
-          <a href="index.html#contact">write to me</a> and I'll add it.
+          <a href="index.html#contact">contact us</a> and we’ll add it.
           Google Play is a trademark of Google LLC.
         </p>
       </div>
@@ -333,7 +336,7 @@
       </div>
 
       <p class="note reveal">
-        Found a bug, or want something added? <a href="index.html#contact">Write to me</a>. It reaches the person who builds it.
+        Found a bug, or want something added? <a href="index.html#contact">Contact us</a>. It reaches the developers who build it.
       </p>
     </div>
   </section>
@@ -435,10 +438,10 @@
         </div>
 
         <div class="chips">
-          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> Notes, sketches and attached photos go into Daybook's own database. There's no server of mine for them to sit on.">Notes</button>
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> Notes, sketches and attached photos go into Daybook's own database. There's no server of ours for them to sit on.">Notes</button>
           <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> Tasks, subtasks, due dates, repeats and completion history live in the local database.">Tasks</button>
           <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> The activity log and your saved places are kept locally. Arrival detection runs on the device.">Activity &amp; places</button>
-          <button class="chip" data-dest="out" data-note="<b>Goes to your own Google Drive.</b> A copy of the database and your note images, using the narrow <code>drive.file</code> scope. That scope only reaches files Daybook created, so I can't see it and neither can the app see the rest of your Drive.">Drive backup</button>
+          <button class="chip" data-dest="out" data-note="<b>Goes to your own Google Drive.</b> A copy of the database and your note images, using the narrow <code>drive.file</code> scope. That scope only reaches files Daybook created, so we can't see it and neither can the app see the rest of your Drive.">Drive backup</button>
           <button class="chip" data-dest="out" data-note="<b>Goes to your own Google Calendar.</b> Only the dated tasks you choose to sync. Notes and the activity log are never written.">Calendar sync</button>
           <button class="chip" data-dest="out" data-note="<b>Goes to Google's Gemini API, as you.</b> The assistant uses a key you create and paste in yourself, so the request is between you and Google. It happens when you press the button, never in the background.">Assistant</button>
           <button class="chip" data-dest="out" data-note="<b>Goes to OpenStreetMap Nominatim.</b> Only what you type when searching for a place to save. Your saved places and location history aren't sent.">Place search</button>
@@ -470,7 +473,7 @@
             Uploads a copy of Daybook's database and the images attached to your notes, so you can
             restore on a new device or keep two in step. This scope reaches
             <strong>only files Daybook created</strong>. It can't list or open anything else in your
-            Drive, and the backup sits in your account, not mine.
+            Drive, and the backup sits in your account, not ours.
           </p>
         </div>
 
@@ -502,7 +505,7 @@
         <h3 class="sub">What it doesn't do</h3>
         <ul class="ticks">
           <li>No ads, no analytics, no trackers.</li>
-          <li>No account to create, and no server of mine holding your entries.</li>
+          <li>No account to create, and no server of ours holding your entries.</li>
           <li>Nothing leaves the device unless you switch on the feature that sends it.</li>
         </ul>
         <p>
@@ -518,12 +521,12 @@
           <dd>On Google Play as <strong>Daybook</strong> (<code>com.MAIAArchitech.daybook</code>).
             In closed testing — <a href="#tester">join the test</a> to install it.</dd>
           <dt>Windows</dt>
-          <dd>Desktop build, with an optional pairing link to the phone app.</dd>
+          <dd>Desktop build on the <a href="https://apps.microsoft.com/detail/9pfhnplvdvc7" target="_blank" rel="noopener">Microsoft Store</a>, with an optional pairing link to the phone app.</dd>
           <dt>Storage</dt>
           <dd>One SQLite database inside the app's own storage, which other apps on the device can't read.</dd>
           <dt>Price</dt>
-          <dd>Free in the browser and on Android. The Windows build is paid &mdash;
-            <a href="index.html#contact">ask me</a> for it.</dd>
+          <dd>Free in the browser and on Android. $2.69 on the
+            <a href="https://apps.microsoft.com/detail/9pfhnplvdvc7" target="_blank" rel="noopener">Microsoft Store</a> for Windows.</dd>
         </dl>
       </div>
     </div>
@@ -549,8 +552,8 @@
         </details>
         <details>
           <summary>What does it cost?</summary>
-          <div class="ans">The browser and Android versions are free. The Windows build is paid &mdash;
-            <a href="index.html#contact">ask me</a> for it. There's no subscription either way: the
+          <div class="ans">The browser and Android versions are free. $2.69 on the
+            <a href="https://apps.microsoft.com/detail/9pfhnplvdvc7" target="_blank" rel="noopener">Microsoft Store</a> for Windows. There's no subscription either way: the
             assistant runs on your own free Gemini key, and <a href="#apikey">here is how to get
             one</a>.</div>
         </details>
