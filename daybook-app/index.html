@@ -51,5 +51,24 @@
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
   <script src="flutter_bootstrap.js" async></script>
+
+  <script>
+    // Flutter installs a service worker that answers from its cache first and
+    // only then fetches the new build in the background, so a deploy showed up
+    // one reload late - the old app on the visit after it shipped, the new one
+    // the visit after that. This reloads once, immediately, when a new worker
+    // has finished installing and is ready to serve, which is what makes an
+    // update appear on the visit it was deployed.
+    if ('serviceWorker' in navigator) {
+      var reloading = false;
+      navigator.serviceWorker.addEventListener('controllerchange', function () {
+        // Only when replacing a worker that was already serving this page; the
+        // very first install has nothing stale on screen to correct.
+        if (reloading) return;
+        reloading = true;
+        window.location.reload();
+      });
+    }
+  </script>
 </body>
 </html>

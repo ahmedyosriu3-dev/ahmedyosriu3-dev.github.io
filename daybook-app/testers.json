@@ -1,0 +1,20 @@
+{
+  "_readme": [
+    "Who may use the web copy of Daybook. Keep this in step with the tester",
+    "group at https://groups.google.com/g/daybook-testers - Google does not",
+    "let an app read a consumer group's membership, so the two are joined by",
+    "hand. See lib/services/web_access.dart.",
+    "",
+    "Entries are sha256('daybook-web-testers-v1:' + lowercased email), so this",
+    "file can sit on a public site without publishing anyone's address.",
+    "",
+    "To add a tester, run:",
+    "  python -c \"import hashlib;print(hashlib.sha256(('daybook-web-testers-v1:'+input().strip().lower()).encode()).hexdigest())\"",
+    "and paste the line it prints into \"hashes\" below. It takes effect as",
+    "soon as this file is on the site - the app reads it at sign-in, so no",
+    "rebuild is needed."
+  ],
+  "hashes": [
+    "83ef72367910c7beffd5c95659b16d1657c3bf2ab6895f02ed7956777857127a"
+  ]
+}
