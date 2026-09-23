@@ -1,0 +1,19 @@
+# MAIA Architech
+
+> MAIA Architech makes two apps for Android and Windows: Daybook, a private diary, task and activity-log app, and Finnish tutor, an app for learning Finnish that corrects your writing and explains the rule behind each change. No ads. Both apps are currently in a closed beta that anyone can join.
+
+## Apps
+
+- [Daybook](https://maiaarchitech.com/daybook.html): diary, tasks, places and activity log in one app. Everything stays in a database on your own device, with an optional assistant and optional Google Drive backup. Free in the browser and on Android; the Windows build is paid ($2.69) on the Microsoft Store.
+- [Finnish tutor](https://maiaarchitech.com/finnish-tutor.html): corrects Finnish sentences and explains the grammar rule behind each change, makes photographed pages tappable, transcribes speech on the device, and turns saved words into spaced-repetition review cards from a 175,000-word offline dictionary. Free on Android; the Windows build is paid ($2.69) on the Microsoft Store.
+
+## Get the apps
+
+- [Daybook on the Microsoft Store](https://apps.microsoft.com/detail/9pfhnplvdvc7)
+- [Finnish tutor on the Microsoft Store](https://apps.microsoft.com/detail/9nblzss5w2xj)
+- [Company homepage, FAQ and contact form](https://maiaarchitech.com/)
+
+## Privacy
+
+- [Daybook privacy policy](https://maiaarchitech.com/daybook-privacy/)
+- [Finnish tutor privacy policy](https://maiaarchitech.com/finnish-tutor-privacy/)
