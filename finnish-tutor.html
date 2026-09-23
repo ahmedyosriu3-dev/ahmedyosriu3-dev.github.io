@@ -63,8 +63,8 @@
       "@type": "HowTo",
       "name": "How to use Finnish tutor",
       "step": [
-        { "@type": "HowToStep", "name": "Write a sentence", "text": "Every change is marked, with the rule behind it in plain English." },
-        { "@type": "HowToStep", "name": "Photograph a page", "text": "Text is read on the device, and every word becomes tappable." },
+        { "@type": "HowToStep", "name": "Write a sentence", "text": "Type or paste it in and press check. Tap any marked change to see which case or verb form applies." },
+        { "@type": "HowToStep", "name": "Photograph a page", "text": "Point the camera at a page, then tap an unknown word to open it and save it." },
         { "@type": "HowToStep", "name": "Review what you saved", "text": "Saved words come back as cards, spaced so they stick." },
         { "@type": "HowToStep", "name": "See where you stand", "text": "Your level, and the topics your own mistakes point to." }
       ]
@@ -88,7 +88,7 @@
       </span>
     </a>
     <nav class="top" aria-label="Main">
-      <a href="#about" data-nav>Approach</a>
+      <a href="#tour" data-nav>Tour</a>
       <a href="index.html#apps" data-nav data-page="home">Apps</a>
       <a href="daybook.html" data-nav data-page="daybook">Daybook</a>
       <a href="finnish-tutor.html" data-nav data-page="finnish-tutor">Finnish tutor</a>
@@ -126,24 +126,17 @@
           <div class="getrow" aria-label="Where to get Finnish tutor">
             <a class="gettile" href="#get">
               <img src="assets/logo-google-play.png" alt="Google Play logo" width="88" height="88" loading="lazy">
-              <span><b>Google Play</b><i>Closed beta — join the test</i></span>
+              <span><b>Google Play</b><i>Free — closed beta, join the test</i></span>
             </a>
             <a class="gettile" href="https://apps.microsoft.com/detail/9nblzss5w2xj" target="_blank" rel="noopener">
               <img src="assets/logo-microsoft-store.svg" alt="Microsoft Store logo" width="88" height="88" loading="lazy">
-              <span><b>Microsoft Store</b><i>Out now — $2.69</i></span>
-            </a>
-            <a class="gettile" href="https://apps.microsoft.com/detail/9nblzss5w2xj" target="_blank" rel="noopener">
-              <img src="assets/logo-windows.svg" alt="Windows logo" width="88" height="88" loading="lazy">
-              <span><b>Windows</b><i>Desktop app, pairs with the phone</i></span>
+              <span><b>Microsoft Store</b><i>Windows — $2.69, pairs with the phone</i></span>
             </a>
             <a class="gettile is-ask" href="index.html#contact">
               <img src="assets/logo-web.svg" alt="Web browser" width="88" height="88" loading="lazy">
               <span><b>Web version</b><i>In the works — contact us</i></span>
             </a>
           </div>
-          <p class="plat-line">Free on Android. Google Play is a closed beta &mdash;
-            <a href="#get">join the test</a> first. The Windows desktop build is paid and out now on the
-            <a href="https://apps.microsoft.com/detail/9nblzss5w2xj" target="_blank" rel="noopener">Microsoft Store</a>.</p>
         </div>
         <div class="hero-phone-wrap">
           <div class="hero-phone-glow" style="--accent:var(--ft)"></div>
@@ -160,10 +153,38 @@
     </div>
   </div>
 
+  <section id="tour" class="alt">
+    <div class="wrap narrow">
+      <div class="sec-head reveal">
+        <span class="num">01 — SEE IT</span>
+        <h2>Watch the tour</h2>
+      </div>
+
+      <p class="lede reveal">
+        A full run through the app, recorded on the Windows build: checking what you write,
+        turning a recording into a transcript, reading a photographed page, and working
+        through a real textbook.
+      </p>
+
+      <div class="tourvid reveal">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/FSq710xom7w?rel=0"
+          title="Finnish tutor — a guided tour"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+      <p class="tourvid-cap">
+        About nine minutes. Sound on for the Finnish the app speaks, or follow the subtitles.
+      </p>
+    </div>
+  </section>
+
   <section id="get">
     <div class="wrap narrow">
       <div class="sec-head reveal">
-        <span class="num">01 — GET IT</span>
+        <span class="num">02 — GET IT</span>
         <h2>Join the test</h2>
       </div>
 
@@ -171,7 +192,7 @@
         <h3>Become a tester <span class="live">Closed beta</span></h3>
         <p>
           Finnish tutor is in closed testing, so Play only shows it to accounts that joined the tester
-          group. Two steps, once, with the Google account your phone uses.
+          group. Three steps, once, with the Google account your phone uses.
         </p>
         <ol class="steps">
           <li>
@@ -212,7 +233,7 @@
         </ol>
         <p class="fine">
           If Play says the app isn't available, the account on your phone usually isn't the one that
-          joined the group. The AI features also need your own free Gemini key — <a href="#apikey">here is how to make one</a>.
+          joined the group.
           Google Play is a trademark of Google LLC.
         </p>
       </div>
@@ -227,7 +248,7 @@
   <section id="apikey" class="alt" style="--accent:var(--ft); --accent-bg:var(--ft-soft);">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="num">02 &mdash; NEXT, THE KEY</span>
+        <span class="num">03 &mdash; NEXT, THE KEY</span>
         <h2>Set up your free Gemini key</h2>
         <p>Finnish tutor&rsquo;s AI half runs on a Google Gemini key that you create yourself, so the
           requests go straight from your device to Google rather than through us. It is free, takes
@@ -282,18 +303,13 @@
         </ol>
       </div>
 
-      <div class="keybadges reveal">
-        <span class="keybadge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Free tier, no card</span>
-        <span class="keybadge"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> The key stays on your device</span>
-        <span class="keybadge"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> About two minutes</span>
-      </div>
     </div>
   </section>
 
   <section id="overview">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="num">03 — WHAT IT DOES</span>
+        <span class="num">04 — WHAT IT DOES</span>
         <h2>Built for the way people actually study</h2>
       </div>
 
@@ -308,43 +324,7 @@
     </div>
   </section>
 
-  <section id="about" class="alt">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="num">04 — APPROACH</span>
-        <h2>The short version</h2>
-      </div>
-
-      <div class="pillars reveal">
-        <div class="pillar">
-          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg></span>
-          <h3>AI with a job to do</h3>
-          <p>It explains the rule you got wrong, not just the correction. It doesn&rsquo;t sit there waiting to chat.</p>
-        </div>
-        <div class="pillar">
-          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></span>
-          <h3>One app, not four</h3>
-          <p>Dictionary, reader, corrections and review cards in the same app, all feeding one word list.</p>
-        </div>
-        <div class="pillar">
-          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
-          <h3>Built for how you already work</h3>
-          <p>Photograph the page instead of retyping it. Speak instead of typing. Tap a word to look it up.</p>
-        </div>
-        <div class="pillar">
-          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
-          <h3>Quiet with your data</h3>
-          <p>Your sentences, recordings and word list stay on the device. There is no back end of ours for them to reach.</p>
-        </div>
-      </div>
-
-      <p class="note reveal">
-        Found a bug, or want something added? <a href="index.html#contact">Contact us</a>. It reaches the developers who build it.
-      </p>
-    </div>
-  </section>
-
-  <section id="howto">
+  <section id="howto" class="alt">
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="num">05 — USING IT</span>
@@ -363,7 +343,7 @@
                 <span class="wt-ic a-write"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg></span>
                 Write a sentence
               </h4>
-              <p>Every change is marked, with the rule behind it in plain English — down to which case or verb form applies.</p>
+              <p>Type or paste it in and press check. Tap any marked change to see which case or verb form applies.</p>
             </div>
           </div>
 
@@ -374,7 +354,7 @@
                 <span class="wt-ic a-shot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
                 Photograph a page
               </h4>
-              <p>The text is read on the device, and every word on it becomes a tap target with its own entry.</p>
+              <p>Point the camera at a textbook or a sign, then tap an unknown word to open it and save it.</p>
             </div>
           </div>
 
@@ -417,7 +397,7 @@
     </div>
   </section>
 
-  <section id="data" class="alt">
+  <section id="data">
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="num">06 — YOUR DATA</span>
@@ -457,7 +437,7 @@
     </div>
   </section>
 
-  <section id="details">
+  <section id="details" class="alt">
     <div class="wrap narrow">
       <div class="sec-head reveal">
         <span class="num">07 — PERMISSIONS</span>
@@ -512,7 +492,6 @@
           <li>No ads, no analytics, no trackers, no crash reporting.</li>
           <li>No accounts, no back end, no server of ours.</li>
           <li>Your sentences, recordings, photos and word list never reach us.</li>
-          <li>Nothing is sent in the background. A request happens when you press a button.</li>
         </ul>
         <p>
           The <a href="finnish-tutor-privacy/">privacy policy</a> goes feature by feature and says
@@ -525,19 +504,16 @@
           <dd>On Google Play as <strong>Finnish tutor</strong> (<code>com.ahmedyosri.finnish_tutor</code>).
             In closed testing — <a href="#tester">join the test</a> to install it.</dd>
           <dt>Windows</dt>
-          <dd>Desktop build, with one-scan QR pairing to carry your settings across from the phone.</dd>
-          <dt>Offline</dt>
-          <dd>174,932 bundled headwords, on-device text recognition and on-device speech-to-text.</dd>
+          <dd>Desktop build on the <a href="https://apps.microsoft.com/detail/9nblzss5w2xj" target="_blank" rel="noopener">Microsoft Store</a>, with one-scan QR pairing to carry your settings across from the phone.</dd>
           <dt>Price</dt>
           <dd>Free on Android. $2.69 on the
-            <a href="https://apps.microsoft.com/detail/9nblzss5w2xj" target="_blank" rel="noopener">Microsoft Store</a> for Windows. Either way the AI features run on
-            <a href="#apikey">your own free Gemini key</a>, so there is no subscription.</dd>
+            <a href="https://apps.microsoft.com/detail/9nblzss5w2xj" target="_blank" rel="noopener">Microsoft Store</a> for Windows.</dd>
         </dl>
       </div>
     </div>
   </section>
 
-  <section id="faq" class="alt">
+  <section id="faq">
     <div class="wrap narrow">
       <div class="sec-head reveal">
         <span class="num">08 — QUESTIONS</span>
@@ -546,21 +522,17 @@
       <div class="faq reveal">
         <details>
           <summary>Does it work offline?</summary>
-          <div class="ans">The offline half does: about 175,000 bundled headwords, tap-a-word lookup,
-            word forms, your saved list, review cards, the PDF reader, text recognition and
-            speech-to-text. Only the parts that need a language model — grammar reasoning, translation
-            nuance, exercise reading and progress reviews — need a connection and your own key.</div>
+          <div class="ans">Everything except the AI features: grammar reasoning, translation nuance, exercise reading
+            and progress reviews. Those need a connection and <a href="#apikey">your own free key</a>.</div>
         </details>
         <details>
           <summary>Do I pay for the AI features?</summary>
-          <div class="ans">No. You bring your own free Gemini key, so there's nothing to buy from us.</div>
-        </details>
-        <details>
-          <summary>Which platforms are supported?</summary>
-          <div class="ans">Android, and Windows from the Microsoft Store, with a QR scan to pair the two so your settings carry
-            across.</div>
+          <div class="ans">No. They run on your own free Gemini key, so there's no subscription.</div>
         </details>
       </div>
+      <p class="note reveal">
+        Found a bug, or want something added? <a href="index.html#contact">Contact us</a>. It reaches the developers who build it.
+      </p>
     </div>
   </section>
 

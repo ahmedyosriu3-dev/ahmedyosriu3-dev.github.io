@@ -304,7 +304,7 @@
     if (topBtn) topBtn.classList.toggle('show', y > 620);
     if (hdr) hdr.classList.toggle('stuck', y > 8);
     var cur = null, probe = y + 140;
-    secs.forEach(function (s) { if (s.offsetTop <= probe) cur = s.id; });
+    secs.forEach(function (s) { if (s.offsetTop <= probe && s.offsetTop + s.offsetHeight > probe) cur = s.id; });
     navLinks.forEach(function (a) {
       var href = a.getAttribute('href');
       var isHash = href.charAt(0) === '#';
@@ -318,4 +318,28 @@
     if (!tick) { tick = true; requestAnimationFrame(onScroll); }
   }, { passive: true });
   onScroll();
+})();
+
+/* ---------- tour video language: Arabic for Arabic-language browsers, switchable ---------- */
+(function () {
+  var group = document.querySelector('[data-vidlang]');
+  if (!group) return;
+  var frame = group.parentNode.querySelector('.tourvid iframe');
+  var btns = group.querySelectorAll('button[data-lang]');
+  function pick(lang) {
+    btns.forEach(function (b) {
+      var on = b.getAttribute('data-lang') === lang;
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (on && frame.getAttribute('src') !== b.getAttribute('data-src')) {
+        frame.setAttribute('src', b.getAttribute('data-src'));
+        frame.setAttribute('title', b.getAttribute('data-title'));
+      }
+    });
+  }
+  var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+  var prefersArabic = /^ar\b/i.test(langs[0] || '');
+  if (prefersArabic) pick('ar');
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { pick(b.getAttribute('data-lang')); });
+  });
 })();
