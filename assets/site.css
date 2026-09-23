@@ -699,7 +699,7 @@ ol.steps p { margin:0 0 10px; font-size:14.2px; color:var(--ink-soft); max-width
   border:1px dashed var(--accent); color:var(--accent); background:transparent;
   transition:background .2s, transform .2s;
 }
-.card-test:hover { transform:translateY(-2px); background:var(--accent); color:var(--on-accent); border-style:solid; }
+.card-test:hover, .app .links a.card-test:hover { transform:translateY(-2px); background:var(--accent); color:var(--on-accent); border-style:solid; }
 
 /* ---------- faq ---------- */
 .faq details {
