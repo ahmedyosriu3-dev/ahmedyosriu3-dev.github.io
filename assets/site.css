@@ -859,3 +859,9 @@ footer.site .fine { margin-top:16px; font-size:12.5px; }
   .js .reveal { opacity:1 !important; transform:none !important; }
   .rotator span:first-child { opacity:1; }
 }
+
+/* ---------- Daybook: wide Windows screenshots ---------- */
+.screen.wide {
+  aspect-ratio:16/9; border-radius:18px; background:var(--surface-2);
+  border:1px solid var(--rule); box-shadow:var(--shadow-lg);
+}

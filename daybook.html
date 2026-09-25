@@ -32,6 +32,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/daybook.css">
 
 <script type="application/ld+json">
 {
@@ -44,7 +45,12 @@
       "applicationCategory": "LifestyleApplication",
       "operatingSystem": "Android, Windows",
       "description": "A diary, task and activity-log app that keeps everything in a database on your own device, with an optional assistant and optional Google Drive backup.",
-      "screenshot": "https://maiaarchitech.com/assets/db-1-tasks.webp",
+      "screenshot": [
+        "https://maiaarchitech.com/assets/dbs-01.webp",
+        "https://maiaarchitech.com/assets/dbs-02.webp",
+        "https://maiaarchitech.com/assets/dbs-03.webp",
+        "https://maiaarchitech.com/assets/dbs-05.webp"
+      ],
       "offers": [
         { "@type": "Offer", "name": "Web and Android", "price": "0", "priceCurrency": "USD" },
         { "@type": "Offer", "name": "Windows", "price": "2.69", "priceCurrency": "USD", "url": "https://apps.microsoft.com/detail/9pfhnplvdvc7" }
@@ -53,20 +59,33 @@
       "privacyPolicy": "https://maiaarchitech.com/daybook-privacy/"
     },
     {
+      "@type": "VideoObject",
+      "name": "He said one sentence. His whole week planned itself. – Daybook",
+      "description": "Ahmed's September in Bristol: one spoken sentence becomes dated tasks, a school letter becomes a to-do list, work hides after hours, his run logs itself, Daybook finds his car and answers questions from his own notes.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/D7bRyhwRlqk/hqdefault.jpg",
+      "uploadDate": "2026-09-25",
+      "duration": "PT2M38S",
+      "inLanguage": "en",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/D7bRyhwRlqk",
+      "publisher": { "@id": "https://maiaarchitech.com/#org" },
+      "hasPart": [
+        { "@type": "Clip", "name": "Meet Ahmed", "startOffset": 0, "endOffset": 18, "url": "https://www.youtube.com/watch?v=D7bRyhwRlqk&t=0" },
+        { "@type": "Clip", "name": "Just say it", "startOffset": 18, "endOffset": 37, "url": "https://www.youtube.com/watch?v=D7bRyhwRlqk&t=18" },
+        { "@type": "Clip", "name": "Snap a letter", "startOffset": 37, "endOffset": 53, "url": "https://www.youtube.com/watch?v=D7bRyhwRlqk&t=37" },
+        { "@type": "Clip", "name": "Big jobs, small steps", "startOffset": 53, "endOffset": 65, "url": "https://www.youtube.com/watch?v=D7bRyhwRlqk&t=53" },
+        { "@type": "Clip", "name": "Work stays at work", "startOffset": 65, "endOffset": 79, "url": "https://www.youtube.com/watch?v=D7bRyhwRlqk&t=65" },
+        { "@type": "Clip", "name": "The run logs itself", "startOffset": 79, "endOffset": 93, "url": "https://www.youtube.com/watch?v=D7bRyhwRlqk&t=79" },
+        { "@type": "Clip", "name": "Find your car", "startOffset": 93, "endOffset": 104, "url": "https://www.youtube.com/watch?v=D7bRyhwRlqk&t=93" },
+        { "@type": "Clip", "name": "Speak your diary", "startOffset": 104, "endOffset": 122, "url": "https://www.youtube.com/watch?v=D7bRyhwRlqk&t=104" },
+        { "@type": "Clip", "name": "Ask your notes", "startOffset": 122, "endOffset": 137, "url": "https://www.youtube.com/watch?v=D7bRyhwRlqk&t=122" },
+        { "@type": "Clip", "name": "One calendar", "startOffset": 137, "endOffset": 158, "url": "https://www.youtube.com/watch?v=D7bRyhwRlqk&t=137" }
+      ]
+    },
+    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "MAIA Architech", "item": "https://maiaarchitech.com/" },
         { "@type": "ListItem", "position": 2, "name": "Daybook", "item": "https://maiaarchitech.com/daybook.html" }
-      ]
-    },
-    {
-      "@type": "HowTo",
-      "name": "How to use Daybook",
-      "step": [
-        { "@type": "HowToStep", "name": "Add a task", "text": "Give it a due date, a repeat, or split it into subtasks." },
-        { "@type": "HowToStep", "name": "Write a note", "text": "Open any day to find what you wrote on it, sketches and photos included." },
-        { "@type": "HowToStep", "name": "Check the calendar", "text": "Dated tasks, birthdays and imported holidays in one view." },
-        { "@type": "HowToStep", "name": "Look back", "text": "The activity log shows what you did and where, day by day." }
       ]
     }
   ]
@@ -88,11 +107,11 @@
       </span>
     </a>
     <nav class="top" aria-label="Main">
-      <a href="#tour" data-nav>Tour</a>
+      <a href="#tour" data-nav>Film</a>
+      <a href="#screens" data-nav>Screens</a>
       <a href="index.html#apps" data-nav data-page="home">Apps</a>
       <a href="daybook.html" data-nav data-page="daybook">Daybook</a>
       <a href="finnish-tutor.html" data-nav data-page="finnish-tutor">Finnish tutor</a>
-      <a href="index.html#faq" data-nav data-page="home">Questions</a>
       <a href="index.html#contact" data-nav data-page="home">Contact</a>
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch colour theme">◐</button>
     </nav>
@@ -110,18 +129,18 @@
   <div class="hero h-db">
     <canvas id="lattice" aria-hidden="true"></canvas>
     <div class="wrap">
-      <div class="hero-inner has-phone">
+      <div class="hero-inner has-live">
         <div>
           <div class="hero-icon"><img src="assets/daybook-icon.png" alt="Daybook app icon" width="64" height="64"></div>
           <p class="kicker on-db">Daybook · diary &amp; task app</p>
           <h1 class="tight">Everything about your day, <span class="grad">in one place.</span></h1>
           <p class="lede">
-            Tasks that repeat, notes you can sketch on, the places you go and a log of what you
-            actually did. An assistant is there when you want one.
+            Tasks, notes, a diary, a calendar and a log of where the day went. Say it or snap it,
+            and the assistant does the sorting.
           </p>
           <div class="cta">
             <a class="btn on-db solid" href="daybook-app/" target="_blank" rel="noopener">Open in your browser <span class="ar">→</span></a>
-            <a class="btn ghost" href="#howto">How it works</a>
+            <a class="btn ghost" href="#tour"><span class="play-dot" aria-hidden="true"></span> Watch the film</a>
           </div>
           <div class="getrow" aria-label="Where to get Daybook">
             <a class="gettile" href="#get">
@@ -142,15 +161,30 @@
             </a>
           </div>
         </div>
-        <div class="hero-phone-wrap">
-          <div class="hero-phone-glow" style="--accent:var(--db)"></div>
-          <div class="phone" data-gallery data-interval="4600">
-            <div class="screen">
-              <img class="on" src="assets/db-1-tasks.webp" alt="Daybook screenshot: personal task list with due dates, tags and completed items" width="520" height="1154" loading="lazy">
-              <img src="assets/db-2-notes.webp" alt="Daybook screenshot: notes view with written notes and attachments" width="520" height="1154" loading="lazy">
-              <img src="assets/db-3-calendar.webp" alt="Daybook screenshot: calendar view showing dated tasks and events" width="520" height="1154" loading="lazy">
-              <img src="assets/db-4-activity.webp" alt="Daybook screenshot: activity log recording what happened during the day" width="520" height="1154" loading="lazy">
+        <div class="livebox">
+          <span class="hero-phone-glow" style="--accent:var(--db)"></span>
+          <div class="live-stage">
+            <div class="phone live-phone">
+              <div class="screen">
+                <video muted loop playsinline autoplay preload="auto" data-hero
+                       poster="assets/daybook-hero-poster.webp" width="432" height="960"
+                       aria-label="Daybook recorded on a phone: a typed sentence becomes three tasks, a school letter becomes nine, a question is answered from notes, the week calendar, and the parked car">
+                  <source src="assets/daybook-hero-loop.mp4" type="video/mp4">
+                </video>
+              </div>
             </div>
+            <div class="pop p1" data-from="4.2" data-to="11.1"><span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>3 tasks added</b><i>from one typed sentence</i></span></div>
+            <div class="pop p2" data-from="18.0" data-to="22.1"><span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span><span><b>9 tasks from one photo</b><i>the school letter, read for you</i></span></div>
+            <div class="pop p3" data-from="22.6" data-to="28.2"><span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.3 6.3l2.5 2.5M15.2 15.2l2.5 2.5M6.3 17.7l2.5-2.5M15.2 8.8l2.5-2.5"/></svg></span><span><b>1:47:12, a new PB</b><i>answered from your own notes</i></span></div>
+            <div class="pop p4" data-from="28.6" data-to="32.8"><span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v3M12 8v3M17 8v3"/><path d="M7 4h.01M12 4h.01M17 4h.01"/></svg></span><span><b>Mum’s 65th</b><i>Saturday · 12:30 · lunch in Bath</i></span></div>
+            <div class="pop p5" data-from="33.2" data-to="37.4"><span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span><span><b>Row F, bay 18</b><i>parked car remembered, with directions</i></span></div>
+          </div>
+          <div class="story" role="group" aria-label="Jump to a moment in the recording">
+            <button type="button" data-at="0"><i></i>Say it</button>
+            <button type="button" data-at="11.22"><i></i>Snap it</button>
+            <button type="button" data-at="22.17"><i></i>Ask it</button>
+            <button type="button" data-at="28.29"><i></i>Plan it</button>
+            <button type="button" data-at="32.94"><i></i>Find it</button>
           </div>
         </div>
       </div>
@@ -158,44 +192,162 @@
   </div>
 
   <section id="tour" class="alt">
-    <div class="wrap narrow">
-      <div class="sec-head reveal">
-        <span class="num">01 — SEE IT</span>
-        <h2>Watch the tour</h2>
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="num">01 — THE FILM</span>
+        <h2>Ahmed’s September, in two and a half minutes</h2>
+        <p>An anime Ahmed, a real city, and the real app on his phone. Jump to any moment below.</p>
       </div>
 
-      <p class="lede reveal">
-        A month in the life of Dan, a dad, runner and project manager: work and home kept apart,
-        one spoken sentence turned into dated tasks, a school letter photographed into a to-do list,
-        and the same Daybook on his Windows PC.
-      </p>
+      <div class="film reveal" data-film>
+        <div class="vidlang" role="group" aria-label="Film language">
+          <button type="button" data-lang="en" data-id="D7bRyhwRlqk" data-title="Daybook — Ahmed’s September" aria-pressed="true">English · Bristol</button>
+          <button type="button" data-lang="ar" data-id="Xqb5fNqUgrI" data-title="Daybook — أحمد في القاهرة" aria-pressed="false"><span lang="ar">العربية</span> · Cairo</button>
+        </div>
 
-      <div class="vidlang reveal" role="group" aria-label="Video language" data-vidlang>
-        <button type="button" data-lang="en" data-src="https://www.youtube-nocookie.com/embed/D7bRyhwRlqk?rel=0"
-          data-title="Daybook — a guided tour" aria-pressed="true">English</button>
-        <button type="button" data-lang="ar" lang="ar" data-src="https://www.youtube-nocookie.com/embed/Xqb5fNqUgrI?rel=0"
-          data-title="Daybook — جولة في التطبيق" aria-pressed="false">العربية</button>
-      </div>
+        <div class="tourvid">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/D7bRyhwRlqk?rel=0&amp;enablejsapi=1"
+            title="Daybook — Ahmed’s September"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
 
-      <div class="tourvid reveal">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/D7bRyhwRlqk?rel=0"
-          title="Daybook — a guided tour"
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+        <div class="chbar" aria-hidden="true"></div>
+
+        <ol class="chapters" data-lang="en" data-end="158" aria-label="Chapters of the English film">
+          <li><a href="https://www.youtube.com/watch?v=D7bRyhwRlqk&amp;t=0s" data-t="0"><span class="th"><img src="assets/dbc-en-01.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">0:00</span></span><b>Meet Ahmed</b><span class="d">Dad, runner and project manager in Bristol.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=D7bRyhwRlqk&amp;t=18s" data-t="18"><span class="th"><img src="assets/dbc-en-02.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">0:18</span></span><b>Just say it</b><span class="d">One sentence on the walk to work becomes three dated tasks.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=D7bRyhwRlqk&amp;t=37s" data-t="37"><span class="th"><img src="assets/dbc-en-03.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">0:37</span></span><b>Snap a letter</b><span class="d">A school letter, photographed into a to-do list.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=D7bRyhwRlqk&amp;t=53s" data-t="53"><span class="th"><img src="assets/dbc-en-04.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">0:53</span></span><b>Big jobs, small steps</b><span class="d">The garage shelves, split into steps he can tick off.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=D7bRyhwRlqk&amp;t=65s" data-t="65"><span class="th"><img src="assets/dbc-en-05.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">1:05</span></span><b>Work stays at work</b><span class="d">After hours, the Work tab hides itself.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=D7bRyhwRlqk&amp;t=79s" data-t="79"><span class="th"><img src="assets/dbc-en-06.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">1:19</span></span><b>The run logs itself</b><span class="d">A saved place starts the activity log.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=D7bRyhwRlqk&amp;t=93s" data-t="93"><span class="th"><img src="assets/dbc-en-07.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">1:33</span></span><b>Find your car</b><span class="d">Daybook remembers where he parked.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=D7bRyhwRlqk&amp;t=104s" data-t="104"><span class="th"><img src="assets/dbc-en-08.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">1:44</span></span><b>Speak your diary</b><span class="d">He talks; the AI writes a tidy entry.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=D7bRyhwRlqk&amp;t=122s" data-t="122"><span class="th"><img src="assets/dbc-en-09.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">2:02</span></span><b>Ask your notes</b><span class="d">“How fast was my half marathon?” Answered from his notes.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=D7bRyhwRlqk&amp;t=137s" data-t="137"><span class="th"><img src="assets/dbc-en-10.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">2:17</span></span><b>One calendar</b><span class="d">Mum’s 65th, and everything else, in one view.</span></a></li>
+        </ol>
+
+        <ol class="chapters" data-lang="ar" data-end="190" dir="rtl" lang="ar" aria-label="فصول الفيلم العربي" hidden>
+          <li><a href="https://www.youtube.com/watch?v=Xqb5fNqUgrI&amp;t=0s" data-t="0"><span class="th"><img src="assets/dbc-ar-01.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">0:00</span></span><b>تعرّف على أحمد</b><span class="d">أب ومحب للرياضة ومهندس موقع في القاهرة.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=Xqb5fNqUgrI&amp;t=19s" data-t="19"><span class="th"><img src="assets/dbc-ar-02.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">0:19</span></span><b>قلها كما تشاء</b><span class="d">جملة واحدة تتحول إلى مهام بمواعيدها.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=Xqb5fNqUgrI&amp;t=47s" data-t="47"><span class="th"><img src="assets/dbc-ar-03.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">0:47</span></span><b>صوّر الورقة</b><span class="d">ورقة المدرسة تصبح قائمة مهام.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=Xqb5fNqUgrI&amp;t=69s" data-t="69"><span class="th"><img src="assets/dbc-ar-04.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">1:09</span></span><b>مشروع كبير، خطوات صغيرة</b><span class="d">مكتبة أنس، خطوة بخطوة.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=Xqb5fNqUgrI&amp;t=85s" data-t="85"><span class="th"><img src="assets/dbc-ar-05.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">1:25</span></span><b>العمل يبقى في العمل</b><span class="d">بعد الدوام تختفي مهام العمل.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=Xqb5fNqUgrI&amp;t=103s" data-t="103"><span class="th"><img src="assets/dbc-ar-06.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">1:43</span></span><b>يسجّل وحده</b><span class="d">عند الوصول إلى مكان محفوظ يبدأ التسجيل تلقائيًا.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=Xqb5fNqUgrI&amp;t=119s" data-t="119"><span class="th"><img src="assets/dbc-ar-07.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">1:59</span></span><b>أين السيارة؟</b><span class="d">Daybook يتذكر أين أوقفتها.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=Xqb5fNqUgrI&amp;t=133s" data-t="133"><span class="th"><img src="assets/dbc-ar-08.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">2:13</span></span><b>يومياتك</b><span class="d">احكِ يومك، ويرتّبه الذكاء الاصطناعي.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=Xqb5fNqUgrI&amp;t=153s" data-t="153"><span class="th"><img src="assets/dbc-ar-09.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">2:33</span></span><b>اسأل ملاحظاتك</b><span class="d">سؤال عادي، وإجابة من كلماتك أنت.</span></a></li>
+          <li><a href="https://www.youtube.com/watch?v=Xqb5fNqUgrI&amp;t=169s" data-t="169"><span class="th"><img src="assets/dbc-ar-10.webp" alt="" width="480" height="270" loading="lazy"><span class="tc">2:49</span></span><b>تقويم واحد</b><span class="d">عيد ميلاد ماما، وكل شيء آخر، في مكان واحد.</span></a></li>
+        </ol>
+
+        <p class="tourvid-cap">2:38 in English, set in Bristol · 3:10 in Arabic, set in Cairo.</p>
       </div>
-      <p class="tourvid-cap">
-        About three and a half minutes in English, five in Arabic.
-      </p>
     </div>
   </section>
 
-  <section id="get">
+  <section id="screens" class="stage">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="num">02 — WHAT IT DOES</span>
+        <h2>Eight screens, eight reasons</h2>
+        <p>Swipe through. Where a screen has a moment in the film, one tap plays it.</p>
+      </div>
+    </div>
+
+    <div class="reel reveal" data-reel tabindex="0" aria-label="Daybook screens, use the arrow keys to move">
+      <figure>
+        <img src="assets/dbs-01.webp" alt="Your day, sorted. Tasks, notes, diary and calendar in one calm app, with AI that does the sorting. Shown: a personal task list where a big job is split into small steps." width="720" height="1280" loading="lazy">
+        <figcaption><button type="button" class="reel-go" data-chapter="4"><span class="play-dot" aria-hidden="true"></span> In the film <span class="at">0:53</span></button></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/dbs-02.webp" alt="Say one sentence. Get dated tasks. Type or speak naturally and Daybook fills in dates, times, notes and steps. Nothing is saved until you approve." width="720" height="1280" loading="lazy">
+        <figcaption><button type="button" class="reel-go" data-chapter="2"><span class="play-dot" aria-hidden="true"></span> In the film <span class="at">0:18</span></button></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/dbs-03.webp" alt="Snap a letter. Every date is a task. School letters, posters, tickets and screenshots: nine tasks from one photo." width="720" height="1280" loading="lazy">
+        <figcaption><button type="button" class="reel-go" data-chapter="3"><span class="play-dot" aria-hidden="true"></span> In the film <span class="at">0:37</span></button></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/dbs-04.webp" alt="Ask your notes anything. Write the day as it happens, then ask in plain English. The answer comes from your own notes." width="720" height="1280" loading="lazy">
+        <figcaption><button type="button" class="reel-go" data-chapter="9"><span class="play-dot" aria-hidden="true"></span> In the film <span class="at">2:02</span></button></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/dbs-05.webp" alt="Everything on one calendar. Tasks, events, notes, birthdays and repeats, by day, week or month." width="720" height="1280" loading="lazy">
+        <figcaption><button type="button" class="reel-go" data-chapter="10"><span class="play-dot" aria-hidden="true"></span> In the film <span class="at">2:17</span></button></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/dbs-06.webp" alt="Log your day. Find your car. One tap to start, or let your saved places start it for you. Parking remembered, with directions back." width="720" height="1280" loading="lazy">
+        <figcaption><button type="button" class="reel-go" data-chapter="7"><span class="play-dot" aria-hidden="true"></span> In the film <span class="at">1:33</span></button></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/dbs-07.webp" alt="Plan my day. How am I doing? An assistant that already knows your routine, tasks and calendar builds a realistic plan in seconds." width="720" height="1280" loading="lazy">
+        <figcaption><a class="reel-go" href="daybook-app/" target="_blank" rel="noopener">Try it in your browser <span class="ar">→</span></a></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/dbs-08.webp" alt="Duplicates merged. Backed up to Drive. Daybook spots repeated tasks, merges them, and keeps everything in your own Google Drive. Android, Windows and web." width="720" height="1280" loading="lazy">
+        <figcaption><a class="reel-go" href="#data">Where your data goes <span class="ar">→</span></a></figcaption>
+      </figure>
+    </div>
+
+    <div class="reel-ctl" aria-label="Screens">
+      <button type="button" class="reel-arrow" data-dir="-1" aria-label="Previous screen">←</button>
+      <div class="reel-dots"></div>
+      <button type="button" class="reel-arrow" data-dir="1" aria-label="Next screen">→</button>
+    </div>
+  </section>
+
+  <section id="windows">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="num">03 — ON WINDOWS</span>
+        <h2>The same Daybook, on your desk</h2>
+        <p>The desktop app pairs with your phone, so a task added on one is on the other.</p>
+      </div>
+
+      <div class="deskwrap reveal">
+        <div class="desk" data-gallery data-interval="5200">
+          <div class="desk-bar" aria-hidden="true"><i></i><i></i><i></i><span>Daybook for Windows</span><em class="desk-hint">Click to enlarge</em></div>
+          <button type="button" class="desk-open" aria-label="Enlarge this screenshot"></button>
+          <div class="screen wide">
+            <img class="on" src="assets/dbw-01_your_day_sorted.webp" data-full="assets/dbw-01_your_day_sorted-full.webp" alt="Daybook for Windows: your day sorted, personal and work tasks kept apart, with the phone beside it" width="1600" height="900" loading="lazy">
+            <img src="assets/dbw-02_month_at_a_glance.webp" data-full="assets/dbw-02_month_at_a_glance-full.webp" alt="Daybook for Windows: the whole month at a glance, with tasks, events, notes, birthdays and repeats" width="1600" height="900" loading="lazy">
+            <img src="assets/dbw-03_notes_and_diary.webp" data-full="assets/dbw-03_notes_and_diary-full.webp" alt="Daybook for Windows: write it down, ask it later, notes and a diary you can question in plain English" width="1600" height="900" loading="lazy">
+            <img src="assets/dbw-04_ai_assistant.webp" data-full="assets/dbw-04_ai_assistant-full.webp" alt="Daybook for Windows: your assistant knows your week, plans the rest of today or reports on any stretch of time" width="1600" height="900" loading="lazy">
+            <img src="assets/dbw-05_say_it_snap_it.webp" data-full="assets/dbw-05_say_it_snap_it-full.webp" alt="Daybook: say it, snap it, sorted. One sentence or one photo becomes dated tasks, duplicates get merged" width="1600" height="900" loading="lazy">
+            <img src="assets/dbw-06_work_and_home.webp" data-full="assets/dbw-06_work_and_home-full.webp" alt="Daybook for Windows: work and home kept apart, the Work list hides itself outside working hours" width="1600" height="900" loading="lazy">
+            <img src="assets/dbw-07_log_your_day.webp" data-full="assets/dbw-07_log_your_day-full.webp" alt="Daybook on the phone: log your day and find your car, and everything you log shows up on your PC" width="1600" height="900" loading="lazy">
+            <img src="assets/dbw-08_every_device.webp" data-full="assets/dbw-08_every_device-full.webp" alt="One Daybook, every device: Windows, Android and web, synced through your own Google Drive" width="1600" height="900" loading="lazy">
+          </div>
+        </div>
+        <div class="deskrail" data-nav-for>
+          <button type="button" class="on" aria-label="Your day"><img src="assets/dbw-01_your_day_sorted.webp" alt="" width="1600" height="900" loading="lazy"></button>
+          <button type="button" aria-label="Month"><img src="assets/dbw-02_month_at_a_glance.webp" alt="" width="1600" height="900" loading="lazy"></button>
+          <button type="button" aria-label="Notes"><img src="assets/dbw-03_notes_and_diary.webp" alt="" width="1600" height="900" loading="lazy"></button>
+          <button type="button" aria-label="Assistant"><img src="assets/dbw-04_ai_assistant.webp" alt="" width="1600" height="900" loading="lazy"></button>
+          <button type="button" aria-label="Say it, snap it"><img src="assets/dbw-05_say_it_snap_it.webp" alt="" width="1600" height="900" loading="lazy"></button>
+          <button type="button" aria-label="Work and home"><img src="assets/dbw-06_work_and_home.webp" alt="" width="1600" height="900" loading="lazy"></button>
+          <button type="button" aria-label="Activity"><img src="assets/dbw-07_log_your_day.webp" alt="" width="1600" height="900" loading="lazy"></button>
+          <button type="button" aria-label="Every device"><img src="assets/dbw-08_every_device.webp" alt="" width="1600" height="900" loading="lazy"></button>
+        </div>
+        <dialog class="lb" aria-label="Daybook for Windows, enlarged">
+          <img src="" alt="" width="1600" height="900">
+          <button type="button" class="lb-x" aria-label="Close">✕</button>
+          <button type="button" class="lb-arrow prev" data-dir="-1" aria-label="Previous screenshot">←</button>
+          <button type="button" class="lb-arrow next" data-dir="1" aria-label="Next screenshot">→</button>
+          <p class="lb-cap"></p>
+        </dialog>
+        <p class="tourvid-cap">The same pictures as the <a href="https://apps.microsoft.com/detail/9pfhnplvdvc7" target="_blank" rel="noopener">Microsoft Store listing</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="get" class="alt">
     <div class="wrap narrow">
       <div class="sec-head reveal">
-        <span class="num">02 — GET IT</span>
+        <span class="num">04 — GET IT</span>
         <h2>Join the test</h2>
       </div>
 
@@ -259,10 +411,10 @@
     </div>
   </section>
 
-  <section id="apikey" class="alt" style="--accent:var(--db); --accent-bg:var(--db-soft);">
+  <section id="apikey" style="--accent:var(--db); --accent-bg:var(--db-soft);">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="num">03 &mdash; NEXT, THE KEY</span>
+        <span class="num">05 &mdash; NEXT, THE KEY</span>
         <h2>Set up your free Gemini key</h2>
         <p>Daybook&rsquo;s assistant runs on a Google Gemini key that you create yourself, so the
           requests go straight from your phone to Google rather than through us. It is free, takes
@@ -322,104 +474,26 @@
     </div>
   </section>
 
-  <section id="overview">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="num">04 — WHAT IT DOES</span>
-        <h2>Six things, one database</h2>
-      </div>
-
-      <div class="feat reveal">
-        <div class="f"><h4>Tasks</h4><p>Work and personal lists, due dates, repeats, subtasks, and a record of what you finished.</p></div>
-        <div class="f"><h4>Notes</h4><p>Write, sketch, attach a photo. It stays with the day it belongs to.</p></div>
-        <div class="f"><h4>Activity log</h4><p>What you did and where. Fill it in yourself, or let saved places do it for you.</p></div>
-        <div class="f"><h4>Places</h4><p>Save somewhere you go often and arrivals get logged without you touching anything.</p></div>
-        <div class="f"><h4>Dates</h4><p>Birthdays, recurring events, and the public holidays you choose to import.</p></div>
-        <div class="f"><h4>Assistant</h4><p>Ask it to summarise your week or turn a note into a task. Runs on your own free Gemini key.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="howto" class="alt">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="num">05 — USING IT</span>
-        <h2>Four steps cover most of it</h2>
-        <p>Scroll and the phone follows along, or tap a step to jump to it.</p>
-      </div>
-
-      <div class="wt reveal">
-        <div class="wt-rail" data-gallery-target="wtGalleryDb">
-          <div class="wt-fill"></div>
-
-          <div class="wt-step" data-caption="Tasks">
-            <span class="wt-dot">1</span>
-            <div class="wt-card">
-              <h4>
-                <span class="wt-ic a-tap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg></span>
-                Add a task
-              </h4>
-              <p>Give it a due date, a repeat, or split it into subtasks. It saves as you type.</p>
-            </div>
-          </div>
-
-          <div class="wt-step" data-caption="Notes">
-            <span class="wt-dot">2</span>
-            <div class="wt-card">
-              <h4>
-                <span class="wt-ic a-write"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg></span>
-                Write a note
-              </h4>
-              <p>Open any day to find what you wrote on it, sketches and photos included.</p>
-            </div>
-          </div>
-
-          <div class="wt-step" data-caption="Calendar">
-            <span class="wt-dot">3</span>
-            <div class="wt-card">
-              <h4>
-                <span class="wt-ic a-rise"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span>
-                Check the calendar
-              </h4>
-              <p>Dated tasks, birthdays and any holidays you imported, in one view.</p>
-            </div>
-          </div>
-
-          <div class="wt-step" data-caption="Activity">
-            <span class="wt-dot">4</span>
-            <div class="wt-card">
-              <h4>
-                <span class="wt-ic a-pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
-                Look back
-              </h4>
-              <p>The activity log shows what you did and where, day by day, including the arrivals your saved places logged.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="wt-phone-wrap">
-          <div class="hero-phone-glow" style="--accent:var(--db); position:absolute; inset:-30px; z-index:-1;"></div>
-          <div class="phone" id="wtGalleryDb" data-gallery data-manual>
-            <div class="screen">
-              <img class="on" src="assets/db-1-tasks.webp" alt="Daybook screenshot: personal task list with due dates, tags and completed items" width="520" height="1154" loading="lazy">
-              <img src="assets/db-2-notes.webp" alt="Daybook screenshot: notes view with written notes and attachments" width="520" height="1154" loading="lazy">
-              <img src="assets/db-3-calendar.webp" alt="Daybook screenshot: calendar view showing dated tasks and events" width="520" height="1154" loading="lazy">
-              <img src="assets/db-4-activity.webp" alt="Daybook screenshot: activity log recording what happened during the day" width="520" height="1154" loading="lazy">
-            </div>
-          </div>
-          <p class="wt-caption">Tasks</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="data">
+  <section id="data" class="alt">
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="num">06 — YOUR DATA</span>
-        <h2>What stays, and what doesn't</h2>
-        <p>Pick anything Daybook handles.</p>
+        <h2>It’s yours. All of it.</h2>
+        <p>No Daybook server, no sign-up, no tracking. Pick anything Daybook handles to see where it goes.</p>
       </div>
+
+      <div class="datagrid">
+      <figure class="short reveal">
+        <video muted loop playsinline preload="none" data-autoplay
+               poster="assets/daybook-its-yours-poster.webp" width="720" height="1280"
+               aria-label="Short film: your tasks and diary stay on your phone, the backup sits in your own Google Drive, and the AI runs on your own key or offline">
+          <source src="assets/daybook-its-yours.mp4" type="video/mp4">
+        </video>
+        <button type="button" class="short-sound" aria-pressed="false" aria-label="Turn sound on">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path class="on" d="M15.5 8.5a5 5 0 0 1 0 7"/><path class="on" d="M19 5a10 10 0 0 1 0 14"/><path class="off" d="m22 9-6 6"/><path class="off" d="m16 9 6 6"/></svg>
+        </button>
+        <figcaption>54 seconds · captions on screen</figcaption>
+      </figure>
 
       <div class="flow-card reveal" data-flow>
         <div class="flow">
@@ -451,10 +525,11 @@
           turn them on.
         </div>
       </div>
+      </div>
     </div>
   </section>
 
-  <section id="details" class="alt">
+  <section id="details">
     <div class="wrap narrow">
       <div class="sec-head reveal">
         <span class="num">07 — PERMISSIONS</span>
@@ -527,7 +602,7 @@
     </div>
   </section>
 
-  <section id="faq">
+  <section id="faq" class="alt">
     <div class="wrap narrow">
       <div class="sec-head reveal">
         <span class="num">08 — QUESTIONS</span>
@@ -577,5 +652,6 @@
 <a href="#top" class="top-btn" id="topBtn" aria-label="Back to top">↑</a>
 
 <script src="assets/site.js"></script>
+<script src="assets/daybook.js"></script>
 </body>
 </html>
