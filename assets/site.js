@@ -157,15 +157,29 @@
     var btns = navWrap ? navWrap.querySelectorAll('button') : [];
     var manual = g.hasAttribute('data-manual');
     var i = 0, timer = null, ms = parseInt(g.getAttribute('data-interval'), 10) || 5000;
+    var count = g.querySelector('.desk-count');
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    g.style.setProperty('--dwell', ms + 'ms');
+    // restart the countdown ring on the "next" arrow
+    function tick() {
+      g.classList.remove('ticking');
+      if (timer) { void g.offsetWidth; g.classList.add('ticking'); }
+    }
     function show(k) {
       i = (k + shots.length) % shots.length;
       shots.forEach(function (s, n) { s.classList.toggle('on', n === i); });
       btns.forEach(function (b, n) { b.classList.toggle('on', n === i); });
+      if (count) count.textContent = pad(i + 1) + ' / ' + pad(shots.length);
+      tick();
     }
-    function play() { if (reduce || manual) return; stop(); timer = setInterval(function () { show(i + 1); }, ms); }
-    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function play() { if (reduce || manual) return; stop(); timer = setInterval(function () { show(i + 1); }, ms); tick(); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } g.classList.remove('ticking'); }
     btns.forEach(function (b, n) {
       b.addEventListener('click', function () { show(n); play(); });
+    });
+    // arrows sit over the picture, so the pointer is already on it and hover keeps autoplay paused
+    g.querySelectorAll('.gal-arrow').forEach(function (b) {
+      b.addEventListener('click', function () { show(i + (+b.getAttribute('data-dir'))); });
     });
     g.addEventListener('mouseenter', stop);
     g.addEventListener('mouseleave', play);
@@ -177,6 +191,38 @@
         es.forEach(function (en) { en.isIntersecting ? play() : stop(); });
       }, { threshold: .3 }).observe(g);
     } else { play(); }
+  });
+
+  /* ---- Windows screenshots: click to open large, arrows and Esc work ---- */
+  document.querySelectorAll('.deskwrap').forEach(function (wrap) {
+    var desk = wrap.querySelector('.desk'), lb = wrap.querySelector('dialog.lb');
+    if (!desk || !lb || !lb.showModal) return;
+    var shots = Array.prototype.slice.call(desk.querySelectorAll('.screen img'));
+    var names = Array.prototype.slice.call(wrap.querySelectorAll('.deskrail button')).map(function (b) { return b.getAttribute('aria-label'); });
+    var img = lb.querySelector('img'), cap = lb.querySelector('.lb-cap'), k = 0;
+    function show(n) {
+      k = (n + shots.length) % shots.length;
+      img.src = shots[k].getAttribute('data-full') || shots[k].currentSrc || shots[k].src;
+      img.alt = shots[k].alt;
+      cap.textContent = (k + 1) + ' / ' + shots.length + (names[k] ? '  ·  ' + names[k] : '');
+    }
+    desk.querySelector('.desk-open').addEventListener('click', function () {
+      var cur = 0;
+      shots.forEach(function (s, n) { if (s.classList.contains('on')) cur = n; });
+      show(cur);
+      lb.showModal();
+    });
+    lb.querySelectorAll('.lb-arrow').forEach(function (b) {
+      b.addEventListener('click', function () { show(k + (+b.getAttribute('data-dir'))); });
+    });
+    lb.querySelector('.lb-x').addEventListener('click', function () { lb.close(); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+    lb.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') show(k + 1);
+      if (e.key === 'ArrowLeft') show(k - 1);
+    });
+    // back in the window, stay on the picture that was open
+    lb.addEventListener('close', function () { desk.dispatchEvent(new CustomEvent('wt-show', { detail: k })); });
   });
 
   /* ---- "how to use" walkthrough: syncs a numbered rail to a phone mockup as you scroll ---- */

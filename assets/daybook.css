@@ -169,6 +169,31 @@ section.stage {
 }
 .reel figure.on img { box-shadow:0 44px 90px -30px rgba(0,0,0,.95), 0 0 0 1px rgba(166,230,207,.4), 0 0 70px -10px rgba(79,185,143,.45); }
 .reel figcaption { display:flex; justify-content:center; margin-top:16px; min-height:40px; }
+/* invisible arrows: hidden until the pointer is on the centred phone, then a round arrow shows on each
+   side (same look as the site's other arrows). Its left and right thirds step the reel; taps work on touch too. */
+.reel figure { position:relative; }
+.reel figure.on::before, .reel figure.on::after {
+  content:""; position:absolute; top:0; height:calc(100% - 56px); width:34%; z-index:2; pointer-events:none;
+  opacity:0; transition:opacity .3s, background-position .3s cubic-bezier(.2,.7,.3,1);
+  background-repeat:no-repeat; background-size:52px 52px, 100% 100%;
+}
+.reel figure.on::before {
+  left:0; border-radius:22px 0 0 22px; background-position:14px 50%, 0 0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Ccircle cx='28' cy='28' r='27' fill='rgb(8,20,32)' fill-opacity='.72' stroke='white' stroke-opacity='.3'/%3E%3Cpath d='M31 19l-9 9 9 9' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),
+    linear-gradient(90deg,rgba(4,14,22,.5),transparent);
+}
+.reel figure.on::after {
+  right:0; border-radius:0 22px 22px 0; background-position:calc(100% - 14px) 50%, 0 0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Ccircle cx='28' cy='28' r='27' fill='rgb(8,20,32)' fill-opacity='.72' stroke='white' stroke-opacity='.3'/%3E%3Cpath d='M25 19l9 9-9 9' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),
+    linear-gradient(270deg,rgba(4,14,22,.5),transparent);
+}
+@media (hover:hover) {
+  .reel figure.on:hover::before, .reel figure.on:hover::after { opacity:.6; }
+  .reel figure.on[data-side="prev"]::before, .reel figure.on[data-side="next"]::after { opacity:1; }
+  .reel figure.on[data-side="prev"]::before { background-position:8px 50%, 0 0; }
+  .reel figure.on[data-side="next"]::after { background-position:calc(100% - 8px) 50%, 0 0; }
+  .reel figure.on[data-side] { cursor:pointer; }
+}
 .reel-go {
   display:inline-flex; align-items:center; gap:9px; cursor:pointer;
   font:600 13.5px/1 'Space Grotesk',sans-serif; text-decoration:none;
@@ -182,12 +207,7 @@ section.stage {
 .reel-go .play-dot { color:var(--aqua); }
 
 .reel-ctl { display:flex; align-items:center; justify-content:center; gap:18px; margin-top:22px; padding-inline:16px; }
-.reel-arrow {
-  width:42px; height:42px; border-radius:50%; flex:none; cursor:pointer;
-  font-size:17px; color:#eaf4fb; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.2);
-  transition:background .2s, border-color .2s, transform .2s;
-}
-.reel-arrow:hover { background:rgba(255,255,255,.14); border-color:var(--aqua); transform:scale(1.06); }
+.reel-ctl { --accent:#3fae88; }
 .reel-dots { display:flex; gap:7px; }
 .reel-dots button {
   width:8px; height:8px; padding:0; border:0; border-radius:99px; cursor:pointer;
@@ -201,33 +221,6 @@ section.stage {
 }
 .reel-dots.auto button.on::after { animation:dotfill var(--dwell,5s) linear both; transform-origin:0 50%; }
 @keyframes dotfill { from { transform:scaleX(0); } to { transform:scaleX(1); } }
-
-/* ---------- 03 Windows: the Store screenshots inside a desktop window ---------- */
-.deskwrap { max-width:960px; margin:0 auto; }
-.desk {
-  border-radius:16px; overflow:hidden; background:var(--surface);
-  border:1px solid var(--rule); box-shadow:var(--shadow-lg);
-}
-.desk-bar {
-  display:flex; align-items:center; gap:7px; padding:10px 14px;
-  border-bottom:1px solid var(--rule); background:var(--surface-2);
-  font-size:12px; font-weight:600; color:var(--ink-faint);
-}
-.desk-bar i { width:11px; height:11px; border-radius:50%; background:var(--rule); }
-.desk-bar i:nth-child(1) { background:#ec6a5e; }
-.desk-bar i:nth-child(2) { background:#f4bf4f; }
-.desk-bar i:nth-child(3) { background:#61c554; }
-.desk-bar span { margin-left:10px; }
-.desk .screen.wide { border-radius:0; border:0; box-shadow:none; }
-.deskrail { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:8px; margin-top:14px; }
-.deskrail button {
-  padding:0; cursor:pointer; background:none; border:2px solid transparent; border-radius:9px;
-  overflow:hidden; opacity:.55; transition:opacity .25s, border-color .25s, transform .2s;
-}
-.deskrail button:hover { opacity:.9; transform:translateY(-2px); }
-.deskrail button.on { opacity:1; border-color:var(--db); }
-.deskrail img { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; }
-@media (max-width:640px) { .deskrail { grid-template-columns:repeat(4,minmax(0,1fr)); } }
 
 /* ---------- 06 your data: the privacy short beside the flow card ---------- */
 .datagrid { display:grid; grid-template-columns:minmax(0,270px) 1fr; gap:34px; align-items:center; }
@@ -262,31 +255,3 @@ section.stage {
 }
 .short.held::after { opacity:1; }
 
-/* ---------- Windows screenshots open large ---------- */
-.desk { position:relative; }
-.desk-hint { margin-left:auto; font-style:normal; font-size:11.5px; opacity:0; transition:opacity .25s; }
-.desk:hover .desk-hint { opacity:1; }
-.desk-open { position:absolute; left:0; right:0; bottom:0; top:39px; z-index:2; border:0; padding:0; background:none; cursor:zoom-in; }
-.desk-open:focus-visible { outline:3px solid var(--db); outline-offset:-3px; }
-
-dialog.lb {
-  width:min(1500px,96vw); max-width:none; max-height:none; padding:0; border:0; background:none; overflow:visible;
-}
-dialog.lb::backdrop { background:rgba(4,12,20,.86); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
-dialog.lb[open] { animation:lbIn .35s cubic-bezier(.2,.7,.3,1); }
-@keyframes lbIn { from { opacity:0; transform:scale(.94); } to { opacity:1; transform:none; } }
-dialog.lb img {
-  display:block; width:100%; height:auto; max-height:86vh; object-fit:contain; border-radius:14px;
-  box-shadow:0 40px 100px -30px rgba(0,0,0,.9);
-}
-.lb-x, .lb-arrow {
-  position:absolute; width:46px; height:46px; border-radius:50%; cursor:pointer; font-size:18px; color:#fff;
-  background:rgba(10,20,30,.7); border:1px solid rgba(255,255,255,.25); transition:background .2s, transform .2s;
-}
-.lb-x:hover, .lb-arrow:hover { background:rgba(10,20,30,.95); transform:scale(1.06); }
-.lb-x { top:-14px; right:-14px; }
-.lb-arrow { top:50%; margin-top:-23px; }
-.lb-arrow.prev { left:14px; }
-.lb-arrow.next { right:14px; }
-.lb-cap { margin:14px 0 0; text-align:center; color:#c7d7e4; font-size:13.5px; }
-@media (max-width:640px) { .lb-x { top:-54px; right:0; } .lb-arrow { top:auto; bottom:-60px; } .lb-arrow.prev { left:calc(50% - 56px); } .lb-arrow.next { right:calc(50% - 56px); } .lb-cap { margin-top:74px; } }

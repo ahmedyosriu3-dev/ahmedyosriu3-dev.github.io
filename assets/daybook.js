@@ -182,7 +182,7 @@
       });
       if (best === cur) return;
       cur = best;
-      figs.forEach(function (f, n) { f.classList.toggle('on', n === cur); });
+      figs.forEach(function (f, n) { f.classList.toggle('on', n === cur); if (n !== cur) f.removeAttribute('data-side'); });
       dots.forEach(function (d, n) {
         d.classList.remove('on'); if (n === cur) { void d.offsetWidth; d.classList.add('on'); }
       });
@@ -204,8 +204,25 @@
       new IntersectionObserver(function (es) { visible = es[0].isIntersecting; arm(); }, { threshold: .5 }).observe(reel);
     }
     window.addEventListener('resize', function () { var k = cur; go(k, true); cur = -1; paint(); });
+    // the centred phone doubles as invisible arrows: its left third goes back, its right third forward
+    function side(f, e) {
+      var img = f.querySelector('img'), r = img.getBoundingClientRect();
+      if (e.clientY > r.bottom) return '';
+      var x = (e.clientX - r.left) / r.width;
+      return x < .34 ? 'prev' : x > .66 ? 'next' : '';
+    }
     figs.forEach(function (f, n) {
-      f.addEventListener('click', function (e) { if (n !== cur && !e.target.closest('.reel-go')) { e.preventDefault(); go(n); } });
+      f.addEventListener('click', function (e) {
+        if (e.target.closest('.reel-go')) return;
+        if (n !== cur) { e.preventDefault(); go(n); return; }
+        var s = side(f, e);
+        if (s) { user(); go(cur + (s === 'next' ? 1 : -1)); }
+      });
+      f.addEventListener('pointermove', function (e) {
+        var s = n === cur && e.pointerType === 'mouse' ? side(f, e) : '';
+        if (s) f.setAttribute('data-side', s); else f.removeAttribute('data-side');
+      });
+      f.addEventListener('pointerleave', function () { f.removeAttribute('data-side'); });
     });
     document.querySelectorAll('.reel-arrow').forEach(function (b) {
       b.addEventListener('click', function () { user(); go(cur + (+b.getAttribute('data-dir'))); });
@@ -258,38 +275,6 @@
         if (es[0].isIntersecting) { if (!held) play(); } else hv.pause();
       }, { threshold: .2 }).observe(hv);
     } else play();
-  })();
-
-  /* ---- Windows screenshots: click to open large, arrows and Esc work ---- */
-  var desk = document.querySelector('.desk');
-  var lb = document.querySelector('dialog.lb');
-  if (desk && lb && lb.showModal) (function () {
-    var shots = Array.prototype.slice.call(desk.querySelectorAll('.screen img'));
-    var names = Array.prototype.slice.call(document.querySelectorAll('.deskrail button')).map(function (b) { return b.getAttribute('aria-label'); });
-    var img = lb.querySelector('img'), cap = lb.querySelector('.lb-cap'), k = 0;
-    function show(n) {
-      k = (n + shots.length) % shots.length;
-      img.src = shots[k].getAttribute('data-full') || shots[k].currentSrc || shots[k].src;
-      img.alt = shots[k].alt;
-      cap.textContent = (k + 1) + ' / ' + shots.length + (names[k] ? '  ·  ' + names[k] : '');
-    }
-    desk.querySelector('.desk-open').addEventListener('click', function () {
-      var cur = 0;
-      shots.forEach(function (s, n) { if (s.classList.contains('on')) cur = n; });
-      show(cur);
-      lb.showModal();
-    });
-    lb.querySelectorAll('.lb-arrow').forEach(function (b) {
-      b.addEventListener('click', function () { show(k + (+b.getAttribute('data-dir'))); });
-    });
-    lb.querySelector('.lb-x').addEventListener('click', function () { lb.close(); });
-    lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
-    lb.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') show(k + 1);
-      if (e.key === 'ArrowLeft') show(k - 1);
-    });
-    // back in the window, stay on the picture that was open
-    lb.addEventListener('close', function () { desk.dispatchEvent(new CustomEvent('wt-show', { detail: k })); });
   })();
 
   /* ---- the privacy short: plays muted while on screen (captions are burned in), sound on request.

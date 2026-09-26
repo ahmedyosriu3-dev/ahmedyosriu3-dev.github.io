@@ -31,8 +31,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
-<link rel="stylesheet" href="assets/daybook.css">
+<link rel="stylesheet" href="assets/site.css?v=20260926c">
+<link rel="stylesheet" href="assets/daybook.css?v=20260926c">
 
 <script type="application/ld+json">
 {
@@ -293,9 +293,9 @@
     </div>
 
     <div class="reel-ctl" aria-label="Screens">
-      <button type="button" class="reel-arrow" data-dir="-1" aria-label="Previous screen">←</button>
+      <button type="button" class="reel-arrow" data-dir="-1" aria-label="Previous screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></button>
       <div class="reel-dots"></div>
-      <button type="button" class="reel-arrow" data-dir="1" aria-label="Next screen">→</button>
+      <button type="button" class="reel-arrow" data-dir="1" aria-label="Next screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></button>
     </div>
   </section>
 
@@ -309,8 +309,10 @@
 
       <div class="deskwrap reveal">
         <div class="desk" data-gallery data-interval="5200">
-          <div class="desk-bar" aria-hidden="true"><i></i><i></i><i></i><span>Daybook for Windows</span><em class="desk-hint">Click to enlarge</em></div>
+          <div class="desk-bar" aria-hidden="true"><i></i><i></i><i></i><span>Daybook for Windows</span><em class="desk-hint">Click to enlarge</em><em class="desk-count">01 / 08</em></div>
           <button type="button" class="desk-open" aria-label="Enlarge this screenshot"></button>
+          <button type="button" class="gal-arrow prev" data-dir="-1" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></button>
+          <button type="button" class="gal-arrow next" data-dir="1" aria-label="Next screenshot"><svg class="gal-ring" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="28"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></button>
           <div class="screen wide">
             <img class="on" src="assets/dbw-01_your_day_sorted.webp" data-full="assets/dbw-01_your_day_sorted-full.webp" alt="Daybook for Windows: your day sorted, personal and work tasks kept apart, with the phone beside it" width="1600" height="900" loading="lazy">
             <img src="assets/dbw-02_month_at_a_glance.webp" data-full="assets/dbw-02_month_at_a_glance-full.webp" alt="Daybook for Windows: the whole month at a glance, with tasks, events, notes, birthdays and repeats" width="1600" height="900" loading="lazy">
@@ -334,9 +336,9 @@
         </div>
         <dialog class="lb" aria-label="Daybook for Windows, enlarged">
           <img src="" alt="" width="1600" height="900">
-          <button type="button" class="lb-x" aria-label="Close">✕</button>
-          <button type="button" class="lb-arrow prev" data-dir="-1" aria-label="Previous screenshot">←</button>
-          <button type="button" class="lb-arrow next" data-dir="1" aria-label="Next screenshot">→</button>
+          <button type="button" class="lb-x" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          <button type="button" class="lb-arrow prev" data-dir="-1" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></button>
+          <button type="button" class="lb-arrow next" data-dir="1" aria-label="Next screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></button>
           <p class="lb-cap"></p>
         </dialog>
         <p class="tourvid-cap">The same pictures as the <a href="https://apps.microsoft.com/detail/9pfhnplvdvc7" target="_blank" rel="noopener">Microsoft Store listing</a>.</p>
@@ -651,7 +653,7 @@
 
 <a href="#top" class="top-btn" id="topBtn" aria-label="Back to top">↑</a>
 
-<script src="assets/site.js"></script>
-<script src="assets/daybook.js"></script>
+<script src="assets/site.js?v=20260926c"></script>
+<script src="assets/daybook.js?v=20260926c"></script>
 </body>
 </html>

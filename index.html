@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site.css?v=20260926c">
 
 <script type="application/ld+json">
 {
@@ -150,16 +150,36 @@
   <div class="hero">
     <canvas id="lattice" aria-hidden="true"></canvas>
     <div class="wrap">
-      <div class="hero-logo"><img src="assets/maia-logo.png" alt="MAIA Architech logo" width="82" height="82"></div>
-      <p class="kicker">MAIA Architech</p>
-      <h1>Careful software, with <span class="grad">AI where it earns its place.</span></h1>
-      <p class="lede">
-        Two apps so far. Daybook keeps your day in order. Finnish tutor corrects the language
-        you're learning and explains why. Both are free on Android, and Daybook also runs in the browser.
-      </p>
-      <div class="cta">
-        <a class="btn solid" href="daybook.html">Daybook <span class="ar">→</span></a>
-        <a class="btn ghost" href="finnish-tutor.html">Finnish tutor <span class="ar">→</span></a>
+      <div class="hero-inner has-apps">
+        <div>
+          <div class="hero-logo"><img src="assets/maia-logo.png" alt="MAIA Architech logo" width="82" height="82"></div>
+          <p class="kicker">MAIA Architech</p>
+          <h1>Careful software, with <span class="grad">AI where it earns its place.</span></h1>
+          <p class="lede">
+            Two apps so far. Daybook keeps your day in order. Finnish tutor corrects the language
+            you're learning and explains why. Both are free on Android, and Daybook also runs in the browser.
+          </p>
+        </div>
+        <div class="hero-apps">
+          <a class="happ h-db" href="daybook.html">
+            <img src="assets/daybook-icon.png" alt="" width="84" height="84">
+            <span class="happ-txt">
+              <b>Daybook</b>
+              <i>Diary, tasks and calendar in one place</i>
+              <em>Web · Android · Windows</em>
+            </span>
+            <span class="ar" aria-hidden="true">→</span>
+          </a>
+          <a class="happ h-ft" href="finnish-tutor.html">
+            <img src="assets/finnish-tutor-icon.png" alt="" width="84" height="84">
+            <span class="happ-txt">
+              <b>Finnish tutor</b>
+              <i>Corrects your Finnish and explains why</i>
+              <em>Android · Windows</em>
+            </span>
+            <span class="ar" aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -334,6 +354,6 @@
 
 <a href="#top" class="top-btn" id="topBtn" aria-label="Back to top">↑</a>
 
-<script src="assets/site.js"></script>
+<script src="assets/site.js?v=20260926c"></script>
 </body>
 </html>
