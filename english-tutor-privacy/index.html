@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English tutor Privacy Policy — MAIA Architech</title>
+<meta name="description" content="How English tutor handles your information: what runs on your own device (dictionary, text recognition, speech-to-text), what your own Gemini API key sends to Google, and what the app never collects.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a2540">
+<link rel="canonical" href="https://maiaarchitech.com/english-tutor-privacy/">
+<link rel="icon" type="image/png" href="https://maiaarchitech.com/assets/maia-logo.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MAIA Architech">
+<meta property="og:title" content="English tutor Privacy Policy — MAIA Architech">
+<meta property="og:description" content="How English tutor handles your information: what runs on your own device (dictionary, text recognition, speech-to-text), what your own Gemini API key sends to Google, and what the app never collects.">
+<meta property="og:url" content="https://maiaarchitech.com/english-tutor-privacy/">
+<meta property="og:image" content="https://maiaarchitech.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --accent:#0a5a96; --accent-ink:#08497a; --accent-wash:#e7f1f9; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6db6e8; --accent-ink:#93cbf3; --accent-wash:#0d2436; } }
+  :root[data-theme="dark"] { --accent:#6db6e8; --accent-ink:#93cbf3; --accent-wash:#0d2436; }
+
+  :root {
+    --navy-900:#061625; --navy-800:#0a2540; --cyan:#1f9ec9; --cyan-deep:#0f7fa8; --aqua:#7be0d6;
+    --paper:#f7f9fb; --surface:#ffffff; --surface-2:#f0f4f8;
+    --ink:#0f2233; --ink-soft:#43596d; --ink-faint:#5d7183;
+    --rule:#e3e9f0; --rule-soft:#eef2f7;
+    --shadow:0 1px 2px rgba(10,37,64,.05), 0 10px 30px -12px rgba(10,37,64,.16);
+    --warn:#8f5a0a; --warn-bg:#fdf5e7; --warn-line:#e0b768;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:#081320; --surface:#0e1f2f; --surface-2:#0b1a28;
+      --ink:#e7eff6; --ink-soft:#a7bdcf; --ink-faint:#8199ad;
+      --rule:#1c3347; --rule-soft:#152838;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -12px rgba(0,0,0,.6);
+      --warn:#e5b567; --warn-bg:#241c10; --warn-line:#6b5220;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:#081320; --surface:#0e1f2f; --surface-2:#0b1a28;
+    --ink:#e7eff6; --ink-soft:#a7bdcf; --ink-faint:#8199ad;
+    --rule:#1c3347; --rule-soft:#152838;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -12px rgba(0,0,0,.6);
+    --warn:#e5b567; --warn-bg:#241c10; --warn-line:#6b5220;
+  }
+
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+  body {
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:16px; line-height:1.68; -webkit-font-smoothing:antialiased;
+  }
+  img { max-width:100%; display:block; }
+  [hidden] { display:none !important; }
+  ::selection { background:var(--aqua); color:var(--navy-900); }
+  a { color:var(--accent-ink); text-underline-offset:3px; }
+  a:hover { color:var(--accent); }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
+  h1,h2,h3,h4 { font-family:'Space Grotesk','Public Sans',sans-serif; letter-spacing:-0.02em; line-height:1.18; }
+  code {
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.86em;
+    background:var(--surface-2); border:1px solid var(--rule); border-radius:5px;
+    padding:1px 6px; word-break:break-word;
+  }
+
+  /* ---- site header ---- */
+  header.site {
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(12px) saturate(1.3); -webkit-backdrop-filter:blur(12px) saturate(1.3);
+    border-bottom:1px solid var(--rule);
+  }
+  header.site .bar {
+    max-width:1120px; margin:0 auto; padding:11px 22px;
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+  }
+  .brand { display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink); }
+  .brand .tile {
+    width:34px; height:34px; border-radius:9px; overflow:hidden; flex:none; background:#fff;
+    box-shadow:0 2px 8px -2px rgba(10,37,64,.3); transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  }
+  .brand:hover .tile { transform:rotate(-6deg) scale(1.06); }
+  .brand .tile img { width:100%; height:100%; object-fit:cover; }
+  .brand b { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.02rem; letter-spacing:-0.02em; }
+  .brand i { display:block; font-style:normal; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; margin-top:-3px; }
+  nav.crumbs { display:flex; align-items:center; gap:2px; }
+  nav.crumbs a {
+    font-size:13.5px; font-weight:600; color:var(--ink-soft); text-decoration:none;
+    padding:8px 13px; border-radius:99px; transition:color .2s, background .2s;
+  }
+  nav.crumbs a:hover { color:var(--ink); background:var(--surface-2); }
+  .icon-btn {
+    width:34px; height:34px; margin-left:6px; flex:none; border-radius:50%;
+    border:1px solid var(--rule); background:var(--surface); color:var(--ink-soft);
+    font-size:14px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center;
+    transition:transform .3s, color .2s, border-color .2s;
+  }
+  .icon-btn:hover { color:var(--accent); border-color:var(--accent); transform:rotate(25deg); }
+  @media (max-width:720px) { nav.crumbs a { display:none; } }
+
+  /* ---- layout ---- */
+  .shell { max-width:1120px; margin:0 auto; padding:0 22px 90px; display:grid; grid-template-columns:minmax(0,1fr); gap:0 48px; }
+  article { max-width:76ch; }
+
+  @media (min-width:1040px) {
+    .shell { grid-template-columns:238px minmax(0,1fr); }
+    .masthead { grid-column:1 / -1; }
+    nav.toc { grid-column:1; position:sticky; top:84px; align-self:start; max-height:calc(100vh - 120px); overflow:auto; }
+    article { grid-column:2; }
+  }
+
+  /* ---- masthead ---- */
+  .masthead { padding-block:52px 34px; }
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:9px;
+    font-size:11.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:16px;
+  }
+  .eyebrow::before { content:""; width:26px; height:1.5px; background:var(--accent); }
+  h1 { font-size:clamp(1.85rem,4vw,2.7rem); font-weight:700; margin:0 0 16px; max-width:22ch; }
+  .dek { font-size:clamp(1rem,1.8vw,1.14rem); color:var(--ink-soft); max-width:62ch; margin:0 0 26px; }
+  .meta-row {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1px;
+    background:var(--rule); border:1px solid var(--rule); border-radius:14px; overflow:hidden;
+  }
+  .meta-row > div { background:var(--surface); padding:14px 16px; }
+  .label { display:block; font-size:10.5px; font-weight:700; letter-spacing:.11em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:3px; }
+  .value { display:block; font-size:14px; color:var(--ink); }
+
+  /* ---- toc ---- */
+  nav.toc {
+    background:var(--surface); border:1px solid var(--rule); border-radius:14px;
+    padding:18px 16px; margin-bottom:34px; box-shadow:var(--shadow);
+  }
+  .toc-label { font-size:10.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px; }
+  nav.toc ol { list-style:none; counter-reset:toc; margin:0; padding:0; }
+  nav.toc li { counter-increment:toc; margin-bottom:1px; }
+  nav.toc a {
+    display:block; position:relative; padding:5px 8px 5px 30px; border-radius:7px;
+    font-size:13.2px; line-height:1.4; color:var(--ink-soft); text-decoration:none;
+    transition:background .2s, color .2s;
+  }
+  nav.toc a::before {
+    content:counter(toc,decimal-leading-zero);
+    position:absolute; left:8px; top:5px;
+    font-size:10.5px; font-weight:700; color:var(--ink-faint); font-variant-numeric:tabular-nums;
+  }
+  nav.toc a:hover { background:var(--surface-2); color:var(--ink); }
+  nav.toc a.active { background:var(--accent-wash); color:var(--accent-ink); font-weight:600; }
+  nav.toc a.active::before { color:var(--accent); }
+
+  /* ---- sections ---- */
+  section { margin-bottom:46px; scroll-margin-top:86px; }
+  h2 { display:flex; align-items:baseline; gap:12px; font-size:1.42rem; font-weight:600; margin:0 0 10px; }
+  .num {
+    font-size:11.5px; font-weight:700; letter-spacing:.1em; color:var(--accent);
+    font-variant-numeric:tabular-nums; flex:none;
+  }
+  .section-rule { height:1px; background:linear-gradient(90deg,var(--accent),var(--rule) 38%,transparent); margin-bottom:16px; }
+  p { margin:0 0 14px; }
+  p.lead { font-size:1.04rem; color:var(--ink); }
+  p, li { color:var(--ink-soft); }
+  p.lead { color:var(--ink); }
+  strong { color:var(--ink); font-weight:600; }
+  ul { margin:0 0 16px; padding-left:22px; }
+  li { margin-bottom:8px; }
+  h3 { font-size:1.02rem; font-weight:600; margin:24px 0 8px; }
+
+  .pill {
+    display:inline-block; font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+    padding:4px 11px; border-radius:99px; margin-bottom:14px;
+    background:var(--accent-wash); color:var(--accent-ink); border:1px solid transparent;
+  }
+  .pill.off { background:var(--warn-bg); color:var(--warn); border-color:var(--warn-line); }
+
+  /* ---- summary card ---- */
+  .summary-card {
+    background:var(--surface); border:1px solid var(--rule); border-radius:16px;
+    padding:24px 26px; margin-bottom:44px; box-shadow:var(--shadow);
+  }
+  .summary-card h2 { font-size:1.1rem; margin:0 0 16px; }
+  .summary-grid { display:grid; gap:12px; }
+  .row { display:flex; gap:13px; align-items:flex-start; font-size:14.6px; color:var(--ink-soft); }
+  .mark {
+    flex:none; width:22px; height:22px; border-radius:50%; margin-top:2px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:700; background:var(--accent-wash); color:var(--accent-ink);
+  }
+
+  /* ---- callouts ---- */
+  .note, .future-note {
+    border-left:3px solid var(--accent); background:var(--accent-wash);
+    border-radius:0 12px 12px 0; padding:15px 18px; margin:0 0 16px;
+    font-size:14.4px; color:var(--ink-soft);
+  }
+  .future-note { border-left-color:var(--warn-line); background:var(--warn-bg); }
+  .future-note strong { color:var(--warn); }
+
+  .not-collected {
+    background:var(--surface); border:1px solid var(--rule); border-radius:14px;
+    padding:20px 22px; margin:0 0 18px; box-shadow:var(--shadow);
+  }
+  .not-collected h3 { margin:0 0 12px; font-size:.98rem; }
+  .not-collected ul { list-style:none; padding:0; margin:0; }
+  .not-collected li { position:relative; padding-left:26px; margin-bottom:8px; font-size:14.4px; }
+  .not-collected li::before {
+    content:"✕"; position:absolute; left:0; top:1px;
+    width:18px; height:18px; border-radius:50%; font-size:9.5px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--accent-wash); color:var(--accent-ink);
+  }
+
+  /* ---- table ---- */
+  .table-wrap { overflow-x:auto; margin:0 0 18px; border:1px solid var(--rule); border-radius:14px; background:var(--surface); }
+  table { border-collapse:collapse; width:100%; font-size:14px; min-width:520px; }
+  th, td { text-align:left; padding:12px 16px; border-bottom:1px solid var(--rule-soft); vertical-align:top; }
+  th {
+    font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-faint); background:var(--surface-2); border-bottom:1px solid var(--rule);
+  }
+  td { color:var(--ink-soft); }
+  tr:last-child td { border-bottom:0; }
+
+  /* ---- footer ---- */
+  footer.site { border-top:1px solid var(--rule); background:var(--surface-2); }
+  footer.site .bar { max-width:1120px; margin:0 auto; padding:30px 22px 40px; font-size:13.5px; color:var(--ink-faint); }
+  footer.site .flinks { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:14px; }
+  footer.site a { color:var(--ink-soft); text-decoration:none; font-weight:600; }
+  footer.site a:hover { color:var(--accent); }
+  footer.site .fine { font-size:12.5px; line-height:1.6; }
+
+  .top-btn {
+    position:fixed; right:18px; bottom:18px; width:42px; height:42px; border-radius:50%;
+    background:var(--navy-800); color:#fff; display:flex; align-items:center; justify-content:center;
+    text-decoration:none; box-shadow:0 12px 28px -10px rgba(0,0,0,.6);
+    opacity:0; pointer-events:none; transform:translateY(10px);
+    transition:opacity .3s, transform .3s; z-index:40;
+  }
+  .top-btn.show { opacity:1; pointer-events:auto; transform:none; }
+  .top-btn:hover { background:var(--accent); color:#fff; }
+
+  @media (prefers-reduced-motion:reduce) {
+    *, *::before, *::after { animation-duration:.001ms !important; transition-duration:.001ms !important; }
+    html { scroll-behavior:auto; }
+  }
+
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="https://maiaarchitech.com/" aria-label="MAIA Architech home">
+      <span class="tile"><img src="https://maiaarchitech.com/assets/maia-logo.png" alt="MAIA Architech logo" width="34" height="34"></span>
+      <span><b>MAIA Architech</b><i>Intelligent Software Solutions</i></span>
+    </a>
+    <nav class="crumbs" aria-label="Site">
+      <a href="https://maiaarchitech.com/">Home</a>
+      <a href="https://maiaarchitech.com/english-tutor.html">English tutor</a>
+      <a href="https://maiaarchitech.com/daybook-privacy/">Daybook privacy</a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch colour theme">&#9680;</button>
+    </nav>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="masthead">
+    <div class="eyebrow">English tutor &nbsp;·&nbsp; Privacy Policy</div>
+    <h1>What English tutor does with your information — in plain terms and in full.</h1>
+    <p class="dek">English tutor is a language-learning app built to do as much as it can on your own device: the dictionary, the word analysis, the page reading and the speech recognition all run locally. This policy goes feature by feature and says exactly what leaves your phone, where it goes, and why.</p>
+    <div class="meta-row">
+      <div><span class="label">Effective</span><span class="value">26 September 2026</span></div>
+      <div><span class="label">Applies to</span><span class="value">English tutor for Android and Windows</span></div>
+      <div><span class="label">Developer</span><span class="value">Ahmed Yosri</span></div>
+      <div><span class="label">Contact</span><span class="value"><a href="mailto:ahmed.yosri.u3@gmail.com">ahmed.yosri.u3@gmail.com</a></span></div>
+    </div>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-label">On this page</div>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#on-device">What stays on your device</a></li>
+      <li><a href="#key">Your own Gemini API key</a></li>
+      <li><a href="#gemini">What is sent to Gemini</a></li>
+      <li><a href="#photos">Camera, photos and page reading</a></li>
+      <li><a href="#mic">Microphone and speech</a></li>
+      <li><a href="#tts">Reading English aloud</a></li>
+      <li><a href="#google">Signing in with Google</a></li>
+      <li><a href="#drive">Google Drive word-list sync</a></li>
+      <li><a href="#pairing">Pairing with the desktop app</a></li>
+      <li><a href="#downloads">Downloads and purchases</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#retention">Keeping and deleting your data</a></li>
+      <li><a href="#not-collected">What English tutor does not do</a></li>
+      <li><a href="#third-parties">Third parties, at a glance</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <article>
+
+    <div class="summary-card">
+      <h2>In short</h2>
+      <div class="summary-grid">
+        <div class="row"><span class="mark">✓</span><span>Your words, practice history and study plan live in a database on your own device.</span></div>
+        <div class="row"><span class="mark">✓</span><span>There is <strong>no English tutor account and no English tutor server</strong> — nothing of yours is ever sent to the developer.</span></div>
+        <div class="row"><span class="mark">✓</span><span>The AI features run on <strong>your own Google Gemini API key</strong>, which you add yourself. Without a key the app still works offline.</span></div>
+        <div class="row"><span class="mark">✓</span><span>The dictionary, the word forms, the page OCR and the speech recognition are <strong>on-device</strong>.</span></div>
+        <div class="row"><span class="mark">✓</span><span><strong>No ads, no analytics, no trackers, no crash reporting.</strong> None are built into the app.</span></div>
+        <div class="row"><span class="mark">✓</span><span>Google sign-in and Drive sync are <strong>optional and off until you turn them on.</strong></span></div>
+      </div>
+    </div>
+
+    <section id="overview">
+      <h2><span class="num">01</span>Overview</h2>
+      <div class="section-rule"></div>
+      <p class="lead">English tutor helps you learn English from whatever language you already speak — Arabic, German, Spanish, Chinese or any other: you write a sentence and it is corrected and explained in your language, you photograph a page and every word on it becomes tappable, you record yourself and it is transcribed, and the words you meet collect into a list you can revise.</p>
+      <p>Most of that happens on the device itself. The parts that need a large language model — grammar reasoning, translation nuance, exercise reading, progress review — go to <strong>Google's Gemini API using an API key that you supply</strong>. Everything in this policy is about that boundary: what stays, what goes, and what you can turn off.</p>
+      <p>English tutor has no user accounts, no back end and no servers operated by its developer. The developer never receives your sentences, your recordings, your photographs or your word list.</p>
+    </section>
+
+    <section id="on-device">
+      <h2><span class="num">02</span>What stays on your device</h2>
+      <div class="section-rule"></div>
+      <p>All of the following is written to local app storage and never leaves the device unless you switch on Drive sync (§09):</p>
+      <ul>
+        <li><strong>Your saved words</strong> — the headword, meanings, grammatical forms, your own notes and example sentences, and the spaced-repetition schedule for each one.</li>
+        <li><strong>Your practice history</strong> — the sentences you checked, what was corrected and when, which is what the progress statistics and the "your topics" list are built from.</li>
+        <li><strong>Books and study plans</strong> — any PDF you import stays in the app's own storage, together with extracted page text, page images and the day-by-day plan.</li>
+        <li><strong>Photographs you choose</strong> — a picture you pick or take for a page or an exercise is held for as long as that view needs it.</li>
+        <li><strong>Recordings</strong> — audio you record is written to a local file so it can be played back and transcribed.</li>
+        <li><strong>Settings</strong> — including your Gemini API key and, if you use it, your Google OAuth client details.</li>
+        <li><strong>A response cache</strong> — so that checking or translating the same text twice does not cost a second request.</li>
+      </ul>
+      <p>The bundled English dictionary ships inside the app and is read locally. Looking a word up sends nothing anywhere.</p>
+    </section>
+
+    <section id="key">
+      <h2><span class="num">03</span>Your own Gemini API key</h2>
+      <div class="section-rule"></div>
+      <p class="lead">The AI features are not a service the developer runs on your behalf. You create your own Google Gemini API key and paste it into Settings, and the app then calls Google's API directly from your device as you.</p>
+      <p>Two consequences worth being plain about:</p>
+      <ul>
+        <li>The key is stored in the app's own settings storage <strong>on your device only</strong>. It is not transmitted to the developer and there is nowhere for it to be transmitted to.</li>
+        <li>Your use of the Gemini API is governed by <strong>your own agreement with Google</strong>. How Google handles what is sent is described in Google's terms for the Gemini API and in the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. Please read them — free-tier API usage in particular may be used by Google to improve its products.</li>
+      </ul>
+      <p>If you never add a key, every AI-backed feature simply reports that it needs one, and the offline half of the app — the dictionary, tap-a-word lookup, word forms, your saved list, the review cards, the PDF reader, on-device OCR and on-device transcription — keeps working.</p>
+    </section>
+
+    <section id="gemini">
+      <h2><span class="num">04</span>What is sent to Gemini</h2>
+      <div class="section-rule"></div>
+      <p>Only when you press the button for the feature in question, and only the material that feature needs:</p>
+      <ul>
+        <li><strong>Checking a sentence</strong> — the English text you typed, and the name of your own language (for the explanation).</li>
+        <li><strong>Translating</strong> — the text you typed, in English or in your own language.</li>
+        <li><strong>Asking the tutor</strong> — your question and the recent conversation.</li>
+        <li><strong>Reading an exercise or a page</strong> — wherever the device could read the text itself, the <strong>extracted text</strong> is sent rather than the picture. Some picture-based features do send the image itself, and those are listed in §05.</li>
+        <li><strong>Transcribing a recording</strong> — see §06: the audio is sent <em>only</em> when on-device transcription is switched off or unavailable.</li>
+        <li><strong>A progress review</strong> — summary statistics from your practice history and a sample of your saved words and recent corrections.</li>
+      </ul>
+      <div class="note"><strong>Nothing is sent in the background.</strong> There is no sync loop, no periodic upload and no telemetry. A request happens when you press Check, Translate, Read, Transcribe, Get a review, or ask a question — and at no other time.</div>
+      <p>Requests go over HTTPS to <code>generativelanguage.googleapis.com</code>. The app keeps a local cache of responses so repeating the same request does not send it again.</p>
+    </section>
+
+    <section id="photos">
+      <h2><span class="num">05</span>Camera, photos and page reading</h2>
+      <div class="section-rule"></div>
+      <p class="pill">Permission: Camera</p>
+      <p>The camera is used in two places, and only when you start them: taking a picture of a page or an exercise, and scanning the pairing QR code shown by the desktop app (§10). English tutor does not open the camera at any other time.</p>
+      <p>A picture you take or choose is processed like this:</p>
+      <ul>
+        <li><strong>On-device OCR first.</strong> Text recognition runs locally on Android through Google's ML Kit text recognition, which is bundled with the app and does not send the image anywhere. That is what makes every word on a photographed page tappable.</li>
+        <li><strong>Text, not pictures, where possible.</strong> For reading the tasks on a page, the locally extracted text is what gets sent to Gemini.</li>
+        <li><strong>Pictures where the picture is the point.</strong> Some features do send the image itself to Gemini — reading an exercise whose layout matters, and answering questions about a photographed page. You are choosing that feature explicitly when it happens.</li>
+      </ul>
+      <p>Photographs are not uploaded anywhere else, are not added to any gallery by the app, and are not retained after you clear or replace them in the view.</p>
+    </section>
+
+    <section id="mic">
+      <h2><span class="num">06</span>Microphone and speech</h2>
+      <div class="section-rule"></div>
+      <p class="pill">Permission: Microphone</p>
+      <p>The microphone is used only while you are recording in the Record or Live views, after you press record. It is never listening otherwise.</p>
+      <ul>
+        <li><strong>On-device transcription is the default path.</strong> On Android, speech recognition runs locally with a Whisper model through sherpa-onnx; on Windows it runs locally through faster-whisper. In this mode <strong>your audio never leaves the device</strong> — at most the resulting English translation of the text is sent on.</li>
+        <li><strong>Sending audio to Gemini is the fallback.</strong> If local transcription is switched off or is not available, the recording is sent to the Gemini API to be transcribed. This uses your own API key, as in §03.</li>
+      </ul>
+      <p>Recordings are saved as files in the app's own storage so you can play them back, and you can delete them from within the app.</p>
+    </section>
+
+    <section id="tts">
+      <h2><span class="num">07</span>Reading English aloud</h2>
+      <div class="section-rule"></div>
+      <p>You choose in Settings › Pronunciation which voice reads English aloud. Each one is used only when you press a speaker button, and each receives only the word or sentence being read:</p>
+      <ul>
+        <li><strong>System</strong> — your device's own text-to-speech engine. Whether that engine works offline is a property of the engine you have installed.</li>
+        <li><strong>Piper</strong> — an open-source voice that runs entirely on your device. Nothing is sent.</li>
+        <li><strong>Google</strong> — the text is sent to Google's public text-to-speech endpoint (<code>translate.google.com</code>) and the audio comes back.</li>
+        <li><strong>Azure</strong> — only if you add your own Microsoft Azure Speech key. The text goes to Microsoft's speech service in the region you chose, under your own Azure agreement and the <a href="https://privacy.microsoft.com/privacystatement">Microsoft Privacy Statement</a>. The key stays on your device.</li>
+      </ul>
+    </section>
+
+    <section id="google">
+      <h2><span class="num">08</span>Signing in with Google</h2>
+      <div class="section-rule"></div>
+      <p>Google sign-in is optional and exists for one purpose: syncing your word list through your own Google Drive. The app works fully without it, and nothing is gated behind it.</p>
+      <p>When you do sign in, the app receives an access token for your account and the scope described below. Your Google password is never seen by the app — the sign-in happens through Google's own flow.</p>
+    </section>
+
+    <section id="drive">
+      <h2><span class="num">09</span>Google Drive word-list sync</h2>
+      <div class="section-rule"></div>
+      <p class="pill">Scope: drive.file only</p>
+      <p>English tutor asks for <code>https://www.googleapis.com/auth/drive.file</code> and nothing broader. That scope grants access <strong>only to files the app itself creates</strong>. The rest of your Drive is invisible to it — the app cannot list, read, or modify documents it did not make.</p>
+      <p>What is synced is your vocabulary list, so that the phone and the desktop app show the same words. It is stored in <strong>your</strong> Drive, under your own Google account. The developer has no access to it.</p>
+      <p>The narrow scope is deliberate: broader Drive scopes are classed by Google as sensitive or restricted, and this app has no need of them.</p>
+    </section>
+
+    <section id="pairing">
+      <h2><span class="num">10</span>Pairing with the desktop app</h2>
+      <div class="section-rule"></div>
+      <p>If you use English tutor on a computer as well, the two can be paired by showing a QR code on one and scanning it with the other. This exists so you do not have to retype an OAuth client ID and secret and a Gemini API key on the second device.</p>
+      <p>What moves across is <strong>your own credentials and settings, between two devices you own</strong>. It does not pass through any server belonging to the developer. Treat the QR code as you would a password: anyone who photographs it while it is on screen gets what it carries.</p>
+    </section>
+
+    <section id="downloads">
+      <h2><span class="num">11</span>Downloaded models, and the full version</h2>
+      <div class="section-rule"></div>
+      <p>The on-device Android speech model and the Piper voices are too large to ship inside the app, so the first time you use them they are downloaded once from the sherpa-onnx project's public release files on GitHub and cached on your device. That request fetches a file; it carries none of your content. Ordinary network metadata such as your IP address is visible to GitHub as it would be for any download, under <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</p>
+      <p>On Android the app also reads one small public settings file from <code>maiaarchitech.com</code> (whether the daily free allowance applies). The request carries nothing about you.</p>
+      <p>Purchases — the one-time full version and any optional support — are handled entirely by <strong>Google Play</strong> billing. The app learns only that a purchase exists; payment details never reach the app or the developers. On Windows the app is bought on the Microsoft Store, under Microsoft's policies.</p>
+    </section>
+
+    <section id="security">
+      <h2><span class="num">12</span>Security</h2>
+      <div class="section-rule"></div>
+      <ul>
+        <li>Every network request the app makes is over <strong>HTTPS</strong>.</li>
+        <li>Your data sits in the app's private storage area, protected by the operating system's own app sandbox and by your device's lock screen and encryption.</li>
+        <li>Because there is no server and no account, there is no central store of user data to be breached.</li>
+        <li>Your Gemini API key and any OAuth secret are held in local app storage. Anyone with unlocked access to your device could reach them, which is the ordinary reason to keep a device locked.</li>
+      </ul>
+    </section>
+
+    <section id="retention">
+      <h2><span class="num">13</span>Keeping and deleting your data</h2>
+      <div class="section-rule"></div>
+      <p>English tutor keeps your data for as long as the app is installed, because the data <em>is</em> the app — there is no separate copy held anywhere else.</p>
+      <ul>
+        <li><strong>Delete individual items in the app</strong> — words can be deleted from the list, recordings and photographs cleared from their views, books removed.</li>
+        <li><strong>Delete everything</strong> — uninstalling the app, or clearing its storage in Android Settings, removes the local database, cached responses, downloaded models, your API key and your saved settings.</li>
+        <li><strong>Revoke Google access</strong> — at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>, which withdraws the app's Drive access.</li>
+        <li><strong>Remove synced files</strong> — anything the app put in your Drive can be deleted by you from Drive.</li>
+        <li><strong>Data already sent to Google</strong> — requests made with your Gemini API key are subject to Google's own retention, and are dealt with through your Google account, not through this app.</li>
+      </ul>
+      <p>There is no account to close and no request to make of the developer, because the developer holds nothing of yours.</p>
+    </section>
+
+    <section id="not-collected">
+      <h2><span class="num">14</span>What English tutor does not do</h2>
+      <div class="section-rule"></div>
+      <div class="not-collected">
+        <h3>Not present in this app</h3>
+        <ul>
+          <li>No advertising, and no advertising SDKs or advertising identifier.</li>
+          <li>No analytics, usage tracking or crash-reporting service.</li>
+          <li>No selling or sharing of your data with data brokers — there is no data flow to the developer at all.</li>
+          <li>No account, no login of its own, no profile.</li>
+          <li>No location access, and no location permission is requested.</li>
+          <li>No contacts, calendar, SMS, call log or health data access.</li>
+          <li>No background collection: nothing is sent while you are not using a feature.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="third-parties">
+      <h2><span class="num">15</span>Third parties, at a glance</h2>
+      <div class="section-rule"></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Service</th><th>When it is used</th><th>What reaches it</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Google Gemini API</td><td>Only when you use an AI feature, with your own API key</td><td>The text, image or audio that feature needs</td></tr>
+            <tr><td>Google Sign-In</td><td>Only if you choose to sign in</td><td>Your Google account identity, via Google's own flow</td></tr>
+            <tr><td>Google Drive</td><td>Only if you turn on word-list sync</td><td>Your vocabulary file, into your own Drive (<code>drive.file</code>)</td></tr>
+            <tr><td>Google ML Kit</td><td>Reading text in a photograph</td><td>Nothing — recognition runs on the device</td></tr>
+            <tr><td>GitHub</td><td>One-time download of the speech model and Piper voices</td><td>Nothing but the file request itself</td></tr>
+            <tr><td>Google text-to-speech</td><td>Only if you choose the Google voice</td><td>The word or sentence being read aloud</td></tr>
+            <tr><td>Microsoft Azure Speech</td><td>Only if you add your own Azure key</td><td>The word or sentence being read aloud</td></tr>
+            <tr><td>Google Play billing</td><td>Only if you buy the full version or give support</td><td>Handled by Google Play; the app sees only that a purchase exists</td></tr>
+            <tr><td>Your device's TTS engine</td><td>Pressing a speaker button</td><td>The word or sentence being read aloud</td></tr>
+            <tr><td>Google Play</td><td>Installing and updating the app</td><td>Handled by Google Play, under Google's policy</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="children">
+      <h2><span class="num">16</span>Children's privacy</h2>
+      <div class="section-rule"></div>
+      <p>English tutor is a general-audience study tool aimed at adult and teenage learners of English. It is not directed at children under 13, and it does not knowingly collect anything from them — it does not knowingly collect personal information from anyone, since it has no server to collect it to. Setting up the AI features requires obtaining a Google API key, which is an adult step.</p>
+    </section>
+
+    <section id="changes">
+      <h2><span class="num">17</span>Changes to this policy</h2>
+      <div class="section-rule"></div>
+      <p>If the app's handling of data changes, this page is updated and the effective date at the top changes with it. Material changes will also be noted in the app's release notes on Google Play. The current version of this page always describes the current released version of the app.</p>
+    </section>
+
+    <section id="contact">
+      <h2><span class="num">18</span>Contact</h2>
+      <div class="section-rule"></div>
+      <p>Questions about this policy, or about anything the app does with your information:</p>
+      <p><strong>Ahmed Yosri</strong><br><a href="mailto:ahmed.yosri.u3@gmail.com">ahmed.yosri.u3@gmail.com</a></p>
+    </section>
+
+<footer class="site">
+  <div class="bar">
+    <div class="flinks">
+      <a href="https://maiaarchitech.com/">MAIA Architech</a>
+      <a href="https://maiaarchitech.com/daybook-privacy/">Daybook privacy &amp; terms</a>
+      <a href="https://maiaarchitech.com/english-tutor-privacy/">English tutor privacy &amp; terms</a>
+      <a href="mailto:ahmed.yosri.u3@gmail.com">Contact</a>
+    </div>
+    <div class="fine">© 2026 Ahmed Yosri / MAIA Architech. English tutor is an independent developer app — not affiliated with or endorsed by Google LLC beyond ordinary API use.</div>
+  </div>
+</footer>
+
+<a href="#" class="top-btn" id="topBtn" aria-label="Back to top">&#8593;</a>
+
+
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  try { var s=localStorage.getItem('maia-theme'); if(s==='light'||s==='dark') root.setAttribute('data-theme',s); } catch(e){}
+  function isDark(){ var t=root.getAttribute('data-theme');
+    return t ? t==='dark' : !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches); }
+  function paint(){ if(btn) btn.textContent = isDark() ? '\u2600' : '\u25D0'; }
+  paint();
+  if(btn) btn.addEventListener('click', function(){
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('maia-theme', next); } catch(e){}
+    paint();
+  });
+  var top=document.getElementById('topBtn');
+  document.addEventListener('scroll', function(){
+    if(top) top.classList.toggle('show', (window.scrollY||window.pageYOffset) > 620);
+  }, {passive:true});
+})();
+</script>
+
+</body>
+</html>
