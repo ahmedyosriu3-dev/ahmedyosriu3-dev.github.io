@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>English tutor — learn English from the language you already speak | MAIA Architech</title>
+<meta name="description" content="English tutor corrects your English and explains every change in your own language, turns what you mean into natural English, makes photographed pages tappable, and keeps every word you meet as review cards. For Android and Windows.">
+<meta name="keywords" content="English tutor app, learn English, English grammar checker, learn English from Arabic, English vocabulary app, MAIA Architech">
+<meta name="author" content="MAIA Architech — Ahmed Yosri">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a2540">
+<link rel="canonical" href="https://maiaarchitech.com/english-tutor.html">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/maia-logo.png">
+<link rel="apple-touch-icon" href="assets/maia-logo.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MAIA Architech">
+<meta property="og:title" content="English tutor — learn English from your own language">
+<meta property="og:description" content="Write English and see every change explained in your own language. Say it your way and get natural English. Keep every word you meet.">
+<meta property="og:url" content="https://maiaarchitech.com/english-tutor.html">
+<meta property="og:image" content="https://maiaarchitech.com/assets/english-tutor-tour-poster.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="English tutor — learn English from your own language">
+<meta name="twitter:description" content="Write English and see every change explained in your own language.">
+<meta name="twitter:image" content="https://maiaarchitech.com/assets/english-tutor-tour-poster.webp">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=20260926d">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "English tutor",
+      "url": "https://maiaarchitech.com/english-tutor.html",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Android, Windows",
+      "description": "Corrects English sentences and explains each change in the learner's own language, turns what they mean into natural English, makes photographed pages tappable, transcribes speech on the device, and keeps saved words as spaced-repetition cards.",
+      "screenshot": "https://maiaarchitech.com/assets/et-1.webp",
+      "publisher": { "@id": "https://maiaarchitech.com/#org" },
+      "privacyPolicy": "https://maiaarchitech.com/english-tutor-privacy/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "MAIA Architech", "item": "https://maiaarchitech.com/" },
+        { "@type": "ListItem", "position": 2, "name": "English tutor", "item": "https://maiaarchitech.com/english-tutor.html" }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to use English tutor",
+      "step": [
+        { "@type": "HowToStep", "name": "Write a sentence", "text": "Type it the way you would say it and press check. Every change comes back marked and explained in your own language." },
+        { "@type": "HowToStep", "name": "Say it your way", "text": "Write what you mean in your own language and get the English a native speaker would say, with how it is built." },
+        { "@type": "HowToStep", "name": "Keep the words", "text": "Save any word with its meaning, forms and pronunciation." },
+        { "@type": "HowToStep", "name": "Review", "text": "Saved words come back as cards, just before you would forget them." }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-page="english-tutor">
+<script>document.documentElement.className += ' js';</script>
+
+<div id="bar"></div>
+
+<header class="site" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="MAIA Architech home">
+      <span class="tile"><img src="assets/maia-logo.png" alt="MAIA Architech logo" width="34" height="34"></span>
+      <span>
+        <b>MAIA Architech</b>
+        <i>Intelligent Software Solutions</i>
+      </span>
+    </a>
+    <nav class="top" aria-label="Main">
+      <a href="#tour" data-nav>Tour</a>
+      <a href="index.html#apps" data-nav data-page="home">Apps</a>
+      <a href="daybook.html" data-nav data-page="daybook">Daybook</a>
+      <a href="finnish-tutor.html" data-nav data-page="finnish-tutor">Finnish tutor</a>
+      <a href="english-tutor.html" data-nav data-page="english-tutor">English tutor</a>
+      <a href="index.html#contact" data-nav data-page="home">Contact</a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch colour theme">◐</button>
+    </nav>
+  </div>
+</header>
+
+<nav class="subnav" aria-label="Breadcrumb">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a> <span>/</span> English tutor</div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <div class="hero h-ft">
+    <canvas id="lattice" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="hero-inner has-phone">
+        <div>
+          <div class="hero-icon"><img src="assets/english-tutor-icon.png" alt="English tutor app icon" width="64" height="64"></div>
+          <p class="kicker on-ft">English tutor · learn English</p>
+          <h1 class="tight">Learn English from <span class="grad">the language you already speak.</span></h1>
+          <p class="lede">
+            Write a sentence and every change comes back marked, with the reason in your own
+            language. Say what you mean in Arabic, German, Chinese or any other language and get the
+            English a native speaker would say. Every word you meet is kept.
+          </p>
+          <div class="cta">
+            <a class="btn on-ft solid" href="#tour">Watch the tour <span class="ar">→</span></a>
+            <a class="btn ghost" href="#howto">How it works</a>
+          </div>
+          <div class="getrow" aria-label="Where to get English tutor">
+            <a class="gettile is-ask" href="#get">
+              <img src="assets/logo-google-play.png" alt="Google Play logo" width="88" height="88" loading="lazy">
+              <span><b>Google Play</b><i>Coming soon — free to try</i></span>
+            </a>
+            <a class="gettile is-ask" href="#get">
+              <img src="assets/logo-microsoft-store.svg" alt="Microsoft Store logo" width="88" height="88" loading="lazy">
+              <span><b>Microsoft Store</b><i>Coming soon — pairs with the phone</i></span>
+            </a>
+            <a class="gettile is-ask" href="index.html#contact">
+              <img src="assets/logo-windows.svg" alt="Windows logo" width="88" height="88" loading="lazy">
+              <span><b>Try it early</b><i>Ask the developers for a copy</i></span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-phone-wrap">
+          <div class="hero-phone-glow" style="--accent:var(--ft)"></div>
+          <div class="phone" data-gallery data-interval="4800">
+            <div class="screen">
+              <img class="on" src="assets/et-1.webp" alt="English tutor screenshot: an English sentence checked, with three changes marked and explained and an Arabic translation" width="520" height="1126" loading="lazy">
+              <img src="assets/et-2.webp" alt="English tutor screenshot: an Arabic question turned into natural English, with notes on how the English is built" width="520" height="1126" loading="lazy">
+              <img src="assets/et-3.webp" alt="English tutor screenshot: saved words with their Arabic meanings, one opened to show its verb forms" width="520" height="1126" loading="lazy">
+              <img src="assets/et-4.webp" alt="English tutor screenshot: a flashcard showing a word's meaning in Arabic with the sentence it was saved from" width="520" height="1126" loading="lazy">
+              <img src="assets/et-5.webp" alt="English tutor screenshot: a grammar lesson on the past simple, with when to use it and how to form it" width="520" height="1126" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="tour" class="alt">
+    <div class="wrap narrow">
+      <div class="sec-head reveal">
+        <span class="num">01 — SEE IT</span>
+        <h2>Watch the tour</h2>
+      </div>
+
+      <p class="lede reveal">
+        A run through the whole app, recorded on the Windows build: checking what you write,
+        turning your own language into English, a recording read along line by line, a
+        photographed exercise answered and checked, and a course book planned for you.
+      </p>
+
+      <div class="tourvid reveal">
+        <video controls preload="none" playsinline
+               poster="assets/english-tutor-tour-poster.webp" width="1280" height="720">
+          <source src="assets/english-tutor-tour.mp4" type="video/mp4">
+          <track kind="captions" src="assets/english-tutor-tour.vtt" srclang="en" label="English">
+          <p>Your browser cannot play this video.
+            <a href="assets/english-tutor-tour.mp4">Download it instead</a>.</p>
+        </video>
+      </div>
+      <p class="tourvid-cap">
+        Four minutes. Sound on for the British and American voices the app reads with, or turn on
+        the captions.
+      </p>
+    </div>
+  </section>
+
+  <section id="windows">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="num">02 — ON WINDOWS</span>
+        <h2>The same tutor, on your desk</h2>
+        <p>The desktop app pairs with your phone by one QR scan, so your words and settings come across with you.</p>
+      </div>
+
+      <div class="deskwrap reveal">
+        <div class="desk" data-gallery data-interval="5200">
+          <div class="desk-bar" aria-hidden="true"><i></i><i></i><i></i><span>English tutor for Windows</span><em class="desk-hint">Click to enlarge</em><em class="desk-count">01 / 06</em></div>
+          <button type="button" class="desk-open" aria-label="Enlarge this screenshot"></button>
+          <button type="button" class="gal-arrow prev" data-dir="-1" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></button>
+          <button type="button" class="gal-arrow next" data-dir="1" aria-label="Next screenshot"><svg class="gal-ring" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="28"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></button>
+          <div class="screen wide">
+            <img class="on" src="assets/etw-01_practice.webp" data-full="assets/etw-01_practice-full.webp" alt="English tutor for Windows: See what was wrong, and why. Every change marked and explained, with a translation into your language" width="1600" height="900" loading="lazy">
+            <img src="assets/etw-02_speaking.webp" data-full="assets/etw-02_speaking-full.webp" alt="English tutor for Windows: Listen, read along, understand. Any recording transcribed on your device, every line translated" width="1600" height="900" loading="lazy">
+            <img src="assets/etw-03_material.webp" data-full="assets/etw-03_material-full.webp" alt="English tutor for Windows: Photograph an exercise and answer it. The gaps become answer boxes, and every mistake comes back with the reason" width="1600" height="900" loading="lazy">
+            <img src="assets/etw-04_reading.webp" data-full="assets/etw-04_reading-full.webp" alt="English tutor for Windows: Tap any word on any page for its meaning in your language" width="1600" height="900" loading="lazy">
+            <img src="assets/etw-05_study.webp" data-full="assets/etw-05_study-full.webp" alt="English tutor for Windows: Your course book, planned. It finds every unit and lays out what to study, and when" width="1600" height="900" loading="lazy">
+            <img src="assets/etw-06_tutor.webp" data-full="assets/etw-06_tutor-full.webp" alt="English tutor for Windows: A tutor who knows your mistakes. A review of your work, and someone to ask from any screen" width="1600" height="900" loading="lazy">
+          </div>
+        </div>
+        <div class="deskrail" data-nav-for>
+          <button type="button" class="on" aria-label="Practice"><img src="assets/etw-01_practice.webp" alt="" width="1600" height="900" loading="lazy"></button>
+          <button type="button" aria-label="Speaking"><img src="assets/etw-02_speaking.webp" alt="" width="1600" height="900" loading="lazy"></button>
+          <button type="button" aria-label="Material"><img src="assets/etw-03_material.webp" alt="" width="1600" height="900" loading="lazy"></button>
+          <button type="button" aria-label="Reading"><img src="assets/etw-04_reading.webp" alt="" width="1600" height="900" loading="lazy"></button>
+          <button type="button" aria-label="Study"><img src="assets/etw-05_study.webp" alt="" width="1600" height="900" loading="lazy"></button>
+          <button type="button" aria-label="Tutor"><img src="assets/etw-06_tutor.webp" alt="" width="1600" height="900" loading="lazy"></button>
+        </div>
+        <dialog class="lb" aria-label="English tutor for Windows, enlarged">
+          <img src="" alt="" width="1600" height="900">
+          <button type="button" class="lb-x" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          <button type="button" class="lb-arrow prev" data-dir="-1" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></button>
+          <button type="button" class="lb-arrow next" data-dir="1" aria-label="Next screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></button>
+          <p class="lb-cap"></p>
+        </dialog>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="get">
+    <div class="wrap narrow">
+      <div class="sec-head reveal">
+        <span class="num">03 — GET IT</span>
+        <h2>Coming to Google Play and the Microsoft Store</h2>
+      </div>
+
+      <div class="tester s-ft reveal" id="tester">
+        <h3>Launching soon <span class="live">Coming soon</span></h3>
+        <p>
+          English tutor is on its way to Google Play and the Microsoft Store. This page will carry
+          the store links the day each one opens.
+        </p>
+        <ol class="steps">
+          <li>
+            <span class="sn">1</span>
+            <div>
+              <b>Want it before then?</b>
+              <p>Write to us with the Google account your phone uses, and we'll add you to the test.</p>
+              <a class="step-go" href="index.html#contact">
+                Ask for early access <span class="ar">→</span>
+              </a>
+            </div>
+          </li>
+          <li>
+            <span class="sn">2</span>
+            <div>
+              <b>Free to try</b>
+              <p>On Android, a few minutes every day are free. One purchase, once, unlocks it for good.
+                No subscription.</p>
+            </div>
+          </li>
+          <li>
+            <span class="sn">3</span>
+            <div>
+              <b>On Windows too</b>
+              <p>The desktop build is bought once on the Microsoft Store, and pairs with your phone by
+                a QR scan.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="doclinks reveal">
+        <a href="english-tutor-privacy/">Privacy policy <span>→</span></a>
+        <a href="english-tutor-privacy/">Terms of service <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="apikey" style="--accent:var(--ft); --accent-bg:var(--ft-soft);">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">04 &mdash; NEXT, THE KEY</span>
+        <h2>Set up your free Gemini key</h2>
+        <p>English tutor&rsquo;s AI half runs on a Google Gemini key that you create yourself, so the
+          requests go straight from your device to Google rather than through us. It is free, takes
+          about two minutes, and never asks for a card. The app walks you through it, or watch it
+          here once.</p>
+      </div>
+
+      <div class="keyvid reveal">
+        <div class="keyvid-media">
+          <video controls preload="none" playsinline
+                 poster="assets/gemini-api-key-poster.webp"
+                 width="1080" height="1920"
+                 aria-describedby="keystepsList">
+            <source src="assets/gemini-api-key.mp4" type="video/mp4">
+            <p>Your browser cannot play this video.
+              <a href="assets/gemini-api-key.mp4">Download it instead</a>.</p>
+          </video>
+          <p class="keyvid-cap">1 min 18 s &middot; narrated &middot; recorded in Daybook, another of
+            our apps &mdash; the AI Studio part is identical</p>
+        </div>
+
+        <ol class="keysteps" id="keystepsList">
+          <li>
+            <h4>Open the key page</h4>
+            <p>In English tutor, go to <em>Settings &rarr; Gemini AI</em>. The API key box at the top
+              reads <em>No key</em> until you fill it.</p>
+          </li>
+          <li>
+            <h4>Go to AI Studio</h4>
+            <p>Open <code>aistudio.google.com/apikey</code> in your browser. Any Google account
+              works.</p>
+          </li>
+          <li>
+            <h4>Accept the terms</h4>
+            <p>Tick the acknowledgement box and press <em>Continue</em>. No billing account is
+              created and no card is requested.</p>
+          </li>
+          <li>
+            <h4>Create the key</h4>
+            <p>Press <em>Create API key</em>, keep the project it suggests, then press
+              <em>Create key</em>.</p>
+          </li>
+          <li>
+            <h4>Copy it straight away</h4>
+            <p>Tap the copy icon next to the key. It is shown once &mdash; if you lose it, just
+              make another.</p>
+          </li>
+          <li>
+            <h4>Paste it back and save</h4>
+            <p>Return to English tutor, paste the key into the box and press <em>Save</em>. The model
+              list fills, which is how you know it works.</p>
+          </li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="alt" id="overview">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">05 — WHAT IT DOES</span>
+        <h2>Explained in your language, practised in English</h2>
+      </div>
+
+      <div class="feat reveal">
+        <div class="f"><h4>Corrections you can learn from</h4><p>Every change marked, the rule named — &ldquo;for with a length of time, since with a starting point&rdquo; — in your own language or in simple English.</p></div>
+        <div class="f"><h4>Say it your way</h4><p>Write what you mean in any language and get natural English back, with how it is built and other ways to say it.</p></div>
+        <div class="f"><h4>Any page, tappable</h4><p>Photograph a textbook, an article or a sign. Every word opens its meaning, and exercises on the page can be answered and checked.</p></div>
+        <div class="f"><h4>Listen and speak</h4><p>Record yourself or open any English audio for a timed transcript with translations. Hear every line in a British or American voice.</p></div>
+        <div class="f"><h4>Your course book, planned</h4><p>Import a PDF course book. It finds every unit, turns exercises into answer boxes, and lays out a study plan at your pace.</p></div>
+        <div class="f"><h4>Words that stay, lessons that fit</h4><p>Saved words come back as flashcards. Grammar lessons from A1 upward, and a review built from your own mistakes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="howto">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">06 — USING IT</span>
+        <h2>Four steps cover most of it</h2>
+        <p>Scroll and the phone follows along, or tap a step to jump to it.</p>
+      </div>
+
+      <div class="wt reveal">
+        <div class="wt-rail" data-gallery-target="wtGalleryEt">
+          <div class="wt-fill"></div>
+
+          <div class="wt-step" data-caption="Check">
+            <span class="wt-dot">1</span>
+            <div class="wt-card">
+              <h4>
+                <span class="wt-ic a-write"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg></span>
+                Write a sentence
+              </h4>
+              <p>Type it the way you would say it and press check. Every change comes back marked, with the reason in your language.</p>
+            </div>
+          </div>
+
+          <div class="wt-step" data-caption="Into English">
+            <span class="wt-dot">2</span>
+            <div class="wt-card">
+              <h4>
+                <span class="wt-ic a-shot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></span>
+                Say it your way
+              </h4>
+              <p>Write what you mean in your own language and get the English a native speaker would say.</p>
+            </div>
+          </div>
+
+          <div class="wt-step" data-caption="Words">
+            <span class="wt-dot">3</span>
+            <div class="wt-card">
+              <h4>
+                <span class="wt-ic a-rise"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg></span>
+                Keep the words
+              </h4>
+              <p>Save any word with its meaning, all its forms, and UK and US pronunciation.</p>
+            </div>
+          </div>
+
+          <div class="wt-step" data-caption="Review">
+            <span class="wt-dot">4</span>
+            <div class="wt-card">
+              <h4>
+                <span class="wt-ic a-flip"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></span>
+                Review what you saved
+              </h4>
+              <p>Saved words come back as cards, spaced so each one returns just before you'd forget it.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="wt-phone-wrap">
+          <div class="hero-phone-glow" style="--accent:var(--ft); position:absolute; inset:-30px; z-index:-1;"></div>
+          <div class="phone" id="wtGalleryEt" data-gallery data-manual>
+            <div class="screen">
+              <img class="on" src="assets/et-1.webp" alt="English tutor screenshot: an English sentence checked, with three changes marked and explained and an Arabic translation" width="520" height="1126" loading="lazy">
+              <img src="assets/et-2.webp" alt="English tutor screenshot: an Arabic question turned into natural English, with notes on how the English is built" width="520" height="1126" loading="lazy">
+              <img src="assets/et-3.webp" alt="English tutor screenshot: saved words with their Arabic meanings, one opened to show its verb forms" width="520" height="1126" loading="lazy">
+              <img src="assets/et-4.webp" alt="English tutor screenshot: a flashcard showing a word's meaning in Arabic with the sentence it was saved from" width="520" height="1126" loading="lazy">
+            </div>
+          </div>
+          <p class="wt-caption">Check</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="data">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="num">07 — YOUR DATA</span>
+        <h2>What stays, and what doesn't</h2>
+        <p>Pick anything English tutor handles.</p>
+      </div>
+
+      <div class="flow-card reveal" data-flow>
+        <div class="flow">
+          <div class="node n-device">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></span>
+            <b>Your device</b>
+            <small>Local database</small>
+          </div>
+          <div class="track"><span class="track-arrow">→</span></div>
+          <div class="node n-out">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+            <b>Your own accounts</b>
+            <small>Only when switched on</small>
+          </div>
+        </div>
+
+        <div class="chips">
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> The English dictionary ships inside the app. Looking a word up sends nothing anywhere.">Dictionary</button>
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> Speech-to-text runs locally by default: Whisper through sherpa-onnx on Android, faster-whisper on Windows. Your audio doesn't leave the device in that mode.">Voice recordings</button>
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> Text recognition on a photographed page runs locally, which is what makes every word tappable.">Photographed pages</button>
+          <button class="chip" data-dest="stay" data-note="<b>Stays on your device.</b> Saved words, their forms and your review progress live in the app's own database.">Your word list</button>
+          <button class="chip" data-dest="out" data-note="<b>Goes to Google's Gemini API, as you.</b> The AI features use a key you create and paste in yourself, so the request is between you and Google. It happens when you press the button, never in the background.">Corrections</button>
+          <button class="chip" data-dest="out" data-note="<b>Goes to your own Google Drive, if you turn it on.</b> Syncing the word list uses the narrow <code>drive.file</code> scope, which only reaches files the app created.">Word list sync</button>
+        </div>
+
+        <div class="flow-note">
+          <b>Pick anything above.</b> The AI features and word-list sync are each off until you turn
+          them on.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="details">
+    <div class="wrap narrow">
+      <div class="sec-head reveal">
+        <span class="num">08 — PERMISSIONS</span>
+        <h2>Bring your own AI key</h2>
+        <p>The AI features aren't a service we run for you. You make your own free Gemini key and paste
+          it into Settings, and the app calls Google directly from your device, as you. The key sits in
+          the app's own settings storage and never reaches us. Your use of the API is between you and
+          Google.</p>
+      </div>
+
+      <div class="reveal">
+        <div class="scope ft">
+          <h4>Works without a key <span class="badge">offline</span></h4>
+          <p>
+            If you never add one, the offline half keeps working: the bundled dictionary, tap-a-word
+            lookup, word forms, your saved list, the review cards, the PDF reader, text recognition
+            and speech-to-text.
+          </p>
+        </div>
+
+        <div class="scope ft">
+          <h4>Camera <span class="badge">pages &amp; exercises</span></h4>
+          <p>
+            Opens only when you start it: photographing a page or an exercise, or scanning the pairing
+            QR code from the desktop app. Recognition runs locally first, so where the device can read
+            the text itself, the text is sent rather than the picture. Photos aren't uploaded anywhere
+            else or added to any gallery.
+          </p>
+        </div>
+
+        <div class="scope ft">
+          <h4>Microphone <span class="badge">local by default</span></h4>
+          <p>
+            Used only while you're recording, after you press record. Transcription runs on the device
+            by default — Whisper through sherpa-onnx on Android, faster-whisper on Windows — and your
+            audio stays there. Sending audio to Gemini is a fallback for when local transcription is
+            off or unavailable.
+          </p>
+        </div>
+
+        <div class="scope ft">
+          <h4>Reading aloud <span class="badge">your choice of voice</span></h4>
+          <p>
+            Only when you press a speaker button, and only the word or sentence being read. Piper
+            voices run on the device; the system voice is your device's own; the Google and Azure
+            voices send just that text to be spoken.
+          </p>
+        </div>
+
+        <div class="scope ft">
+          <h4>Google sign-in <span class="badge">optional · drive.file</span></h4>
+          <p>
+            Optional, and there for one thing: syncing your word list through your own Drive with the
+            narrow <code>drive.file</code> scope, which reaches nothing but the files the app created.
+            No feature is locked behind signing in.
+          </p>
+        </div>
+
+        <h3 class="sub">What it doesn't do</h3>
+        <ul class="ticks">
+          <li>No ads, no analytics, no trackers, no crash reporting.</li>
+          <li>No accounts, no back end, no server of ours.</li>
+          <li>Your sentences, recordings, photos and word list never reach us.</li>
+        </ul>
+        <p>
+          The <a href="english-tutor-privacy/">privacy policy</a> goes feature by feature and says
+          exactly what is and isn't sent to Gemini.
+        </p>
+
+        <h3 class="sub">Platforms</h3>
+        <dl class="spec">
+          <dt>Android</dt>
+          <dd>Coming to Google Play as <strong>English tutor</strong> (<code>com.ahmedyosri.english_tutor</code>).</dd>
+          <dt>Windows</dt>
+          <dd>Coming to the Microsoft Store, with one-scan QR pairing to carry your words and settings across from the phone.</dd>
+          <dt>Price</dt>
+          <dd>Free to try on Android, a few minutes every day; one purchase unlocks it for good. Bought
+            once on the Microsoft Store for Windows. No subscription either way.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="faq">
+    <div class="wrap narrow">
+      <div class="sec-head reveal">
+        <span class="num">09 — QUESTIONS</span>
+        <h2>Questions</h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>Which languages can it explain in?</summary>
+          <div class="ans">More than 95 are built in — Arabic, German, Spanish, Turkish, Chinese, Persian,
+            Ukrainian, Hindi, French, Portuguese and many more — and you can type any other. Prefer to
+            think in English? One switch puts every explanation in simple English.</div>
+        </details>
+        <details>
+          <summary>Does it work offline?</summary>
+          <div class="ans">Everything except the AI features: corrections, translation, exercise reading
+            and progress reviews. Those need a connection and <a href="#apikey">your own free key</a>.</div>
+        </details>
+        <details>
+          <summary>Do I pay for the AI features?</summary>
+          <div class="ans">No. They run on your own free Gemini key, so there's no subscription.</div>
+        </details>
+      </div>
+      <p class="note reveal">
+        Found a bug, or want something added? <a href="index.html#contact">Contact us</a>. It reaches the developers who build it.
+      </p>
+    </div>
+  </section>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="row">
+        <div>
+          <a href="index.html">Home</a>
+          <a href="daybook.html">Daybook</a>
+          <a href="finnish-tutor.html">Finnish tutor</a>
+          <a href="english-tutor-privacy/">Privacy</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <div>MAIA Architech — Intelligent Software Solutions</div>
+      </div>
+      <div class="fine">© 2026 Ahmed Yosri / MAIA Architech. Not affiliated with or endorsed by Google LLC.
+        Android and Google Play are trademarks of Google LLC.</div>
+    </div>
+  </footer>
+</main>
+
+<a href="#top" class="top-btn" id="topBtn" aria-label="Back to top">↑</a>
+
+<script src="assets/site.js?v=20260926d"></script>
+</body>
+</html>

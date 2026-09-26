@@ -1,4 +1,4 @@
-/* MAIA Architech — shared behaviour for index.html, daybook.html, finnish-tutor.html */
+/* MAIA Architech — shared behaviour for index.html, daybook.html, finnish-tutor.html, english-tutor.html */
 (function () {
   "use strict";
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
