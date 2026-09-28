@@ -1,0 +1,7 @@
+{# One place that knows how an instrument logo is drawn. The src always
+   resolves: the route falls back to a locally generated monogram tile, so
+   there is no broken-image state to handle here. #}
+{% macro logo(symbol, cls="") -%}
+<img class="logo {{ cls }}" src="/logo/{{ symbol }}" alt="" aria-hidden="true"
+     loading="lazy" decoding="async" width="22" height="22">
+{%- endmacro %}

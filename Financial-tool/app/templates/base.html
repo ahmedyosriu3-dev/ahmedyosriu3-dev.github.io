@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Dashboard{% endblock %} &middot; Trading Desk</title>
+  <link rel="stylesheet" href="/static/app.css?v={{ asset_v }}">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+  <script src="/static/vendor/htmx.min.js" defer></script>
+  {% block head %}{% endblock %}
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">◧</div>
+      <div class="brand-name">Trading Desk</div>
+    </div>
+
+    <button class="palette-trigger" onclick="Palette.open()">
+      <span class="ico">⌕</span>
+      <span>Search or jump…</span>
+      <kbd>Ctrl K</kbd>
+    </button>
+
+    <nav class="nav">
+      <div class="nav-label">Trading</div>
+      <a class="nav-item {% if active=='overview' %}active{% endif %}" href="/">
+        <span class="ico">◫</span> Overview
+        {% if pending_count %}<span class="badge-count pulse">{{ pending_count }}</span>{% endif %}
+      </a>
+      <a class="nav-item {% if active=='suggestions' %}active{% endif %}" href="/suggestions">
+        <span class="ico">◨</span> Suggestions
+      </a>
+      <a class="nav-item {% if active=='positions' %}active{% endif %}" href="/positions">
+        <span class="ico">▤</span> Positions
+      </a>
+
+      <div class="nav-label">Research</div>
+      <a class="nav-item {% if active=='scout' %}active{% endif %}" href="/scout">
+        <span class="ico">◎</span> Idea scout
+      </a>
+      <a class="nav-item {% if active=='dogs' %}active{% endif %}" href="/dogs">
+        <span class="ico">◷</span> Dogs of the Dow
+      </a>
+      <a class="nav-item {% if active=='strategies' %}active{% endif %}" href="/strategies">
+        <span class="ico">◈</span> Strategies
+      </a>
+      <a class="nav-item {% if active=='backtest' %}active{% endif %}" href="/backtest">
+        <span class="ico">◐</span> Backtest
+      </a>
+
+      <div class="nav-label">System</div>
+      <a class="nav-item {% if active=='log' %}active{% endif %}" href="/log">
+        <span class="ico">≡</span> Activity log
+      </a>
+      <a class="nav-item {% if active=='settings' %}active{% endif %}" href="/settings">
+        <span class="ico">⚙</span> Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-foot">
+      {% if broker.is_simulator %}
+        <span class="badge badge-muted" title="No Alpaca keys found - orders are simulated locally">
+          <span class="dot"></span> Simulator
+        </span>
+      {% elif broker.is_paper %}
+        <span class="badge badge-accent" title="Alpaca paper account - no real money">
+          <span class="dot"></span> Alpaca paper
+        </span>
+      {% else %}
+        <span class="badge badge-danger"><span class="dot"></span> ALPACA LIVE</span>
+      {% endif %}
+
+      {% if telegram.configured %}
+        <span class="badge badge-muted" title="{% if telegram.running %}Listening for commands and button taps{% else %}Configured but the poller is not running{% endif %}">
+          <span class="dot {{ 'live' if telegram.running else '' }}"></span>
+          Telegram{% if telegram.approvals %} ⚡{% endif %}
+        </span>
+      {% endif %}
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div>
+        <div class="page-title">{% block heading %}Overview{% endblock %}</div>
+        {% block subheading %}{% endblock %}
+      </div>
+      <div class="topbar-right">
+        {% if market_open %}
+          <span class="market-chip open"><span class="dot"></span> Market open</span>
+        {% else %}
+          <span class="market-chip closed"><span class="dot"></span> Market closed</span>
+        {% endif %}
+        {% if account %}
+          <div style="text-align:right">
+            <div class="topbar-k">Equity</div>
+            <div class="num topbar-v" data-count="{{ account.equity }}">${{ "{:,.2f}".format(account.equity) }}</div>
+          </div>
+        {% endif %}
+      </div>
+    </header>
+
+    <main class="content">
+      {% if not broker.is_paper %}
+        <div class="banner banner-live">
+          <span>⬤</span>
+          <span>LIVE TRADING IS ARMED — orders placed here use real money.</span>
+        </div>
+      {% endif %}
+
+      {% if broker.kill_switch %}
+        <div class="banner banner-danger">
+          <span>⏻</span>
+          <span><strong>Kill switch active.</strong> All new orders are blocked.
+            Clear it in <a href="/settings">Settings</a> once you know why it tripped.</span>
+        </div>
+      {% endif %}
+
+      {% if broker.is_simulator %}
+        <div class="banner banner-info">
+          <span>ⓘ</span>
+          <span>Running on the <strong>local simulator</strong> — no Alpaca keys found, so
+            orders are pretend. Add keys to <code>.env</code> to use a paper account.</span>
+        </div>
+      {% endif %}
+
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</div>
+
+<!-- Command palette ---------------------------------------------------- -->
+<div class="palette-backdrop" id="palette" hidden>
+  <div class="palette" role="dialog" aria-label="Command palette">
+    <input class="palette-input" id="palette-input" type="text" autocomplete="off"
+           placeholder="Jump to a symbol, or type a command…" aria-label="Command">
+    <div class="palette-results" id="palette-results"></div>
+    <div class="palette-foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> move</span>
+      <span><kbd>↵</kbd> run</span>
+      <span><kbd>esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<div class="toast-host" id="toasts"></div>
+
+<script>
+  // ---- Toasts: server responses ask for one via the HX-Toast header. ----
+  document.body.addEventListener("htmx:afterRequest", (e) => {
+    const msg = e.detail.xhr.getResponseHeader("HX-Toast");
+    if (!msg) return;
+    const kind = e.detail.xhr.getResponseHeader("HX-Toast-Kind") || "";
+    const el = document.createElement("div");
+    el.className = "toast " + kind;
+    el.textContent = msg;
+    document.getElementById("toasts").appendChild(el);
+    setTimeout(() => el.classList.add("out"), 4600);
+    setTimeout(() => el.remove(), 5200);
+  });
+
+  // ---- Command palette -------------------------------------------------
+  // Everything the app can do, reachable in three keystrokes. The point is
+  // that acting should never require remembering which page a button is on.
+  const Palette = (() => {
+    const SYMBOLS = {{ palette_symbols | safe }};
+    const COMMANDS = [
+      {t: "Overview",            k: "go home dashboard",   run: () => location.href = "/"},
+      {t: "Positions",           k: "go book holdings",    run: () => location.href = "/positions"},
+      {t: "Idea scout",          k: "go ideas discover new stocks bonds", run: () => location.href = "/scout"},
+      {t: "Strategies",          k: "go",                  run: () => location.href = "/strategies"},
+      {t: "Backtest",            k: "go test",             run: () => location.href = "/backtest"},
+      {t: "Activity log",        k: "go audit history",    run: () => location.href = "/log"},
+      {t: "Settings",            k: "go config watchlist", run: () => location.href = "/settings"},
+      {t: "Rescan signals now",  k: "action refresh run",  run: () => post("/api/scan")},
+      {t: "Run the idea scout",  k: "action find new ideas screen", run: () => post("/api/scout/run")},
+      {t: "Re-run strategy selection", k: "action select walk forward", run: () => post("/api/select-all")},
+      {t: "Send me the brief on Telegram", k: "action digest notify phone", run: () => post("/api/telegram/digest")},
+      {t: "Toggle the kill switch", k: "action stop halt panic", run: () => post("/api/kill-switch"), danger: true},
+      {t: "Help",                k: "go keyboard shortcuts logos how it works", run: () => { close(); document.getElementById("shortcut-help").showModal(); }},
+    ];
+
+    let items = [], cursor = 0;
+    const el = () => document.getElementById("palette");
+    const input = () => document.getElementById("palette-input");
+    const results = () => document.getElementById("palette-results");
+
+    function post(url) {
+      close();
+      fetch(url, {method: "POST"}).then(r => {
+        const m = r.headers.get("HX-Toast");
+        if (m) {
+          const t = document.createElement("div");
+          t.className = "toast " + (r.headers.get("HX-Toast-Kind") || "");
+          t.textContent = m;
+          document.getElementById("toasts").appendChild(t);
+          setTimeout(() => t.remove(), 5200);
+        }
+        setTimeout(() => location.reload(), 600);
+      });
+    }
+
+    function build(query) {
+      const q = query.trim().toLowerCase();
+      const out = [];
+      for (const s of SYMBOLS) {
+        if (!q || s.s.toLowerCase().includes(q) || s.n.toLowerCase().includes(q)) {
+          out.push({label: s.s, sub: s.n, tag: "symbol",
+                    run: () => location.href = "/symbol/" + s.s});
+        }
+      }
+      for (const c of COMMANDS) {
+        if (!q || c.t.toLowerCase().includes(q) || c.k.includes(q)) {
+          out.push({label: c.t, sub: "", tag: c.k.startsWith("go") ? "page" : "action",
+                    danger: c.danger, run: c.run});
+        }
+      }
+      if (q && /^[a-z.\-]{1,6}$/i.test(q) && !SYMBOLS.some(s => s.s.toLowerCase() === q)) {
+        out.push({label: q.toUpperCase(), sub: "look up this ticker", tag: "search",
+                  run: () => location.href = "/symbol/" + q.toUpperCase()});
+      }
+      return out.slice(0, 12);
+    }
+
+    function render() {
+      results().innerHTML = items.map((it, i) => `
+        <div class="palette-row ${i === cursor ? "sel" : ""} ${it.danger ? "danger" : ""}" data-i="${i}">
+          ${it.tag === "symbol" || it.tag === "search"
+            ? `<img class="logo logo-sm" src="/logo/${encodeURIComponent(it.label)}" alt="" aria-hidden="true">`
+            : ""}
+          <span class="palette-label">${it.label}</span>
+          <span class="palette-sub">${it.sub}</span>
+          <span class="palette-tag">${it.tag}</span>
+        </div>`).join("") ||
+        `<div class="palette-empty">Nothing matches.</div>`;
+      results().querySelectorAll(".palette-row").forEach(r => {
+        r.onclick = () => { items[+r.dataset.i].run(); };
+      });
+    }
+
+    function refresh() { items = build(input().value); cursor = 0; render(); }
+    function open() {
+      el().hidden = false;
+      input().value = "";
+      refresh();
+      input().focus();
+    }
+    function close() { el().hidden = true; }
+
+    document.addEventListener("keydown", (e) => {
+      const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
+
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault(); open(); return;
+      }
+      if (!el().hidden) {
+        if (e.key === "Escape") { close(); }
+        else if (e.key === "ArrowDown") { e.preventDefault(); cursor = Math.min(cursor + 1, items.length - 1); render(); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); cursor = Math.max(cursor - 1, 0); render(); }
+        else if (e.key === "Enter" && items[cursor]) { e.preventDefault(); items[cursor].run(); }
+        else { setTimeout(refresh, 0); }
+        return;
+      }
+      if (typing) return;
+
+      // Single-key shortcuts, only when not typing.
+      if (e.key === "/") { e.preventDefault(); open(); }
+      else if (e.key === "g") { location.href = "/"; }
+      else if (e.key === "s") { location.href = "/scout"; }
+      else if (e.key === "p") { location.href = "/positions"; }
+      else if (e.key === "r") { post("/api/scan"); }
+      else if (e.key === "?") { document.getElementById("shortcut-help")?.showModal?.(); }
+    });
+
+    return {open, close, post};
+  })();
+
+  // ---- Count-up on the headline numbers --------------------------------
+  // Motion only where it carries meaning: the number you came to read.
+  document.querySelectorAll("[data-count]").forEach(el => {
+    const target = parseFloat(el.dataset.count);
+    if (!isFinite(target) || Math.abs(target) > 1e12) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const dp = (el.dataset.dp !== undefined) ? +el.dataset.dp : 2;
+    const prefix = el.dataset.prefix ?? "$";
+    const suffix = el.dataset.suffix ?? "";
+    const dur = 520, t0 = performance.now(), from = target * 0.92;
+    function frame(t) {
+      const k = Math.min((t - t0) / dur, 1);
+      const eased = 1 - Math.pow(1 - k, 3);
+      const v = from + (target - from) * eased;
+      el.textContent = prefix + v.toLocaleString(undefined,
+        {minimumFractionDigits: dp, maximumFractionDigits: dp}) + suffix;
+      if (k < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  });
+</script>
+
+<dialog id="shortcut-help" class="shortcut-dialog">
+  <h3>Help</h3>
+
+  <h4>Keyboard</h4>
+  <table>
+    <tr><td><kbd>Ctrl</kbd><kbd>K</kbd> or <kbd>/</kbd></td><td>Command palette</td></tr>
+    <tr><td><kbd>g</kbd></td><td>Overview</td></tr>
+    <tr><td><kbd>s</kbd></td><td>Idea scout</td></tr>
+    <tr><td><kbd>p</kbd></td><td>Positions</td></tr>
+    <tr><td><kbd>r</kbd></td><td>Rescan signals</td></tr>
+    <tr><td><kbd>?</kbd></td><td>This dialog</td></tr>
+  </table>
+
+  <h4>Symbol logos</h4>
+  <p>
+    Every ticker carries a logo so you can find a row by shape before you have
+    read a word of it. Here is what sits behind that:
+  </p>
+  <ul class="help-list">
+    <li><strong>Your browser never talks to a logo provider.</strong> Pages point at
+      this app&rsquo;s own <code>/logo/&lt;TICKER&gt;</code> route. The server fetches the
+      image once, stores it in <code>data/logos/</code>, and serves it from disk
+      after that &mdash; so your watchlist is not broadcast to a third party, and a
+      slow provider can never slow a page down twice.</li>
+    <li><strong>A coloured monogram means &ldquo;no artwork&rdquo;, not &ldquo;broken&rdquo;.</strong>
+      Bonds, commodity trusts and obscure tickers often have no logo anywhere.
+      The tile is drawn locally, and its colour is derived from the ticker, so a
+      symbol always looks the same &mdash; which is all you need to recognise a row.</li>
+    <li><strong>Failed lookups are remembered for a week.</strong> A missing symbol costs
+      one request, not one per page view. Offline, everything falls back to
+      monograms and nothing blocks.</li>
+  </ul>
+  <p class="help-note">
+    <strong>Using it well:</strong> leave it alone. It warms itself as you browse and
+    then costs nothing. Hit <em>Refresh logos</em> in
+    <a href="/settings">Settings</a> after a rebrand, or once after you were
+    offline when symbols were first added &mdash; that is what clears the
+    week-long misses. Treat a logo as decoration only: it is matched on ticker
+    alone, so never use it to confirm <em>which</em> company you are about to
+    buy &mdash; read the ticker and the name. If you would rather the app made no
+    outbound requests at all, set <code>LOGOS_ENABLED=false</code> in
+    <code>.env</code> and every symbol uses a monogram.
+  </p>
+
+  <form method="dialog"><button class="btn btn-sm">Close</button></form>
+</dialog>
+
+{% block scripts %}{% endblock %}
+</body>
+</html>

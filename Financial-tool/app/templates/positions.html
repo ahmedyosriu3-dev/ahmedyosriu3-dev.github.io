@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% from "_logo.html" import logo %}
+{% block title %}Positions{% endblock %}
+{% block heading %}Positions &amp; orders{% endblock %}
+{% block subheading %}<div class="page-sub">Live account state from {{ broker.describe }}</div>{% endblock %}
+
+{% block content %}
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-label">Equity</div>
+    <div class="stat-value">${{ "{:,.2f}".format(account.equity) }}</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Cash</div>
+    <div class="stat-value">${{ "{:,.2f}".format(account.cash) }}</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Market value</div>
+    <div class="stat-value">${{ "{:,.2f}".format(market_value) }}</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Unrealised P&amp;L</div>
+    <div class="stat-value {{ 'up' if total_pl > 0 else ('down' if total_pl < 0 else '') }}">
+      {{ "+" if total_pl > 0 else "" }}${{ "{:,.2f}".format(total_pl) }}
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="card-title">Open positions</div></div>
+  <div class="card-body flush">
+    {% if positions %}
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Symbol</th><th class="right">Qty</th><th class="right">Avg cost</th>
+          <th class="right">Last</th><th class="right">Value</th><th class="right">P&amp;L</th>
+          <th class="right">%</th><th></th></tr></thead>
+        <tbody>
+        {% for p in positions %}
+          <tr>
+            <td><span class="sym-cell">{{ logo(p.symbol) }}<a href="/symbol/{{ p.symbol }}" class="sym">{{ p.symbol }}</a></span></td>
+            <td class="right num">{{ "%.0f"|format(p.qty) }}</td>
+            <td class="right num">${{ "{:,.2f}".format(p.avg_entry_price) }}</td>
+            <td class="right num">${{ "{:,.2f}".format(p.current_price) }}</td>
+            <td class="right num">${{ "{:,.2f}".format(p.market_value) }}</td>
+            <td class="right num {{ 'up' if p.unrealized_pl > 0 else ('down' if p.unrealized_pl < 0 else 'dim') }}">
+              {{ "+" if p.unrealized_pl > 0 else "" }}${{ "{:,.2f}".format(p.unrealized_pl) }}</td>
+            <td class="right num {{ 'up' if p.unrealized_pl > 0 else ('down' if p.unrealized_pl < 0 else 'dim') }}">
+              {{ "%.2f"|format(p.unrealized_plpc * 100) }}%</td>
+            <td class="right">
+              <button class="btn btn-sm btn-reject"
+                      hx-post="/api/positions/{{ p.symbol }}/close"
+                      hx-swap="none" hx-on::after-request="location.reload()"
+                      hx-confirm="Close the entire {{ p.symbol }} position at market?">Close</button>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+      <div class="empty">
+        <div class="empty-icon">▤</div>
+        <div class="empty-title">No open positions</div>
+        <div class="empty-text">Approved orders will show up here once they fill.</div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="card-title">Order history</div></div>
+  <div class="card-body flush">
+    {% if orders %}
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Submitted</th><th>Symbol</th><th>Side</th><th class="right">Qty</th>
+          <th class="right">Fill</th><th>Status</th><th>Account</th></tr></thead>
+        <tbody>
+        {% for o in orders %}
+          <tr>
+            <td class="num dim">{{ o.submitted_at.strftime("%Y-%m-%d %H:%M") if o.submitted_at else "—" }}</td>
+            <td><span class="sym-cell">{{ logo(o.symbol) }}<a href="/symbol/{{ o.symbol }}" class="sym">{{ o.symbol }}</a></span></td>
+            <td>{% if o.side == "buy" %}<span class="badge badge-buy">BUY</span>
+                {% else %}<span class="badge badge-sell">SELL</span>{% endif %}</td>
+            <td class="right num">{{ "%.0f"|format(o.qty) }}</td>
+            <td class="right num">{{ ("$%.2f"|format(o.filled_avg_price)) if o.filled_avg_price else "—" }}</td>
+            <td><span class="badge badge-muted">{{ o.status }}</span></td>
+            <td>{% if o.is_paper %}<span class="badge badge-accent">paper</span>
+                {% else %}<span class="badge badge-danger">LIVE</span>{% endif %}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+      <div class="empty"><div class="empty-icon">≡</div>
+        <div class="empty-title">No orders yet</div></div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

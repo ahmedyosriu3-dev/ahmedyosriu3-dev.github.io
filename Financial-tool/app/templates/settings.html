@@ -1,0 +1,440 @@
+{% extends "base.html" %}
+{% from "_logo.html" import logo %}
+{% block title %}Settings{% endblock %}
+{% block heading %}Settings{% endblock %}
+{% block subheading %}<div class="page-sub">Watchlist, per-symbol authority, and the safety rails.</div>{% endblock %}
+
+{% block content %}
+
+<div class="card" id="watchlist">
+  <div class="card-head">
+    <div>
+      <div class="card-title">Watchlist</div>
+      <div class="card-sub">
+        <strong>Signal only</strong> tells you and stops there.
+        <strong>Semi-auto</strong> queues an order for your approval.
+        <strong>Off</strong> watches silently.
+      </div>
+    </div>
+    <div class="card-head-actions">
+      <button class="btn btn-sm btn-primary" hx-post="/api/select-all" hx-swap="none"
+              hx-on::after-request="location.reload()"
+              hx-confirm="Re-run walk-forward strategy selection across the whole watchlist? This can take a minute.">
+        ◈ Run strategy selection <span class="spinner-slot"><span class="spinner"></span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <form hx-post="/api/watchlist/add" hx-swap="none" hx-on::after-request="location.reload()">
+      <div class="form-row" style="margin-bottom:18px">
+        <div class="field" style="max-width:160px">
+          <label>Add symbol</label>
+          <input type="text" name="symbol" placeholder="AAPL" required
+                 style="text-transform:uppercase" autocomplete="off">
+        </div>
+        <div class="field" style="max-width:170px">
+          <label>Mode</label>
+          <select name="mode">
+            <option value="SIGNAL_ONLY" selected>Signal only</option>
+            <option value="SEMI_AUTO">Semi-auto</option>
+            <option value="OFF">Off</option>
+          </select>
+        </div>
+        <div class="field" style="max-width:150px">
+          <label>Allocation (USD)</label>
+          <input type="number" name="allocation_usd" value="1000" min="1" step="100">
+        </div>
+        <div class="field" style="max-width:120px">
+          <label>Risk / trade</label>
+          <input type="number" name="risk_pct" value="1" min="0.1" max="10" step="0.1">
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+      </div>
+    </form>
+
+    {% if items %}
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Symbol</th><th>Mode</th><th class="right">Allocation</th>
+          <th class="right">Risk %</th><th>Strategy</th><th>Pin</th><th></th></tr></thead>
+        <tbody>
+        {% for it in items %}
+          <tr>
+            <td><span class="sym-cell">{{ logo(it.symbol) }}<a href="/symbol/{{ it.symbol }}" class="sym">{{ it.symbol }}</a></span></td>
+            <td>
+              <select class="compact" style="width:auto"
+                      hx-post="/api/watchlist/{{ it.id }}/update" hx-swap="none"
+                      hx-trigger="change" name="mode" hx-include="closest tr">
+                {% for m in modes %}
+                  <option value="{{ m }}" {{ "selected" if m == it.mode.value else "" }}>
+                    {{ m.replace("_", " ").title() }}</option>
+                {% endfor %}
+              </select>
+            </td>
+            <td class="right">
+              <input class="compact num" type="number" name="allocation_usd"
+                     value="{{ it.allocation_usd|round|int }}" min="1" step="100"
+                     style="width:100px;text-align:right"
+                     hx-post="/api/watchlist/{{ it.id }}/update" hx-swap="none"
+                     hx-trigger="change" hx-include="closest tr">
+            </td>
+            <td class="right">
+              <input class="compact num" type="number" name="risk_pct"
+                     value="{{ it.risk_pct }}" min="0.1" max="10" step="0.1"
+                     style="width:70px;text-align:right"
+                     hx-post="/api/watchlist/{{ it.id }}/update" hx-swap="none"
+                     hx-trigger="change" hx-include="closest tr">
+            </td>
+            <td>
+              {% set a = assignments.get(it.symbol) %}
+              {% if a and a.no_edge %}<span class="badge badge-muted">no edge</span>
+              {% elif a and a.strategy %}<span class="muted">{{ a.strategy }}</span>
+              {% else %}<span class="dim">not evaluated</span>{% endif %}
+            </td>
+            <td>
+              <select class="compact" style="width:auto" name="pinned_strategy"
+                      hx-post="/api/watchlist/{{ it.id }}/update" hx-swap="none"
+                      hx-trigger="change" hx-include="closest tr">
+                <option value="">Auto (selector)</option>
+                {% for s in strategies %}
+                  <option value="{{ s.key }}" {{ "selected" if s.key == it.pinned_strategy else "" }}>{{ s.label }}</option>
+                {% endfor %}
+              </select>
+            </td>
+            <td class="right">
+              <button class="btn btn-sm btn-reject"
+                      hx-post="/api/watchlist/{{ it.id }}/delete" hx-swap="none"
+                      hx-on::after-request="location.reload()"
+                      hx-confirm="Remove {{ it.symbol }} from the watchlist?">Remove</button>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+      <div class="empty"><div class="empty-icon">◫</div>
+        <div class="empty-title">Watchlist is empty</div>
+        <div class="empty-text">Add a symbol above to get started.</div></div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-head"><div class="card-title">Safety</div></div>
+      <div class="card-body">
+        <div class="field">
+          <label>Kill switch</label>
+          <label class="switch danger">
+            <input type="checkbox" {{ "checked" if kill_switch else "" }}
+                   hx-post="/api/kill-switch" hx-swap="none"
+                   hx-on::after-request="location.reload()">
+            <span class="track"></span>
+            <span>{{ "Trading halted" if kill_switch else "Trading allowed" }}</span>
+          </label>
+          <div class="hint">
+            Blocks every new order immediately. Trips automatically if the account
+            drops {{ cfg.daily_loss_limit_pct }}% in a day.
+          </div>
+        </div>
+
+        <div class="kv"><span class="k">Max open positions</span>
+          <span class="v">{{ cfg.max_open_positions }}</span></div>
+        <div class="kv"><span class="k">Max deployed capital</span>
+          <span class="v">{{ cfg.max_deployed_pct }}%</span></div>
+        <div class="kv"><span class="k">Daily loss limit</span>
+          <span class="v">{{ cfg.daily_loss_limit_pct }}%</span></div>
+        <div class="kv"><span class="k">Cooldown after a stop-out</span>
+          <span class="v">{{ cfg.cooldown_days_after_stop }} days</span></div>
+        <div class="kv"><span class="k">Proposal expiry</span>
+          <span class="v">{{ cfg.proposal_ttl_minutes }} min</span></div>
+        <div class="hint" style="margin-top:10px">
+          These live in <code>app/config.py</code> and can be overridden in <code>.env</code>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card" id="credentials">
+      <div class="card-head">
+        <div>
+          <div class="card-title">🔑 Credentials</div>
+          <div class="card-sub">Saved to <code>.env</code> and applied immediately.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <form hx-post="/api/credentials" hx-swap="none"
+              hx-on::after-request="this.reset(); location.reload()"
+              autocomplete="off">
+          {% for c in credentials %}
+            <div class="field" style="margin-bottom:16px">
+              <label>{{ c.label }}</label>
+              <div class="kv" style="padding:2px 0 7px">
+                <span class="k">Currently</span>
+                <span class="v {{ 'up' if c.set else 'dim' }}">{{ c.shown if c.set else "not set" }}</span>
+              </div>
+              <input type="{{ 'password' if c.secret else 'text' }}"
+                     name="{{ c.key }}" value=""
+                     autocomplete="new-password" spellcheck="false"
+                     placeholder="{{ 'Paste a new value to replace it' if c.set else 'Paste here' }}">
+              {% if c.set %}
+                <label class="hint" style="display:flex;align-items:center;gap:7px;margin-top:7px;cursor:pointer">
+                  <input type="checkbox" name="clear_{{ c.key }}" value="1"
+                         style="width:auto;margin:0">
+                  Clear this value instead
+                </label>
+              {% endif %}
+              <div class="hint">{{ c.hint }}</div>
+              {% if c.shadowed %}
+                <div class="banner banner-warn" style="margin-top:8px">
+                  <span>⚠</span>
+                  <span><code>{{ c.key }}</code> is also set as a system
+                    environment variable, which outranks <code>.env</code>.
+                    Saving here works until you restart; remove the system
+                    variable to make it stick.</span>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+          <button class="btn btn-primary" type="submit">Save credentials</button>
+        </form>
+
+        <div class="hint" style="margin-top:14px">
+          A blank box changes nothing, so you can save one key without
+          re-entering the others. Stored values are shown only as their last
+          four characters — the app never sends a saved secret back to this
+          page. <code>.env</code> is plain text and git-ignored; treat it like
+          the password file it is. Arming live trading is deliberately not on
+          this form and still needs a manual <code>ALPACA_LIVE=true</code>.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-title">Broker</div></div>
+      <div class="card-body">
+        <div class="kv"><span class="k">Connected to</span>
+          <span class="v">{{ broker.describe }}</span></div>
+        <div class="kv"><span class="k">Alpaca keys</span>
+          <span class="v">{{ "present" if broker.alpaca_configured else "not set" }}</span></div>
+        <div class="kv"><span class="k">Account type</span>
+          <span class="v">{{ "PAPER" if broker.is_paper else "LIVE" }}</span></div>
+
+        {% if not broker.alpaca_configured %}
+          <div class="banner banner-info" style="margin-top:14px">
+            <span>ⓘ</span>
+            <span>Add <code>ALPACA_API_KEY</code> and <code>ALPACA_API_SECRET</code> to
+              <code>.env</code>, then restart, to trade a real paper account.</span>
+          </div>
+        {% endif %}
+
+        <div class="field" style="margin-top:16px">
+          <label>Live trading</label>
+          {% if not cfg.alpaca_live %}
+            <div class="banner banner-info" style="margin:0">
+              <span>🔒</span>
+              <span>Locked. Live trading needs <code>ALPACA_LIVE=true</code> in
+                <code>.env</code> <em>and</em> this toggle <em>and</em> a typed confirmation.</span>
+            </div>
+          {% else %}
+            <label class="switch danger">
+              <input type="checkbox" {{ "checked" if live_enabled else "" }}
+                     hx-post="/api/live-toggle" hx-swap="none"
+                     hx-on::after-request="location.reload()"
+                     hx-confirm="Arm LIVE trading with real money? Approved orders will execute against your funded account.">
+              <span class="track"></span>
+              <span>{{ "ARMED - real money" if live_enabled else "Disarmed" }}</span>
+            </label>
+          {% endif %}
+          <div class="hint">
+            Paper and live share the same code path, so nothing changes about how
+            the app behaves — only whose money is at stake.
+          </div>
+        </div>
+
+        {% if broker.is_simulator %}
+        <div class="field" style="margin-top:14px">
+          <label>Simulator</label>
+          <button class="btn btn-sm btn-reject" hx-post="/api/sim/reset" hx-swap="none"
+                  hx-on::after-request="location.reload()"
+                  hx-confirm="Reset the simulated account back to $100,000 and clear its positions?">
+            Reset simulated account
+          </button>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">📱 Telegram</div>
+          <div class="card-sub">Alerts on your phone, and buttons that act.</div>
+        </div>
+        {% if telegram.configured %}
+        <div class="card-head-actions">
+          <button class="btn btn-sm" hx-post="/api/telegram/test" hx-swap="none">
+            Send a test <span class="spinner-slot"><span class="spinner"></span></span>
+          </button>
+        </div>
+        {% endif %}
+      </div>
+      <div class="card-body">
+        {% if telegram.configured %}
+          <div class="tg-state {{ 'on' if telegram.running else 'off' }}">
+            <span>{{ "🟢" if telegram.running else "⚪" }}</span>
+            <span>
+              {% if telegram.running %}
+                Connected and listening. You will get the morning brief at 08:30 ET,
+                every signal, every proposal, and the kill switch if it trips.
+              {% else %}
+                Configured, but the listener is not running — restart the app.
+              {% endif %}
+            </span>
+          </div>
+
+          <div class="kv"><span class="k">Approve orders from Telegram</span>
+            <span class="v {{ 'up' if telegram.approvals else 'dim' }}">
+              {{ "enabled" if telegram.approvals else "off" }}</span></div>
+          <div class="kv"><span class="k">…including live orders</span>
+            <span class="v {{ 'down' if telegram.live_approvals else 'dim' }}">
+              {{ "enabled" if telegram.live_approvals else "off" }}</span></div>
+
+          {% if telegram.approvals %}
+            <div class="banner {{ 'banner-danger' if telegram.live_approvals else 'banner-warn' }}"
+                 style="margin-top:13px">
+              <span>⚠</span>
+              <span>
+                {% if telegram.live_approvals %}
+                  <strong>A real-money button now lives on your phone.</strong>
+                  Live orders need two taps, and every risk check still applies —
+                  but anyone holding your unlocked phone, or your bot token, can
+                  spend from your account. Revoke the token in BotFather if you
+                  ever lose the phone.
+                {% else %}
+                  Approvals work for paper orders only. If you arm live trading,
+                  the buttons stop working and you approve on this dashboard
+                  instead.
+                {% endif %}
+              </span>
+            </div>
+          {% endif %}
+
+          <div class="hint" style="margin-top:12px">
+            Change these in <code>.env</code>:
+            <code>TELEGRAM_ALLOW_APPROVALS</code> and
+            <code>TELEGRAM_ALLOW_LIVE_APPROVALS</code>. Restart to apply.
+            Send <code>/help</code> to your bot to see everything it answers to.
+          </div>
+
+          <div style="margin-top:14px">
+            <button class="btn btn-sm btn-ghost" hx-post="/api/telegram/digest" hx-swap="none">
+              Send me the brief now
+            </button>
+          </div>
+        {% else %}
+          <div class="tg-state off">
+            <span>⚪</span>
+            <span>Not configured. Five minutes of setup, then the desk reaches
+              you wherever you are.</span>
+          </div>
+
+          <div class="tg-steps">
+            <ol>
+              <li>In Telegram, message <code>@BotFather</code> and send
+                <code>/newbot</code>. Give it any name. It replies with a token.</li>
+              <li>Put that token in <code>.env</code> as
+                <code>TELEGRAM_BOT_TOKEN</code>, and restart the app.</li>
+              <li>Send your new bot any message — say <code>hello</code>.</li>
+              <li>Press the button below; it reads your chat id off that message.</li>
+              <li>Put the id in <code>.env</code> as
+                <code>TELEGRAM_CHAT_ID</code> and restart once more.</li>
+            </ol>
+          </div>
+
+          <div style="margin-top:12px">
+            <button class="btn btn-sm" hx-post="/api/telegram/whoami" hx-swap="none">
+              Find my chat id <span class="spinner-slot"><span class="spinner"></span></span>
+            </button>
+          </div>
+
+          <div class="hint" style="margin-top:12px">
+            The bot only ever talks to the one chat id you configure. Messages
+            from anywhere else are dropped — but the token itself is a bearer
+            credential, so keep <code>.env</code> off shared machines.
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card ai-card">
+      <div class="card-head"><div class="card-title">✨ AI analyst</div></div>
+      <div class="card-body">
+        <div class="kv"><span class="k">Provider</span>
+          <span class="v">{{ ai.name }}</span></div>
+        <div class="kv"><span class="k">Model</span>
+          <span class="v">{{ ai.model or "—" }}</span></div>
+        <div class="kv"><span class="k">Status</span>
+          <span class="v {{ 'up' if ai.ok else 'dim' }}">{{ "ready" if ai.ok else "unavailable" }}</span></div>
+
+        <div class="banner {{ 'banner-info' if ai.ok else 'banner-warn' }}" style="margin-top:13px">
+          <span>{{ "✓" if ai.ok else "ⓘ" }}</span><span>{{ ai.status }}</span>
+        </div>
+
+        {% if ai.enabled and not ai.is_local %}
+        <div class="banner banner-warn" style="margin-top:0">
+          <span>⚠</span>
+          <span>Gemini is a remote service — each analysis sends your symbol's
+            price and indicator summary to Google. Use <code>AI_PROVIDER=ollama</code>
+            if you would rather nothing left this machine.</span>
+        </div>
+        {% endif %}
+
+        <div class="hint" style="margin-top:10px">
+          The analyst reads and comments. It is deliberately kept out of the order
+          path — it cannot place, size, or approve a trade, and no strategy or
+          risk decision depends on it.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">🏷 Symbol logos</div>
+          <div class="card-sub">Fetched once by this app, then served from disk.</div>
+        </div>
+        <div class="card-head-actions">
+          <button class="btn btn-sm" hx-post="/api/logos/refresh" hx-swap="none"
+                  hx-on::after-request="location.reload()"
+                  title="Clear the cache and fetch every watchlist logo again">
+            ↻ Refresh logos <span class="spinner-slot"><span class="spinner"></span></span>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="kv"><span class="k">Fetching</span>
+          <span class="v {{ 'up' if cfg.logos_enabled else 'dim' }}">
+            {{ "on" if cfg.logos_enabled else "off — monograms only" }}</span></div>
+        <div class="kv"><span class="k">Cached</span>
+          <span class="v num">{{ logo_cache.real }}</span></div>
+        <div class="kv"><span class="k">No artwork</span>
+          <span class="v num dim">{{ logo_cache.miss }}</span></div>
+
+        <div class="hint" style="margin-top:10px">
+          A symbol with no logo gets a coloured monogram drawn here — nothing is
+          broken. Misses are remembered for a week, so refresh after a rebrand
+          or if the first fetch happened while you were offline. Press
+          <kbd>?</kbd> for the longer explanation, or set
+          <code>LOGOS_ENABLED=false</code> in <code>.env</code> to stop the app
+          reaching out at all.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

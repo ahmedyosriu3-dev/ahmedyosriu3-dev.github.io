@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Activity log{% endblock %}
+{% block heading %}Activity log{% endblock %}
+{% block subheading %}<div class="page-sub">Every decision the app made, and every one it declined to make.</div>{% endblock %}
+
+{% block content %}
+<div class="card">
+  <div class="card-head">
+    <div class="card-title">Recent activity</div>
+    <div class="card-head-actions">
+      <form method="get" style="display:flex;gap:8px;align-items:center">
+        <select name="event" class="compact" style="width:auto" onchange="this.form.submit()">
+          <option value="">All events</option>
+          {% for e in event_types %}
+            <option value="{{ e }}" {{ "selected" if e == current_event else "" }}>{{ e }}</option>
+          {% endfor %}
+        </select>
+      </form>
+    </div>
+  </div>
+  <div class="card-body flush">
+    {% if entries %}
+      {% for e in entries %}
+      <div class="log-line {{ e.level }}">
+        <span class="log-ts">{{ e.ts.strftime("%m-%d %H:%M:%S") }}</span>
+        <span class="log-event">{{ e.event }}</span>
+        {% if e.symbol %}<a href="/symbol/{{ e.symbol }}" class="sym" style="font-size:12px">{{ e.symbol }}</a>{% endif %}
+        <span class="log-msg">{{ e.message }}</span>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="empty"><div class="empty-icon">≡</div>
+        <div class="empty-title">Nothing logged yet</div>
+        <div class="empty-text">Run a signal scan and activity will appear here.</div></div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

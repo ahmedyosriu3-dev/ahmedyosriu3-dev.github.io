@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% from "_logo.html" import logo %}
+{% block title %}Suggestions{% endblock %}
+{% block heading %}Suggestions{% endblock %}
+{% block subheading %}
+  <div class="page-sub">
+    {{ buys|length }} to buy &middot; {{ sells|length }} to sell from what you hold
+    {% if scanned_at %}&middot; read at {{ scanned_at.strftime("%d %b, %H:%M") }}{% endif %}
+  </div>
+{% endblock %}
+
+{% block content %}
+
+<div class="brief brief-info">
+  <div class="brief-mark">◨</div>
+  <div class="brief-body">
+    <div class="brief-headline">Ranked by evidence, not by forecast</div>
+    <div class="brief-detail">
+      Every symbol on your watchlist whose assigned strategy is firing today,
+      ordered by how much sits behind the signal: how well that strategy did
+      <em>out-of-sample</em> on this symbol, how many other strategies
+      independently want the same side, whether the long-term trend agrees, and
+      how recently it fired. Symbols the selector marked <strong>NO EDGE</strong>
+      never appear — the app has no rule it trusts on them.
+      <br>
+      <strong>Sell only ever lists things you actually own.</strong> There is no
+      short side here, so a sell signal on something you do not hold is not a
+      suggestion, it is noise.
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div>
+      <div class="card-title">What to do next</div>
+      <div class="card-sub">
+        Ranking is not permission. Nothing is ordered without the symbol's mode
+        allowing it and you pressing Approve.
+      </div>
+    </div>
+    <div class="card-head-actions">
+      <button class="btn btn-sm btn-primary"
+              hx-post="/api/scan" hx-swap="none"
+              hx-on::after-request="location.reload()">
+        ↻ Rescan signals <span class="spinner-slot"><span class="spinner"></span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="filter-row">
+      <div class="filter-group">
+        <a class="chip {{ 'on' if tab != 'sell' }}" href="/suggestions">
+          Buy <span class="chip-n">{{ buys|length }}</span>
+        </a>
+        <a class="chip {{ 'on' if tab == 'sell' }}" href="/suggestions?tab=sell">
+          Sell from holdings <span class="chip-n">{{ sells|length }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% set rows = sells if tab == 'sell' else buys %}
+
+{% if not rows %}
+<div class="card">
+  <div class="card-body">
+    <div class="empty">
+      <div class="empty-icon">{{ '▽' if tab == 'sell' else '△' }}</div>
+      <div class="empty-title">
+        {% if tab == 'sell' %}Nothing to sell{% else %}Nothing to buy{% endif %}
+      </div>
+      <div class="empty-text">
+        {% if tab == 'sell' %}
+          No strategy is telling you to get out of anything you currently hold.
+          {% if not holds_anything %}
+            You do not hold any positions at the moment, so this tab has nothing
+            it could show.
+          {% endif %}
+        {% else %}
+          No assigned strategy is firing a buy today. That is the normal answer
+          most days — the alternative is a tool that always finds something,
+          which is a tool that is always wrong eventually.
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+
+{% for s in rows %}
+<div class="card idea-card">
+  <div class="card-body">
+    <div class="idea-head">
+      <div class="sym-cell">
+        {{ logo(s.symbol, "logo-lg") }}
+        <div>
+          <div class="sym">
+            <a href="/symbol/{{ s.symbol }}">{{ s.symbol }}</a>
+            <span class="badge {{ 'badge-sell' if s.side == 'SELL' else 'badge-buy' }}">
+              {{ s.side }}
+            </span>
+            {% if s.owned and s.side == 'BUY' %}
+              <span class="badge badge-muted" title="You already hold this">held</span>
+            {% endif %}
+          </div>
+          <div class="sym-name">{{ s.name }} &middot; {{ s.strategy_label }}</div>
+        </div>
+      </div>
+
+      <div class="idea-score">
+        <div class="idea-score-v conviction-{{ s.strength }}">{{ "{:.0f}".format(s.conviction) }}</div>
+        <div class="idea-score-k">{{ s.strength }}</div>
+      </div>
+    </div>
+
+    <div class="sugg-grid">
+      <div class="kv"><span>Price</span><span class="num">${{ "{:,.2f}".format(s.price) }}</span></div>
+      {% if s.owned %}
+        <div class="kv">
+          <span>You hold</span>
+          <span class="num">{{ "{:g}".format(s.qty) }} &middot; ${{ "{:,.0f}".format(s.market_value) }}</span>
+        </div>
+        <div class="kv">
+          <span>Open P&amp;L</span>
+          <span class="num {{ 'up' if s.unrealized_plpc >= 0 else 'down' }}">
+            {{ "{:+.1f}%".format(s.unrealized_plpc * 100) }}
+          </span>
+        </div>
+      {% endif %}
+      <div class="kv">
+        <span>Agreement</span>
+        <span class="num">{{ s.agreement }}/{{ s.agreement_total }} strategies long</span>
+      </div>
+      <div class="kv"><span>Mode</span><span class="mode-{{ s.mode }}">{{ s.mode.replace("_", " ").lower() }}</span></div>
+    </div>
+
+    {% if s.reason %}
+      <div class="idea-headline">{{ s.reason }}</div>
+    {% endif %}
+
+    <div class="idea-components">
+      {% for label, value in s.components %}
+      <div class="comp">
+        <div class="comp-k">{{ label }}</div>
+        <div class="comp-bar"><span style="width: {{ value }}%"></span></div>
+        <div class="comp-v num">{{ "{:.0f}".format(value) }}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if s.reasons or s.cautions %}
+    <div class="idea-why">
+      {% for r in s.reasons %}<div class="why ok">✓ {{ r }}</div>{% endfor %}
+      {% for c in s.cautions %}<div class="why warn">! {{ c }}</div>{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

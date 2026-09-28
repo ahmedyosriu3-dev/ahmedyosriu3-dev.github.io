@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Strategies{% endblock %}
+{% block heading %}Strategies{% endblock %}
+{% block subheading %}<div class="page-sub">What each approach looks for, and where the selector assigned it.</div>{% endblock %}
+
+{% block content %}
+
+<div class="banner banner-info">
+  <span>ⓘ</span>
+  <span>The selector scores every strategy <strong>out-of-sample only</strong> across
+    {{ cfg.selector_folds }} walk-forward folds, and rejects anything with fewer than
+    {{ cfg.selector_min_trades }} trades. A symbol where nothing clears the bar is marked
+    <strong>no edge</strong> and trades nothing — that is the intended outcome, not a failure.</span>
+</div>
+
+{% for s in strategies %}
+<div class="card">
+  <div class="card-head">
+    <div>
+      <div class="card-title">{{ s.label }}</div>
+      <div class="card-sub">{{ s.description }}</div>
+    </div>
+    <div class="card-head-actions">
+      <span class="badge badge-muted">{{ s.assigned_to|length }} assigned</span>
+    </div>
+  </div>
+  <div class="card-body">
+    {% if s.assigned_to %}
+      <div style="display:flex;gap:7px;flex-wrap:wrap">
+        {% for a in s.assigned_to %}
+          <a href="/symbol/{{ a.symbol }}" class="badge badge-accent" style="font-family:var(--mono)">
+            {{ a.symbol }} <span style="opacity:.65">{{ "%.2f"|format(a.score) }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <span class="dim" style="font-size:12.5px">Not currently assigned to any symbol.</span>
+    {% endif %}
+
+    <details class="raw" style="margin-top:12px">
+      <summary>Parameter grid the selector sweeps ({{ s.grid|length }} configurations)</summary>
+      <pre>{{ s.grid_json }}</pre>
+    </details>
+  </div>
+</div>
+{% endfor %}
+
+{% if no_edge_symbols %}
+<div class="card">
+  <div class="card-head">
+    <div>
+      <div class="card-title">No edge</div>
+      <div class="card-sub">No strategy earned the right to trade these, so they stay flat.</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div style="display:flex;gap:7px;flex-wrap:wrap">
+      {% for sym in no_edge_symbols %}
+        <a href="/symbol/{{ sym }}" class="badge badge-muted" style="font-family:var(--mono)">{{ sym }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

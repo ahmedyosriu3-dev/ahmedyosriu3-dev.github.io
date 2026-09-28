@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% block title %}Backtest{% endblock %}
+{% block heading %}Backtest{% endblock %}
+{% block subheading %}<div class="page-sub">Run any strategy over any window. Compare against buy &amp; hold.</div>{% endblock %}
+
+{% block content %}
+
+<div class="card">
+  <div class="card-body">
+    <form method="get" action="/backtest">
+      <div class="form-row">
+        <div class="field" style="max-width:150px">
+          <label>Symbol</label>
+          <input type="text" name="symbol" value="{{ symbol or '' }}" placeholder="AAPL"
+                 style="text-transform:uppercase" required autocomplete="off">
+        </div>
+        <div class="field" style="max-width:200px">
+          <label>Strategy</label>
+          <select name="strategy">
+            {% for s in strategies %}
+              <option value="{{ s.key }}" {{ "selected" if s.key == strategy_key else "" }}>{{ s.label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="field" style="max-width:130px">
+          <label>Years</label>
+          <select name="years">
+            {% for y in [1, 2, 3, 5] %}
+              <option value="{{ y }}" {{ "selected" if y == years else "" }}>{{ y }} year{{ "s" if y > 1 else "" }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="field" style="max-width:140px">
+          <label>Starting cash</label>
+          <input type="number" name="cash" value="{{ cash|round|int }}" min="100" step="1000">
+        </div>
+        <button class="btn btn-primary" type="submit">Run backtest</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% if error %}
+  <div class="banner banner-warn"><span>⚠</span><span>{{ error }}</span></div>
+{% endif %}
+
+{% if result %}
+<div class="stats">
+  <div class="stat">
+    <div class="stat-label">Total return</div>
+    <div class="stat-value {{ 'up' if m.total_return > 0 else 'down' }}">
+      {{ "+" if m.total_return > 0 else "" }}{{ "%.1f"|format(m.total_return * 100) }}%</div>
+    <div class="stat-meta">buy &amp; hold {{ "%.1f"|format(bh.total_return * 100) }}%</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Sharpe</div>
+    <div class="stat-value">{{ "%.2f"|format(m.sharpe) }}</div>
+    <div class="stat-meta">buy &amp; hold {{ "%.2f"|format(bh.sharpe) }}</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Max drawdown</div>
+    <div class="stat-value down">{{ "%.1f"|format(m.max_drawdown * 100) }}%</div>
+    <div class="stat-meta">buy &amp; hold {{ "%.1f"|format(bh.max_drawdown * 100) }}%</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Trades</div>
+    <div class="stat-value">{{ m.n_trades }}</div>
+    <div class="stat-meta">{{ "%.0f"|format(m.win_rate * 100) }}% winners</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Profit factor</div>
+    <div class="stat-value">{{ "%.2f"|format(m.profit_factor) }}</div>
+    <div class="stat-meta">gross win / gross loss</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Exposure</div>
+    <div class="stat-value">{{ "%.0f"|format(m.exposure * 100) }}%</div>
+    <div class="stat-meta">of bars in the market</div>
+  </div>
+</div>
+
+{% if m.total_return < bh.total_return %}
+<div class="banner banner-warn">
+  <span>⚠</span>
+  <span>This strategy underperformed simply buying and holding {{ symbol }}
+    ({{ "%.1f"|format(m.total_return * 100) }}% vs {{ "%.1f"|format(bh.total_return * 100) }}%).
+    It took {{ m.n_trades }} trades to do worse than doing nothing.
+    Lower drawdown may still make that a trade-off worth having — but it is a trade-off.</span>
+</div>
+{% endif %}
+
+<div class="card">
+  <div class="card-head">
+    <div class="card-title">Equity curve</div>
+    <div class="card-sub">Strategy versus buy &amp; hold, same starting cash.</div>
+  </div>
+  <div class="card-body flush"><div class="chart-shell" id="eqChart"></div></div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="card-title">Trades</div></div>
+  <div class="card-body flush">
+    {% if trades %}
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Entry</th><th>Exit</th><th class="right">In</th><th class="right">Out</th>
+          <th class="right">Qty</th><th class="right">P&amp;L</th><th class="right">%</th>
+          <th>Exit</th><th>Reason for entry</th></tr></thead>
+        <tbody>
+        {% for t in trades %}
+          <tr>
+            <td class="num dim">{{ t.entry_ts.strftime("%Y-%m-%d") }}</td>
+            <td class="num dim">{{ t.exit_ts.strftime("%Y-%m-%d") }}</td>
+            <td class="right num">${{ "%.2f"|format(t.entry_price) }}</td>
+            <td class="right num">${{ "%.2f"|format(t.exit_price) }}</td>
+            <td class="right num dim">{{ "%.0f"|format(t.qty) }}</td>
+            <td class="right num {{ 'up' if t.pnl > 0 else ('down' if t.pnl < 0 else 'dim') }}">
+              {{ "+" if t.pnl > 0 else "" }}${{ "%.2f"|format(t.pnl) }}</td>
+            <td class="right num {{ 'up' if t.pnl > 0 else ('down' if t.pnl < 0 else 'dim') }}">
+              {{ "%.1f"|format(t.return_pct * 100) }}%</td>
+            <td>
+              {% if t.exit_kind == "stop" %}<span class="badge badge-sell">stop</span>
+              {% elif t.exit_kind == "target" %}<span class="badge badge-buy">target</span>
+              {% else %}<span class="badge badge-muted">{{ t.exit_kind }}</span>{% endif %}
+            </td>
+            <td class="dim" style="font-size:12px;max-width:280px">{{ t.entry_reason }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+      <div class="empty"><div class="empty-icon">◐</div>
+        <div class="empty-title">No trades</div>
+        <div class="empty-text">This configuration never triggered an entry over the window.</div></div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% if result %}
+<script src="/static/vendor/lightweight-charts.js"></script>
+<script>
+const EQ = {{ equity_json|safe }};
+const el = document.getElementById("eqChart");
+const chart = LightweightCharts.createChart(el, {
+  layout: { background: { color: "transparent" }, textColor: "#8b97ad",
+            fontFamily: "'JetBrains Mono', Consolas, monospace", fontSize: 11 },
+  grid: { vertLines: { color: "#1a2130" }, horzLines: { color: "#1a2130" } },
+  rightPriceScale: { borderColor: "#232c3d" },
+  timeScale: { borderColor: "#232c3d" },
+  crosshair: { mode: 0 },
+  width: el.clientWidth, height: el.clientHeight,
+});
+const strat = chart.addAreaSeries({
+  lineColor: "#4c8dff", topColor: "rgba(76,141,255,.28)",
+  bottomColor: "rgba(76,141,255,0)", lineWidth: 2,
+});
+strat.setData(EQ.strategy);
+const bh = chart.addLineSeries({ color: "#5d6879", lineWidth: 1.5, lineStyle: 2 });
+bh.setData(EQ.buy_hold);
+chart.timeScale().fitContent();
+new ResizeObserver(() => chart.applyOptions({ width: el.clientWidth, height: el.clientHeight })).observe(el);
+</script>
+{% endif %}
+{% endblock %}
