@@ -1,9 +1,0 @@
-.venv/
-__pycache__/
-*.pyc
-.env
-data/*.db
-data/*.db-journal
-.pytest_cache/
-data/logos/
-data/ca-bundle.pem
